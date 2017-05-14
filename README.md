@@ -2,10 +2,10 @@
 Projeto final de POO
 
 # TODO
-  [X] Escrever um README decente
-  [] Escolher tema
-  [] Desenvolver projeto básico de aplicação
-  [] Enviar proposta de projeto
+  - [X] Escrever um README decente 
+  - [] Escolher tema
+  - [] Desenvolver projeto básico de aplicação
+  - [] Enviar proposta de projeto
 
 # Afinal, o que faremos?
 Essa é uma ótima pergunta que todos temos que responder em pouco tempo.
@@ -28,4 +28,7 @@ Antes de qualquer linha de código seja digitada, elaboraremos um *esqueleto bá
   - Implementar mudanças fundamentais no projeto sem aviso prévio e ciência por parte de todos
 
 # Boas práticas de desenvolvimento e observações
-Por mais modularizado que o código esteja, lembrem-se que que o seu trabalho afeta na produção do colega. Sejam ativos e critiquem 
+Por mais modularizado que o código esteja, lembrem-se que que o seu trabalho afeta na produção do colega. Sejam ativos e avisem caso achem algo incorreto ou estranho. Façam uma boa descrição do trabalho feito e tentem manter uma constância no fluxo do trabalho (aka não deixem acumular coisas no final do semestre).
+
+# E um sorriso fofo no final para ser kawaii
+:)
