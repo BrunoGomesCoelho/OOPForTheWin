@@ -9,23 +9,24 @@ Projeto final de POO
 
 # Tasks
   - Crop
-    -Seleção retangular
-    -Seleção direta (com o mouse)
-    -Seleção por isomorfismo (mesma cor, textura, etc)
+    - Seleção retangular
+    - Seleção direta (com o mouse)
+    - Seleção por isomorfismo (mesma cor, textura, etc)
     
   - Rotação
   - Stretch e redimensionalização 
   
   - Filters
-    -Mundanças de canais HSL e RGB (dá para montar filtros tipo instagram com isso)
-    -Realce de Imagens 
-    -Convolução de matrizes: Blur, sharp
-    -Remoção de ruído - Fourier (?)
+    - Mundanças de canais HSL e RGB (dá para montar filtros tipo instagram com isso)
+    - Realce de Imagens 
+    - Convolução de matrizes: Blur, sharp
+    - Remoção de ruído - Fourier (?)
     
   - Layers
-    -Prioridade de cada layer e sobreposição desses
+    - Prioridade de cada layer e sobreposição desses
   
   - Desenho
-    -Brush (desenhar com o mouse)
-    -Color selector (menu e por pixel na imagem)
-    -Formas geométricas e adesivos padrão
+    - Brush (desenhar com o mouse)
+    - Bucket
+    - Color selector (menu e por pixel na imagem)
+    - Formas geométricas e adesivos padrão
