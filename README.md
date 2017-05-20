@@ -4,7 +4,7 @@ Projeto final de POO
 # TODO
   - [X] Escrever um README decente 
   - [X] Escolher tema
-  - Desenvolver projeto básico de aplicação
+  - Desenvolver projeto básico de aplicação: https://www.overleaf.com/9610901vpynnzdrykcs
   - Enviar proposta de projeto
 
 # Tasks
