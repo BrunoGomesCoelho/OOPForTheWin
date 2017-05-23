@@ -15,7 +15,7 @@ Projeto final de POO
      - Pegar coordenadas (x, y) do cursor e os cliques do usuário (mouseup e mousedown)
      - Inteface básica
     
-# Tasks
+# Main Tasks
   - Crop
     - Seleção retangular
     - Seleção direta (com o mouse)
