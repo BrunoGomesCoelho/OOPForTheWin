@@ -6,11 +6,15 @@ Projeto final de POO
  - Linhas com menos de 80 caracteres
  - Javadoc em ingles
  - Comentarios/nomes/funcoes em inglês
+ - Usar o o Maven para configurar o projeto
 
  - Funcoes que editam a imagem
-    -- Retornam uma imagem nova
-    -- Nao mudam o que foi passado
-    -- Sugerem um shortcut
+ 
+    - Retornam uma imagem nova
+    
+    - Nao mudam o que foi passado
+    
+    - Sugerem um shortcut
 
 # TODO
   - Pré-projeto
@@ -21,19 +25,19 @@ Projeto final de POO
 
   - TASK TO BE DONE
 
-  -- Interface
-        [] Escolher a interface
-        [] Top menu
-        [] Left menu
-        [] Right menu
-        [] Mostrar a imagem na janela, selecionando com window maneger
+    - Interface
+         - [] Escolher a interface
+         - [] Top menu
+         - [] Left menu
+         - [] Right menu
+         - [] Mostrar a imagem na janela, selecionando com window maneger
 
-  -- Usabilidade
-        [] Salvar a imagem com novo arquivo or not
-        [] Clicar e pegar as coordenadas do pixel
-        [] Click dos usuarios
-
-   [] Projetar o javadoc (ASAP)
+    - Usabilidade
+         - [] Salvar a imagem com novo arquivo or not
+         - [] Clicar e pegar as coordenadas do pixel
+         - [] Click dos usuarios
+    - Outros
+         - [] Projetar o javadoc (ASAP)
 
 # Functions
   - Crop
