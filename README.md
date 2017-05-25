@@ -1,21 +1,41 @@
 # Photocyl
 Projeto final de POO
 
+# Rules to code
+
+ - Linhas com menos de 80 caracteres
+ - Javadoc em ingles
+ - Comentarios/nomes/funcoes em inglês
+
+ - Funcoes que editam a imagem
+    -- Retornam uma imagem nova
+    -- Nao mudam o que foi passado
+    -- Sugerem um shortcut
+
 # TODO
   - Pré-projeto
-     - [X] Escrever um README decente 
+     - [X] Escrever um README decente
      - [X] Escolher tema
      - [X] Desenvolver projeto básico de aplicação: https://www.overleaf.com/9610901vpynnzdrykcs
      - [X] Enviar proposta de projeto
-  
-  - Parte I
-     - Projetar o javadoc (ASAP)
-     - Ler a imagem e gerar o respectivo objeto (formato RGB e/ou HSL)
-     - Fazer uma janela com a imagem dentro
-     - Pegar coordenadas (x, y) do cursor e os cliques do usuário (mouseup e mousedown)
-     - Inteface básica
-    
-# Main Tasks
+
+  - TASK TO BE DONE
+
+  -- Interface
+        [] Escolher a interface
+        [] Top menu
+        [] Left menu
+        [] Right menu
+        [] Mostrar a imagem na janela, selecionando com window maneger
+
+  -- Usabilidade
+        [] Salvar a imagem com novo arquivo or not
+        [] Clicar e pegar as coordenadas do pixel
+        [] Click dos usuarios
+
+   [] Projetar o javadoc (ASAP)
+
+# Functions
   - Crop
     - Seleção retangular
     - Seleção direta (com o mouse)
