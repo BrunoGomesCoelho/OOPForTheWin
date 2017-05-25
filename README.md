@@ -2,7 +2,8 @@
 Projeto final de POO
 
 # Coisas que necessitam ser implementadas. Colocar um check junto com onde foi implementado.
-- Exemplo: [] Threads (Na classe X)
+- Exemplo: 
+    - [X] Threads (Na classe X)
 - Exceções -> try-catch-finally ()
   - Checked -> Compilation time exception
   - Unchecked -> Run-time exception
@@ -25,16 +26,29 @@ Projeto final de POO
   - Interfaces
 
 
-# Rules to code
+# Coding directives
+  - Java version: Java 8
+  
+  - GUI/User interface: JavaFX implementado com JavaFX Scene Builder (funciona integrado graficamente ao Intelij)
+    - OBS: Fica muuuuito mais fácil: não precisamos codar quase nada :D
+    - Bruno/Cruz poderão dar uma aula explicando semana que vem (a partir de 29)
+    
  - Convenção de nomes
    - Classes: Todas as palavras começando com maiúscula. ex: ContaBancariaDoBanco
    - Variáveis: 1ª palavra minúscula, outras começam com maiúscula (camelCase). ex: contaBancariaDoBanco
+   
  - Sempre tratamos a exceção no nível em que é possível, não passamos ela adiante se podemos tratar dentro daquela função
+ 
  - Linhas com menos de 80 caracteres
+ 
  - Javadoc em ingles
+ 
  - Comentarios/nomes/funcoes em inglês
+ 
  - Usar o o MAVEN para configurar o projeto
+ 
  - Adicionar tasks conforme achar necessário
+ 
  - Aps acabar um task, adicionar sua inicial (Bruno, Marcello, Cruz, Gabriel(cyrillo). Exemplo:
    - [X] [B] Adicionar Exemplo
    
