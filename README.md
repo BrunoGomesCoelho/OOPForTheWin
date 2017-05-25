@@ -10,6 +10,13 @@ Projeto final de POO
  - Adicionar tasks conforme achar necessário
  - Aps acabar um task, adicionar sua inicial (Bruno, Marcello, Cruz, Gabriel(cyrillo). Exemplo:
    - [X] [B] Adicionar Exemplo
+   
+ - Estruturação das packages:
+    - Src
+      - Interface
+      - Input/Output
+      - Test cases
+      - Functions
  
 
  - Funcoes que editam a imagem
