@@ -54,10 +54,10 @@ Projeto final de POO
    
  - Estruturação das packages:
     - Src
-      - Interface
-      - Input/Output
-      - Test cases
-      - Functions
+      - GUI
+      - ioputs
+      - testCases
+      - imageProcessing
  
 
  - Funcoes que editam a imagem
