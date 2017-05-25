@@ -8,7 +8,9 @@ Projeto final de POO
  - Comentarios/nomes/funcoes em inglês
  - Usar o o Maven para configurar o projeto
  - Adicionar tasks conforme achar necessário
- - Aps acabar um task, adicionar sua inicial (Bruno, Marcello, Cruz, Gabriel(cyrillo)
+ - Aps acabar um task, adicionar sua inicial (Bruno, Marcello, Cruz, Gabriel(cyrillo). Exemplo:
+   - [X] [B] Adicionar Exemplo
+ 
 
  - Funcoes que editam a imagem
  
