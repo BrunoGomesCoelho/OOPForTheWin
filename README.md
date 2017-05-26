@@ -51,6 +51,7 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
     - Evitar commits gigantes, preferível mandar pouco a pouco
     - Um branch por package, no mínimo (por exemplo, um branch para interface)
     - Dar merge sempre que tudo funcionar de um determinado subbranch.
+    - PS: Intellij tem plugin de GitHub que é fantástico :D
     
  - Convenção de nomes
    - Classes: Todas as palavras começando com maiúscula. ex: ContaBancariaDoBanco
