@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Button fx:id="hmm" layoutX="260.0" layoutY="150.0" mnemonicParsing="false" onAction="#pressButton" prefHeight="65.0" prefWidth="101.0" text="Cyrillo" textFill="#6a3ae4" />
+   </children>
+</Pane>
