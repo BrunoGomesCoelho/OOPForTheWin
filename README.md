@@ -57,6 +57,8 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
    - Classes: Todas as palavras começando com maiúscula. ex: ContaBancariaDoBanco
    - Variáveis: 1ª palavra minúscula, outras começam com maiúscula (camelCase). ex: contaBancariaDoBanco
    
+ - Acrescentar "TODO" no que faltar num código antes de ser upado para o Git. O Intellij depois mostra bonitinho todos os TODOs
+   
  - Sempre tratamos a exceção no nível em que é possível, não passamos ela adiante se podemos tratar dentro daquela função
  
  - Linhas com menos de 80 caracteres
