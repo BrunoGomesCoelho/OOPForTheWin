@@ -49,6 +49,7 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
   - Java version: Java 8
   
   - GUI/User interface: JavaFX implementado com JavaFX Scene Builder (funciona integrado graficamente ao Intelij)
+    - Link para versão paga de graça: https://www.jetbrains.com/student/
     - OBS: Fica muuuuito mais fácil: não precisamos codar quase nada :D
     - Bruno/Cruz poderão dar uma aula explicando semana que vem (a partir de 29)
    
