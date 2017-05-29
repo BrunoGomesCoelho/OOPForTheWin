@@ -1,6 +1,14 @@
 # Photocyl
 Projeto final de POO
 
+# Relatório
+- [X] [B] Criar relatório
+- https://www.overleaf.com/9308801srxcvkdjrfdd
+- Deixei o relatório com umas coisas aleatórios para se precisarmos exemplos de como implementar certas coisas - [B]
+
+# Manual
+- [] Criar manual
+
 # Coisas que necessitam ser implementadas. 
 Colocar um check junto com onde foi implementado (para sabermos o que mencionar na hora de fazer o relatório).
 
