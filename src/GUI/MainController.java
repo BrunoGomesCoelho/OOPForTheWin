@@ -18,14 +18,29 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable{
 
     private File file;
+    private Image image = null;
 
     @FXML private ImageView imageview;
+
+    /*
+    * Get the current image
+    * */
+    public Image getImage() {
+        return this.image;
+    }
+
+    public void setImage(Image img) {
+        this.image = img;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //            Esse metodo eh chamado antes de carregar a window
     }
 
+    /*
+    * Open the image and show it at the main window
+    */
     public void openButton(ActionEvent event) {
         // Set up the file chooser
         FileChooser fc = new FileChooser();
@@ -36,15 +51,16 @@ public class MainController implements Initializable{
                 new FileChooser.ExtensionFilter("PNG", "*.png"));
 
         // Search for an image
-        File file = fc.showOpenDialog(null);
+        this.file = fc.showOpenDialog(null);
 
         // If the user select an image, show it
-        if (file != null) {
+        if (this.file != null) {
             // For test purpose only
             System.out.println(file.getAbsolutePath());
 
-            Image image = new Image(file.toURI().toString());
-            imageview.setImage(image);
+            this.image = new Image(this.file.toURI().toString());
+
+            imageview.setImage(this.image);
         }
     }
 }
