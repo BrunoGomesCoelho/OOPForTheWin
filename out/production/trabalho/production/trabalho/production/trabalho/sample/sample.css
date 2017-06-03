@@ -1,0 +1,12 @@
+#button {
+    -fx-alignment: center;
+}
+
+#listView {
+    -fx-background-color: lightgray;
+}
+
+.root {
+    -fx-background-color: dimgray;
+}
+
