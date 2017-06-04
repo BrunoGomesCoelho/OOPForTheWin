@@ -23,23 +23,28 @@ public class MainController implements Initializable{
     @FXML private ImageView imageview;
 
     /*
-    * Get the current image
-    * */
+    *  Get the current image
+    *
+    */
     public Image getImage() {
         return this.image;
     }
 
+    /*
+    * Set the image to a new one
+    */
     public void setImage(Image img) {
         this.image = img;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//            Esse metodo eh chamado antes de carregar a window
+        // Esse metodo eh chamado antes de carregar a window
     }
 
     /*
     * Open the image and show it at the main window
+    *
     */
     public void openButton(ActionEvent event) {
         // Set up the file chooser
@@ -62,5 +67,19 @@ public class MainController implements Initializable{
 
             imageview.setImage(this.image);
         }
+    }
+
+    /*
+    * Method to refresh the image after some filter/tool
+    *
+    */
+    public void refreshButton(ActionEvent event) {
+        if (this.image != null) {
+            imageview.setImage(this.image);
+        }
+    }
+
+    public void negative(ActionEvent event) {
+        // Use this method to call the negative function
     }
 }
