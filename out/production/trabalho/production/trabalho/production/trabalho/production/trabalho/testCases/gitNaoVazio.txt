@@ -1,1 +1,0 @@
-So para o git não reclamar da pasta vazia.
