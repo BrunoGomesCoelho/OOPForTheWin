@@ -138,6 +138,8 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
     
     - [X] [B] Fazer o botão close no menu funcionar
     
+    - [] Colocar uma versão de copyright na about page (cruz, você manja disso)
+    
     - Interface
          - [X] Escolher a interface
          - [X] [M} Top menu
