@@ -63,6 +63,7 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
   - Java version: Java 8
   
   - GUI/User interface: JavaFX implementado com JavaFX Scene Builder (funciona integrado graficamente ao Intelij)
+    - Para o background de toda janela principal, usar cinza(#353535)
     - Link para versão paga de graça: https://www.jetbrains.com/student/
     - OBS: Fica muuuuito mais fácil: não precisamos codar quase nada :D
     - Bruno/Cruz poderão dar uma aula explicando semana que vem (a partir de 29)
@@ -123,20 +124,30 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
   - TASK TO BE DONE
   
     - [] Transformar a BufferedImage para Image
+     
+    - [] Achar uma maneira de usar o tamanho nativo da tela
 
+    - [] Associar função de processamento com seu filtro
+    
+        - [] Fazer menu
+    
+    - [] Fazer Save de arquivo
+    
+    - Botão new para criar uma iamgem nova com a cor e a dimensão que o usuário desejar
+    
     - Interface
          - [X] Escolher a interface
-         - [] Top menu
+         - [X] [M} Top menu
          - [] Left menu
          - [] Right menu
-         - [X] Mostrar a imagem na janela, selecionando com window maneger
+         - [X] [M] Mostrar a imagem na janela, selecionando com window maneger
 
     - Usabilidade
-         - [] Salvar a imagem com novo arquivo or not
          - [] Clicar e pegar as coordenadas do pixel
-         - [] Click dos usuarios
     - Outros
-         - [] Projetar o javadoc (ASAP)
+         - [] Projetar o javadoc
+         
+    
 
 # Functions
   - [] Crop
