@@ -1,6 +1,14 @@
 # Photocyl
 Projeto final de POO
 
+# Intellij no lab
+Installar normalmente
+
+Usar esse link para mudar alguns paths: https://stackoverflow.com/questions/4809214/is-there-an-easy-way-to-put-my-entire-installation-of-intellij-on-a-usb-stick
+
+Copiar a pasta para o ICMC Drive no fim do dia (não funciona rodar da pasta do drive, tem que copiar pro PC).
+
+
 # Relatório
 - [X] [B] Criar relatório
 - https://www.overleaf.com/9308801srxcvkdjrfdd
