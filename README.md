@@ -115,13 +115,15 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
      - [X] Enviar proposta de projeto
 
   - TASK TO BE DONE
+  
+    - [] Transformar a BufferedImage para Image
 
     - Interface
-         - [] Escolher a interface
+         - [X] Escolher a interface
          - [] Top menu
          - [] Left menu
          - [] Right menu
-         - [] Mostrar a imagem na janela, selecionando com window maneger
+         - [X] Mostrar a imagem na janela, selecionando com window maneger
 
     - Usabilidade
          - [] Salvar a imagem com novo arquivo or not
