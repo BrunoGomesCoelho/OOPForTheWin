@@ -134,9 +134,9 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
     
     - [] Fazer Save de arquivo
     
-    - Botão new para criar uma iamgem nova com a cor e a dimensão que o usuário desejar
+    - [] Botão new para criar uma iamgem nova com a cor e a dimensão que o usuário desejar
     
-    - Fazer o botão close no menu funcionar
+    - [X] [B] Fazer o botão close no menu funcionar
     
     - Interface
          - [X] Escolher a interface
