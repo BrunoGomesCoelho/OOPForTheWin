@@ -8,6 +8,12 @@ Usar esse link para mudar alguns paths: https://stackoverflow.com/questions/4809
 
 Copiar a pasta para o ICMC Drive no fim do dia (não funciona rodar da pasta do drive, tem que copiar pro PC).
 
+Para usar integrado com Git:
+
+    - Baixar git https://git-scm.com/download/win
+    
+    - Setar onde o git foi installado https://stackoverflow.com/questions/26077449/i-cant-find-my-git-exe-file-in-my-github-folder
+
 
 # Relatório
 - [X] [B] Criar relatório
