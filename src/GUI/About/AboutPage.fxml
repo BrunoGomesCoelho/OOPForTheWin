@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="51.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Photocyl" textAlignment="CENTER" wrappingWidth="198.13671875">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Text>
+      <Text layoutX="22.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Copyright *TODO* 2016" wrappingWidth="247.611328125">
+         <font>
+            <Font size="25.0" />
+         </font></Text>
+      <Text layoutX="22.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Versão 1.0 para a disciplina de POO" wrappingWidth="219.431640625">
+         <font>
+            <Font size="25.0" />
+         </font></Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   </children>
+</Pane>
