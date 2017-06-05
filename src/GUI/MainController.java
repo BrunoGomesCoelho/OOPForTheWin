@@ -1,5 +1,6 @@
 package GUI;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -81,5 +82,9 @@ public class MainController implements Initializable{
 
     public void negative(ActionEvent event) {
         // Use this method to call the negative function
+    }
+
+    public void closeAplication(ActionEvent event) {
+        Platform.exit();
     }
 }
