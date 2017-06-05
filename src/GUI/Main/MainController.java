@@ -3,10 +3,14 @@ package GUI.Main;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
@@ -43,6 +47,15 @@ public class MainController implements Initializable{
         // Esse metodo eh chamado antes de carregar a window
     }
 
+
+    /*                          Menu
+    ======================================================================== */
+
+    // File ==================================================================
+    public void newButton(ActionEvent event) {
+
+    }
+
     /*
     * Open the image and show it at the main window
     *
@@ -70,6 +83,22 @@ public class MainController implements Initializable{
         }
     }
 
+    public void saveButton(ActionEvent event) {
+
+    }
+
+    public void saveAsButton(ActionEvent event) {
+
+    }
+
+    public void closeAplication(ActionEvent event) {
+        Platform.exit();
+    }
+
+
+
+    // Edit ==================================================================
+
     /*
     * Method to refresh the image after some filter/tool
     *
@@ -80,11 +109,27 @@ public class MainController implements Initializable{
         }
     }
 
+
+
+    // Filter =================================================================
+
+    /*
+    * Method that opens a new window to apply a filter at the image
+    *
+    */
+    public void selectFilterButton(ActionEvent event) throws Exception{
+        Stage filterSatge = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../Filter/Filter.fxml"));
+        filterSatge.setTitle("Select a filter");
+        filterSatge.setScene(new Scene(root, 600,  400));
+        filterSatge.show();
+    }
+
+    /*                          Buttons
+    ====================================================================== */
+
     public void negative(ActionEvent event) {
         // Use this method to call the negative function
     }
 
-    public void closeAplication(ActionEvent event) {
-        Platform.exit();
-    }
 }

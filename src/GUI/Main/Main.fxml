@@ -27,12 +27,12 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+                  <MenuItem mnemonicParsing="false" onAction="#refreshButton" text="Refresh" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Filters">
               <items>
-                <MenuItem mnemonicParsing="false" text="Select Filter" />
+                <MenuItem mnemonicParsing="false" onAction="#selectFilterButton" text="Select Filter" />
               </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -48,7 +48,6 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Button layoutX="-3.0" layoutY="14.0" mnemonicParsing="false" onAction="#refreshButton" text="Refresh" />
                   <Button layoutX="-3.0" layoutY="49.0" mnemonicParsing="false" onAction="#negative" text="Negative" />
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
