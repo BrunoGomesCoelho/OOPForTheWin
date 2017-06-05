@@ -14,7 +14,7 @@ Para usar integrado com Git:
     
     - Setar onde o git foi installado https://stackoverflow.com/questions/26077449/i-cant-find-my-git-exe-file-in-my-github-folder
 
-Para setar o SDK, vai em computer, Program Files, java, jdk 1.8. Não pode ser a pasta 64 bits de Program Files, tem que ser a 32
+Para setar o SDK, vai em computer, Program Files, java, jdk 1.8. Não pode ser a (x86) tem que ser a padrão
 
 # Relatório
 - [X] [B] Criar relatório
