@@ -28,24 +28,29 @@ public class MainController implements Initializable{
 
     @FXML private ImageView imageview;
 
-    /*
-    *  Get the current image
-    *
-    */
+    /**
+     *
+     *  Get the image beeing displayed
+     *
+     *  @return The current image
+     */
     public Image getImage() {
         return this.image;
     }
 
-    /*
-    * Set the image to a new one
-    */
+    /**
+     * Set the image to a new one
+     *
+     * @param img A new image to be displayed
+     */
     public void setImage(Image img) {
         this.image = img;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Esse metodo eh chamado antes de carregar a window
+        // This method is called before the window show up.
+        // Use when it's necessary
     }
 
 
@@ -57,14 +62,17 @@ public class MainController implements Initializable{
     /**
      * Opens a new window to select a blank image, choosing the color and size
      * Linked to File -> New button
+     *
      * @param event: the button being pressed
      */
     public void newButton(ActionEvent event) {
-
+        //  TODO Create a window when press the "new" button
     }
 
     /**
-     * Open the image and show it at the main window
+     * Open the image and show it at the main window.
+     * Linked to File -> Open button at menu bar
+     *
      * @param event: the button being pressed
      */
     public void openButton(ActionEvent event) {
@@ -91,23 +99,29 @@ public class MainController implements Initializable{
     }
 
     /**
-     * Saves the image with its its current name
+     * Saves the image with it's current name
+     * Linked to File -> Save button at the menu bar
+     *
      * @param event: the "save" button being pressed
      */
     public void saveButton(ActionEvent event) {
-
+        // TODO Implement the save action
     }
 
     /**
      * Opens a window to save the image with the file manager
+     * Linked to File -> Save As button at the menu bar
+     *
      * @param event: the "save as" button being pressed
      */
     public void saveAsButton(ActionEvent event) {
-
+        // TODO Implement the saveas action
     }
 
     /**
      * Closes the application completely.
+     * Linked to File -> Close button at the menu bar
+     *
      * @param event: the close button being pressed
      */
     public void closeAplication(ActionEvent event) {
@@ -119,6 +133,8 @@ public class MainController implements Initializable{
 
     /**
      * Method to refresh the image after some filter/tool has modified it
+     * Linked to Edit -> Refresh button at the menu bar
+     *
      * @param event: the "refresh" button being pressed
      */
     public void refreshButton(ActionEvent event) {
@@ -134,6 +150,7 @@ public class MainController implements Initializable{
     /**
      * Method that opens a new window to apply a filter at the image.
      * It's linked to (Filter -> Select a Filter) button at the menu bar
+     *
      * @param event: the button being pressed
      * @throws Exception: TODO
      */
@@ -152,12 +169,14 @@ public class MainController implements Initializable{
     /**
      * Method that opens the about window. It's linked to (Help -> About) button at the menu bar
      * @param event: the "About" button being pressed
+     *
      * @throws IOException: TODO
      */
     public void aboutButton(ActionEvent event) throws IOException {
         Stage aboutStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../About/AboutPage.fxml"));
         aboutStage.setTitle("About");
+        aboutStage.setResizable(false);
         aboutStage.setScene(new Scene(root, 600,  400));
         aboutStage.show();
     }

@@ -1,3 +1,16 @@
 .root{
     -fx-background-color: #353535;
 }
+
+.label {
+    -fx-text-fill: lightgray;
+}
+
+#title {
+    -fx-text-alignment: center;
+    -fx-font-size: 25px;
+}
+
+#copyright {
+    -fx-text-alignment: center;
+}
