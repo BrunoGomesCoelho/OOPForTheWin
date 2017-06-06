@@ -23,13 +23,14 @@
 
 /* ======================================================================== */
 
-.split-pane {
+#leftMenu {
     -fx-background-color: #353535;
 }
 
-.split-pane *.vertical-grabber {
-    -fx-padding: 0;
-    -fx-background-color: transparent;
-    -fx-background-insets: 0;
-    -fx-shape: " ";
+#centerMenu{
+    -fx-background-color: #353535;
+}
+
+#separatorLeftMenu {
+    -fx-background-color: lightgray;
 }
