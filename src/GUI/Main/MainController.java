@@ -145,6 +145,7 @@ public class MainController implements Initializable{
         Stage aboutStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../About/AboutPage.fxml"));
         aboutStage.setTitle("About");
+        aboutStage.setResizable(false);
         aboutStage.setScene(new Scene(root, 600,  400));
         aboutStage.show();
     }
