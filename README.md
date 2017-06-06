@@ -42,7 +42,9 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
   - [] Static
   - [] Abstract
   
- - [X] [B] Packages (Na própria estrutração do projeto)
+ - [X] [B] Packages
+        
+        (Na própria estrutração do projeto inteiro.)
  
  - [] Test cases -> vamos usar o JUNIT 5
    - [] @Test
@@ -57,7 +59,9 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
   
   - [] Threads (talvez....)
   
-  - [] Interfaces
+  - [X] [B] Interfaces
+    
+        Usamos o JavaFX com o Scece Builder, fxml e css. 
 
 
 # Coding directives
@@ -102,6 +106,9 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
  - Estruturação das packages:
     - Src
       - GUI
+        - About
+        - Filter
+        - Main
       - ioputs
       - testCases
       - imageProcessing
@@ -138,7 +145,11 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
     
     - [X] [B] Fazer o botão close no menu funcionar
     
+    - [X] [M]~About Page  
+    
     - [] Colocar uma versão de copyright na about page (cruz, você manja disso)
+    
+    - [] Criar uma classe de exceções para as exceções de run time (ex: não existe arquivo fxml)
     
     - Interface
          - [X] Escolher a interface
