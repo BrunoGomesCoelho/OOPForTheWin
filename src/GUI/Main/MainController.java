@@ -13,6 +13,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -52,6 +53,12 @@ public class MainController implements Initializable{
     ======================================================================== */
 
     // File ==================================================================
+
+    /*
+    * Opens a new window to select a blank image, choosing the color and size
+    * Linked to File -> New button
+    *
+    */
     public void newButton(ActionEvent event) {
 
     }
@@ -96,7 +103,6 @@ public class MainController implements Initializable{
     }
 
 
-
     // Edit ==================================================================
 
     /*
@@ -114,16 +120,36 @@ public class MainController implements Initializable{
     // Filter =================================================================
 
     /*
-    * Method that opens a new window to apply a filter at the image
+    * Method that opens a new window to apply a filter at the image.
+    * It's linked to Filter -> Select a Filter button at the menu bar
     *
     */
     public void selectFilterButton(ActionEvent event) throws Exception{
-        Stage filterSatge = new Stage();
+        Stage filterStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../Filter/Filter.fxml"));
-        filterSatge.setTitle("Select a filter");
-        filterSatge.setScene(new Scene(root, 600,  400));
-        filterSatge.show();
+        filterStage.setTitle("Select a filter");
+        filterStage.setScene(new Scene(root, 600,  400));
+        filterStage.show();
     }
+
+
+
+    // Help =================================================================
+
+    /*
+    * Method that opens the about window. It's linked to
+    * Help -> About button at the menu bar
+    *
+    */
+    public void aboutButton(ActionEvent event) throws IOException {
+        Stage aboutStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../About/AboutPage.fxml"));
+        aboutStage.setTitle("About");
+        aboutStage.setScene(new Scene(root, 600,  400));
+        aboutStage.show();
+    }
+
+
 
     /*                          Buttons
     ====================================================================== */
