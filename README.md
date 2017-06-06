@@ -10,7 +10,7 @@ Final project of OOP
 
   - Criar manual
       
-  - Achar uma maneira de usar o tamanho nativo da tela
+  - (Cruz) Achar uma maneira de usar o tamanho nativo da tela
 
   - (M) Associar função de processamento com seu filtro
        
