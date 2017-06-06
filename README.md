@@ -30,34 +30,34 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
 - Exemplo: 
     - [X] Threads (Na classe X)
     
-- [] Exceções -> try-catch-finally ()
-  - [] Checked -> Compilation time exception
-  - [] Unchecked -> Run-time exception
+- [ ] Exceções -> try-catch-finally ()
+  - [ ] Checked -> Compilation time exception
+  - [ ] Unchecked -> Run-time exception
   
-- [] Override -> toString, equals, etc ()
+- [ ] Override -> toString, equals, etc ()
 
-- [] Polimorfismo
-  - [] Extends
-  - [] Protected
-  - [] Static
-  - [] Abstract
+- [ ] Polimorfismo
+  - [ ] Extends
+  - [ ] Protected
+  - [ ] Static
+  - [ ] Abstract
   
  - [X] [B] Packages
         
         (Na própria estrutração do projeto inteiro.)
  
- - [] Test cases -> vamos usar o JUNIT 5
-   - [] @Test
-   - [] @assertEquals
-   - [] @beforeClass
+ - [ ] Test cases -> vamos usar o JUNIT 5
+   - [ ] @Test
+   - [ ] @assertEquals
+   - [ ] @beforeClass
    
-  - [] Iteradores
+  - [ ] Iteradores
   
-  - [] Algumas estruturas da Java.util (ex: Set, Map, Vector, ArrayList, etc)
+  - [ ] Algumas estruturas da Java.util (ex: Set, Map, Vector, ArrayList, etc)
   
-  - [] Serialização (guardar objetos)
+  - [ ] Serialização (guardar objetos)
   
-  - [] Threads (talvez....)
+  - [ ] Threads (talvez....)
   
   - [X] [B] Interfaces
     
@@ -133,37 +133,37 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
   
     - [X] [B] Transformar a BufferedImage para Image -> So chamar a função bufferedToImage()
      
-    - [] Achar uma maneira de usar o tamanho nativo da tela
+    - [ ] Achar uma maneira de usar o tamanho nativo da tela
 
-    - [] Associar função de processamento com seu filtro
+    - [ ] Associar função de processamento com seu filtro
     
         - [] Fazer menu
     
-    - [] Fazer Save de arquivo
+    - [ ] Fazer Save de arquivo
     
-    - [] Descobrir como que ta zoom 
+    - [ ] Descobrir como que ta zoom 
     
-    - [] Botão new para criar uma imagem nova com a cor e a dimensão que o usuário desejar
+    - [ ] Botão new para criar uma imagem nova com a cor e a dimensão que o usuário desejar
     
     - [X] [B] Fazer o botão close no menu funcionar
     
     - [X] [M]~About Page  
     
-    - [] Colocar uma versão de copyright na about page (cruz, você manja disso)
+    - [ ] Colocar uma versão de copyright na about page (cruz, você manja disso)
     
-    - [] Criar uma classe de exceções para as exceções de run time (ex: não existe arquivo fxml)
+    - [ ] Criar uma classe de exceções para as exceções de run time (ex: não existe arquivo fxml)
     
     - Interface
          - [X] Escolher a interface
          - [X] [M} Top menu
-         - [] Left menu
-         - [] Right menu
+         - [ ] Left menu
+         - [ ] Right menu
          - [X] [M] Mostrar a imagem na janela, selecionando com window maneger
 
     - Usabilidade
-         - [] Clicar e pegar as coordenadas do pixel
+         - [ ] Clicar e pegar as coordenadas do pixel
     - Outros
-         - [] Projetar o javadoc
+         - [ ] Projetar o javadoc
          
     
 
