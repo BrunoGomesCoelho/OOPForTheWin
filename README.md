@@ -143,7 +143,7 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
     
     - [] Descobrir como que ta zoom 
     
-    - [] Botão new para criar uma iamgem nova com a cor e a dimensão que o usuário desejar
+    - [] Botão new para criar uma imagem nova com a cor e a dimensão que o usuário desejar
     
     - [X] [B] Fazer o botão close no menu funcionar
     
@@ -168,31 +168,33 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
     
 
 # Functions
-  - [] Crop
-    - [] Seleção retangular
-    - [] Seleção direta (com o mouse)
+  - [ ] Crop
+    - [ ] Seleção retangular
+    - [ ] Seleção direta (com o mouse)
     
-  - [] Rotação
-  
   - [] Distorção e Redimensionalização 
-  
-  - [] Filters
-    - [] Mundanças de canais HSL e RGB (dá para montar filtros tipo instagram com isso)
-    - [] Realce de Imagens 
-    - [] Convolução de matrizes: Blur, sharp
+    - [X] Espelhar (vetical, horizontal e diagonalmente)
+    - [ ] Esticar (vertical e horizontal)
+    - [ ] Resize
+    - [ ] Rotação
     
-  - [] Layers
-    - [] Prioridade de cada layer e sobreposição desses
+  - [X] Filters
+    - [X] Mundanças de canais HSL e RGB (dá para montar filtros tipo instagram com isso)
+    - [X] Realce de Imagens
+    - [X] Inclusão de ruído
+    - [X] Convolução de matrizes: Blur, sharp
   
-  - [] Desenho
-    - [] Brush (desenhar com o mouse)
-    - [] Bucket
-    - [] Color selector (menu e por pixel na imagem)
+  - [ ] Desenho
+    - [ ] Brush (desenhar com o mouse)
+    - [ ] Bucket
+    - [ ] Color selector (menu e por pixel na imagem)
  
-  - [] Extra
-    - [] Seleção por isomorfismo (mesma cor, textura, etc)
-    - [] Remoção de ruído
-    - [] Formas geométricas e Adesivos padrão
-    - [] Abrir uma imagem remotamente
-    - [] Shortcuts
+  - [ ] Extra
+    - [ ] Filtros pré-prontos (e.g. foto envelhecida)
+    - [ ] Prioridade de cada layer e sobreposição desses
+    - [ ] Seleção por isomorfismo (mesma cor, textura, etc)
+    - [ ] Remoção de ruído
+    - [ ] Formas geométricas e Adesivos padrão
+    - [ ] Abrir uma imagem remotamente
+    - [ ] Shortcuts
     
