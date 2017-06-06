@@ -158,7 +158,7 @@ public class MainController implements Initializable{
         Stage filterStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../Filter/Filter.fxml"));
         filterStage.setTitle("Select a filter");
-        filterStage.setScene(new Scene(root, 600,  400));
+        filterStage.setScene(new Scene(root, 800,  600));
         filterStage.show();
     }
 

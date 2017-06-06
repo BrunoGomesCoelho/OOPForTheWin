@@ -141,6 +141,8 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
     
     - [] Fazer Save de arquivo
     
+    - [] Descobrir como que ta zoom 
+    
     - [] Botão new para criar uma iamgem nova com a cor e a dimensão que o usuário desejar
     
     - [X] [B] Fazer o botão close no menu funcionar
