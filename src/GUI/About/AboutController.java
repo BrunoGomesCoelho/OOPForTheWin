@@ -16,7 +16,7 @@ public class AboutController implements Initializable {
 
     // There are about 77 chars per line
     private String about = "A photo edit software done by Bruno Coelho, " +
-            "Gabriel Cirrylo, Gabriel Cruz and\n" +
+            "Gabriel Cyrillo, Gabriel Cruz and\n" +
             "Marcello Pagano\n\n" +
             "Done for the discipline OOP at the " +
             "University of São Paulo in June 2017";
