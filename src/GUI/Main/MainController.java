@@ -29,7 +29,7 @@ public class MainController implements Initializable{
 
     private static CurrentImage current = null;
 
-    private static File currentFileName = null;
+    private static File currentFile = null;
 
     @FXML private ImageView imageview;
 
@@ -66,7 +66,7 @@ public class MainController implements Initializable{
     ======================================================================== */
 
     public void undoButton(ActionEvent event) {
-        Image old = current.undo();
+        current.undo();
         refreshButton(event);
     }
 
@@ -102,7 +102,7 @@ public class MainController implements Initializable{
             // For test purpose only TODO deletar
             System.out.println(file.getAbsolutePath());
 
-            currentFileName = file;
+            currentFile = file;
             current.setImage(new Image(file.toURI().toString()));
             imageview.setImage(current.getImage());
         }
@@ -115,13 +115,13 @@ public class MainController implements Initializable{
      * @param event: the "save" button being pressed
      */
     public void saveButton(ActionEvent event) {
-        String extension = Utils.fileExtension(currentFileName);
+        String extension = Utils.fileExtension(currentFile);
 
         // TODO: Testar isso depois de termos algo que edite a imagem
-        if (currentFileName != null) {
+        if (currentFile != null) {
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(current.getImage(),
-                        null), extension, currentFileName);
+                        null), extension, currentFile);
             } catch (IOException ex) { // TODO; essa é a melhor maneira de ignorar isso...?
                 System.out.println(ex.getMessage());
             }

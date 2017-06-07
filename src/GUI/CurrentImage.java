@@ -23,13 +23,16 @@ public class CurrentImage {
     }
 
     public Image getImage() {
-        if (!valid)
+        if (!valid) {
+            System.out.println("No valid image");
             return null;
+        }
         return image;
     }
 
     public void setImage(Image image) {
-        previous.add(this.image);
+        if (this.valid)
+            previous.add(this.image);
         this.image = image;
         this.valid = true;
     }
@@ -39,19 +42,16 @@ public class CurrentImage {
      * Returns the last image edited, similar to using "CTRL z".
      * @return Image: The last edited image if it exists, null otherwise
      */
-    public Image undo() {
+    public void undo() {
         Image temp;
         if (!valid)
-            return null;
+            return ;
         try {
             temp = previous.remove(previous.size() - 1);
             this.image = temp;
-            if (previous.size() == 0)
-                valid = false;
         } catch(IndexOutOfBoundsException e) {
-            return null;
+            System.out.println(e);
         }
-        return temp;
     }
 
     public boolean hasImage() {
