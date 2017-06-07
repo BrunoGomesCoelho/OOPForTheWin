@@ -13,6 +13,10 @@ Final project of OOP
   - (Cruz) Achar uma maneira de usar o tamanho nativo da tela
 
   - (M) Associar função de processamento com seu filtro
+  
+  - (B) Mudar a imagem mostrada na tela conforme editada
+  
+  - (B) Permitir um undo de edição
        
   - Fazer Save de arquivo
     
