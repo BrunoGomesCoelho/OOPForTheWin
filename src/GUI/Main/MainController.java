@@ -65,12 +65,6 @@ public class MainController implements Initializable{
     /*                          Menu
     ======================================================================== */
 
-    public void undoButton(ActionEvent event) {
-        current.undo();
-        refreshButton(event);
-    }
-
-
     // File ==================================================================
 
     /**
@@ -122,7 +116,8 @@ public class MainController implements Initializable{
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(current.getImage(),
                         null), extension, currentFile);
-            } catch (IOException ex) { // TODO; essa é a melhor maneira de ignorar isso...?
+            } catch (IOException ex) {
+                // TODO; essa é a melhor maneira de ignorar isso...?
                 System.out.println(ex.getMessage());
             }
         }
@@ -143,7 +138,8 @@ public class MainController implements Initializable{
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(current.getImage(),
                         null), extension, file);
-            } catch (IOException ex) { // TODO; essa é a melhor maneira de ignorar isso...?
+            } catch (IOException ex) {
+                // TODO; essa é a melhor maneira de ignorar isso...?
                 System.out.println(ex.getMessage());
             }
         }
@@ -220,6 +216,12 @@ public class MainController implements Initializable{
 
     public void negative(ActionEvent event) {
         // Use this method to call the negative function
+    }
+
+
+    public void undoButton(ActionEvent event) {
+        current.undo();
+        refreshButton(event);
     }
 
 }

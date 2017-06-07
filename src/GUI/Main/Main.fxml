@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="720.0" minWidth="1280.0" stylesheets="/GUI/Main/Main.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Main.MainController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="720.0" minWidth="1280.0" stylesheets="/GUI/Main/Main.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Main.MainController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -47,9 +47,9 @@
    <left>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-          <AnchorPane fx:id="leftMenu" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane fx:id="leftMenu" minHeight="0.0" minWidth="0.0" prefHeight="691.0" prefWidth="187.0">
                <children>
-                  <Separator layoutX="56.0" layoutY="2.0" maxHeight="845.0" orientation="VERTICAL" prefHeight="711.0" prefWidth="20.0" />
+                  <Separator layoutX="186.0" layoutY="14.0" maxHeight="845.0" orientation="VERTICAL" prefHeight="711.0" prefWidth="20.0" />
                   <Button layoutX="-3.0" layoutY="49.0" mnemonicParsing="false" onAction="#negative" text="Negative" />
                   <Button fx:id="undoButton" layoutX="-1.0" layoutY="111.0" mnemonicParsing="false" onAction="#undoButton" prefHeight="25.0" prefWidth="53.0" text="Undo" />
                </children>
@@ -60,7 +60,7 @@
    <center>
     <AnchorPane fx:id="centerMenu" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="imageview" fitHeight="261.0" fitWidth="347.0" layoutX="84.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imageview" fitHeight="375.0" fitWidth="528.0" layoutX="310.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </center>

@@ -13,6 +13,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.TextAlignment;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,7 +28,7 @@ public class FilterController implements Initializable {
     @FXML private ImageView preview;
     @FXML private ListView<String> list;
 
-    private String effect = null;
+    // private String effect = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -42,6 +43,7 @@ public class FilterController implements Initializable {
             list.setOrientation(Orientation.HORIZONTAL);
             list.setItems(items);
 
+            // TODO Mudar o ListView para ListView<Vbox>
 
             list.setCellFactory(param -> new ListCell<String>() {
                 private ImageView imageView = new ImageView();
@@ -53,11 +55,11 @@ public class FilterController implements Initializable {
                         setGraphic(null);
                     } else {
                         imageView.setImage(img);
-                        setText(name);
                         imageView.setPreserveRatio(true);
                         // TODO: Só modificar esse valor que ele já mantem a proporção por causa da linha de cima
                         imageView.setFitWidth(100);
                         setGraphic(imageView);
+                        setText(name);
                     }
                 }
             });
