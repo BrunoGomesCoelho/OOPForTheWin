@@ -9,17 +9,17 @@ import java.util.ArrayList;
  */
 public class CurrentImage {
     Image image = null;
-    boolean set = false;
+    boolean valid = false;
     ArrayList<Image> previous = null;
     int count = 0;
 
     public CurrentImage(Image image) {
         this.image = image;
-        set = true;
+        valid = true;
     }
 
     public Image getImage() {
-        if (!set)
+        if (!valid)
             throw new RuntimeException("Deu ruim, imagem não setada\n");
             // TODO: Colocar aqui um tipo de exceção criada por nós
         return image;
@@ -37,16 +37,19 @@ public class CurrentImage {
      */
     public Image undo() {
         Image temp;
-        if (!set)
+        if (!valid)
             return null;
         try {
             temp = previous.remove(previous.size() - 1);
             if (previous.size() == 0)
-                set = false;
+                valid = false;
         } catch(IndexOutOfBoundsException e) {
             return null;
         }
         return temp;
     }
 
+    public boolean hasImage() {
+        return this.valid;
+    }
 }
