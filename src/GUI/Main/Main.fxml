@@ -51,6 +51,7 @@
                <children>
                   <Separator layoutX="56.0" layoutY="2.0" maxHeight="845.0" orientation="VERTICAL" prefHeight="711.0" prefWidth="20.0" />
                   <Button layoutX="-3.0" layoutY="49.0" mnemonicParsing="false" onAction="#negative" text="Negative" />
+                  <Button fx:id="undoButton" layoutX="-1.0" layoutY="111.0" mnemonicParsing="false" onAction="#undoButton" prefHeight="25.0" prefWidth="53.0" text="Undo" />
                </children>
             </AnchorPane>
          </children>

@@ -61,6 +61,12 @@ public class MainController implements Initializable{
     /*                          Menu
     ======================================================================== */
 
+    public void undoButton(ActionEvent event) {
+        current.undo();
+        refreshButton(event);
+    }
+
+
     // File ==================================================================
 
     /**
