@@ -7,11 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="/GUI/Filter/Filter.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Filter.FilterController">
-   <children>
-      <ListView fx:id="list" layoutX="61.0" layoutY="379.0" prefHeight="138.0" prefWidth="665.0" />
-      <Button layoutX="616.0" layoutY="536.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" text="OK" />
-      <Button layoutX="709.0" layoutY="536.0" mnemonicParsing="false" onAction="#cancelButton" text="Cancel" />
-      <ImageView fx:id="preview" fitHeight="312.0" fitWidth="498.0" layoutX="166.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="message" layoutX="299.0" layoutY="162.0" prefHeight="26.0" prefWidth="223.0" />
-   </children>
+      <ListView fx:id="list" layoutX="61.0" layoutY="356.0" prefHeight="174.0" prefWidth="665.0" />
+      <Button layoutX="616.0" layoutY="549.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" text="OK" />
+      <Button layoutX="709.0" layoutY="549.0" mnemonicParsing="false" onAction="#cancelButton" text="Cancel" />
+      <ImageView fx:id="preview" fitHeight="301.0" fitWidth="498.0" layoutX="166.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="message" layoutX="249.0" layoutY="170.0" prefHeight="26.0" prefWidth="289.0" />
 </AnchorPane>

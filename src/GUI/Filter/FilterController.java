@@ -14,6 +14,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,7 +34,6 @@ public class FilterController implements Initializable {
 
     // private String effect = null;
 
-
     /**
      *  Private method used to return a Vbox, containing the image
      *  with a filter and a label with the filter's name. Iterate
@@ -52,11 +52,12 @@ public class FilterController implements Initializable {
 
         // TODO Switch case with all the filters 'i' should be an argument
 
-        Label filterName = new Label("Filter name here");
+        Label filterName = new Label("Filter name");
+        filterName.setTextAlignment(TextAlignment.CENTER); // Not working
         ImageView preview = new ImageView();
 
         preview.setPreserveRatio(true);
-        preview.setFitHeight(50);
+        preview.setFitHeight(100);
         preview.setImage(img);
 
         cell.getChildren().addAll(preview, filterName);
