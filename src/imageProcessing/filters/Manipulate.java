@@ -1,10 +1,10 @@
-package filters;
+package imageProcessing.filters;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 
-import models.ImageModel;
+import imageProcessing.models.ImageModel;
 
 public class Manipulate {
 	static public int VERTICAL = 0;

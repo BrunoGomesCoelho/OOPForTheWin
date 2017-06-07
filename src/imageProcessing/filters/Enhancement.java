@@ -1,15 +1,15 @@
-package filters;
+package imageProcessing.filters;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 
-import models.ImageModel;
-import utils.Utils;
+import imageProcessing.models.ImageModel;
+import imageProcessing.utils.Utils;
 
 public class Enhancement {
-	static public int[][] getMinMax(ImageModel originalImage){		
+	static public int[][] getMinMax(ImageModel originalImage){
 		BufferedImage img = originalImage.getBufferedImage();
 		Raster raster = img.getData();
 		int[][] minMax = new int[2][3];

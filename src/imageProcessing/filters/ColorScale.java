@@ -1,11 +1,12 @@
-package filters;
+package imageProcessing.filters;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
-import utils.Utils;
 
-import models.ImageModel;
+import imageProcessing.models.ImageModel;
+import imageProcessing.utils.Utils;
+
 
 public class ColorScale {
 	static private int scaleFilter(Raster raster, int i, int j, int channel, double alpha){

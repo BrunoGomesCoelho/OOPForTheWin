@@ -1,11 +1,11 @@
-package filters;
+package imageProcessing.filters;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.util.Arrays;
 
-import models.ImageModel;
-import utils.Utils;
+import imageProcessing.models.ImageModel;
+import imageProcessing.utils.Utils;
 
 public class Convolution {
 	static public double[][] BLUR = {
