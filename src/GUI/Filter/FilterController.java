@@ -54,6 +54,9 @@ public class FilterController implements Initializable {
                     } else {
                         imageView.setImage(img);
                         setText(name);
+                        imageView.setPreserveRatio(true);
+                        // TODO: Só modificar esse valor que ele já mantem a proporção por causa da linha de cima
+                        imageView.setFitWidth(100);
                         setGraphic(imageView);
                     }
                 }
