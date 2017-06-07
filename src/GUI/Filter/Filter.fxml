@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="/GUI/Filter/Filter.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Filter.FilterController">
    <children>
-      <ListView layoutX="61.0" layoutY="379.0" prefHeight="138.0" prefWidth="665.0" />
+      <ListView fx:id="list" layoutX="61.0" layoutY="379.0" prefHeight="138.0" prefWidth="665.0" />
       <Button layoutX="616.0" layoutY="536.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" text="OK" />
       <Button layoutX="709.0" layoutY="536.0" mnemonicParsing="false" onAction="#cancelButton" text="Cancel" />
       <ImageView fx:id="preview" fitHeight="312.0" fitWidth="498.0" layoutX="166.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
