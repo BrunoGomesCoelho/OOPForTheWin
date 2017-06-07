@@ -1,5 +1,6 @@
 package GUI.Main;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import GUI.CurrentImage;
+
 /**
  * Created by marcello on 02/06/17.
  */
@@ -24,20 +27,20 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable{
 
     private static File file;
-    private static Image image = null;
+    private static CurrentImage current = null;
 
     @FXML private ImageView imageview;
 
 
     /**
-     *
      *  Get the image beeing displayed
      *
      *  @return The current image
      */
     public static Image getImage() {
-        return image;
+        return current.getImage();
     }
+
 
     /**
      * Set the image to a new one
@@ -45,18 +48,26 @@ public class MainController implements Initializable{
      * @param img A new image to be displayed
      */
     public static void setImage(Image img) {
-        image = img;
+        current.setImage(img);;
     }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // This method is called before the window show up.
         // Use when it's necessary
+        this.current = new CurrentImage();
     }
 
 
     /*                          Menu
     ======================================================================== */
+
+    public void undoButton(ActionEvent event) {
+        current.undo();
+        refreshButton(event);
+    }
+
 
     // File ==================================================================
 
@@ -69,6 +80,7 @@ public class MainController implements Initializable{
     public void newButton(ActionEvent event) {
         //  TODO Create a window when press the "new" button
     }
+
 
     /**
      * Open the image and show it at the main window.
@@ -93,9 +105,9 @@ public class MainController implements Initializable{
             // For test purpose only
             System.out.println(file.getAbsolutePath());
 
-            image = new Image(file.toURI().toString());
+            current.setImage(new Image(file.toURI().toString()));
 
-            imageview.setImage(image);
+            imageview.setImage(current.getImage());
         }
     }
 
@@ -126,8 +138,8 @@ public class MainController implements Initializable{
      * @param event: the close button being pressed
      */
     public void closeAplication(ActionEvent event) {
-        Node node = (Node) event.getSource();
-        node.getScene().getWindow().hide();
+        Platform.exit();
+        System.exit(0);
     }
 
 
@@ -140,8 +152,8 @@ public class MainController implements Initializable{
      * @param event: the "refresh" button being pressed
      */
     public void refreshButton(ActionEvent event) {
-        if (image != null) {
-            imageview.setImage(image);
+        if (current.hasImage()) {
+            imageview.setImage(current.getImage());
         }
     }
 
