@@ -1,11 +1,11 @@
 package GUI.Main;
 
 import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -20,14 +20,16 @@ import java.util.ResourceBundle;
 
 import GUI.CurrentImage;
 
-/**
- * Created by marcello on 02/06/17.
- */
+import javax.imageio.ImageIO;
 
+/**
+ * Class that implements the controllers for the Main window
+ */
 public class MainController implements Initializable{
 
-    private static File file;
     private static CurrentImage current = null;
+
+    private static File currentFileName = null;
 
     @FXML private ImageView imageview;
 
@@ -48,7 +50,7 @@ public class MainController implements Initializable{
      * @param img A new image to be displayed
      */
     public static void setImage(Image img) {
-        current.setImage(img);;
+        current.setImage(img);
     }
 
 
@@ -56,7 +58,7 @@ public class MainController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         // This method is called before the window show up.
         // Use when it's necessary
-        this.current = new CurrentImage();
+        current = new CurrentImage();
     }
 
 
@@ -64,7 +66,7 @@ public class MainController implements Initializable{
     ======================================================================== */
 
     public void undoButton(ActionEvent event) {
-        current.undo();
+        Image old = current.undo();
         refreshButton(event);
     }
 
@@ -90,23 +92,18 @@ public class MainController implements Initializable{
      */
     public void openButton(ActionEvent event) {
         // Set up the file chooser
-        FileChooser fc = new FileChooser();
-        fc.setInitialDirectory(new File(System.getProperty("user.home")));
-        fc.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-                new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
-                new FileChooser.ExtensionFilter("PNG", "*.png"));
+        FileChooser fc = Utils.fileWindow("Abrir imagen");
 
         // Search for an image
-        file = fc.showOpenDialog(null);
+        File file = fc.showOpenDialog(null);
 
         // If the user select an image, show it
         if (file != null) {
-            // For test purpose only
+            // For test purpose only TODO deletar
             System.out.println(file.getAbsolutePath());
 
+            currentFileName = file;
             current.setImage(new Image(file.toURI().toString()));
-
             imageview.setImage(current.getImage());
         }
     }
@@ -118,7 +115,17 @@ public class MainController implements Initializable{
      * @param event: the "save" button being pressed
      */
     public void saveButton(ActionEvent event) {
-        // TODO Implement the save action
+        String extension = Utils.fileExtension(currentFileName);
+
+        // TODO: Testar isso depois de termos algo que edite a imagem
+        if (currentFileName != null) {
+            try {
+                ImageIO.write(SwingFXUtils.fromFXImage(current.getImage(),
+                        null), extension, currentFileName);
+            } catch (IOException ex) { // TODO; essa é a melhor maneira de ignorar isso...?
+                System.out.println(ex.getMessage());
+            }
+        }
     }
 
     /**
@@ -128,7 +135,18 @@ public class MainController implements Initializable{
      * @param event: the "save as" button being pressed
      */
     public void saveAsButton(ActionEvent event) {
-        // TODO Implement the saveas action
+        FileChooser fc = Utils.fileWindow("Salvar imagem");
+        File file = fc.showSaveDialog(null);
+        String extension = Utils.fileExtension(file);
+
+        if (file != null) {
+            try {
+                ImageIO.write(SwingFXUtils.fromFXImage(current.getImage(),
+                        null), extension, file);
+            } catch (IOException ex) { // TODO; essa é a melhor maneira de ignorar isso...?
+                System.out.println(ex.getMessage());
+            }
+        }
     }
 
     /**

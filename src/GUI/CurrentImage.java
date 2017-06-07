@@ -8,10 +8,9 @@ import java.util.ArrayList;
  * Class that mantains the current image being edited in memory.
  */
 public class CurrentImage {
-    Image image = null;
-    boolean valid = false;
-    ArrayList<Image> previous = null;
-    int count = 0;
+    private Image image = null;
+    private boolean valid = false;
+    private ArrayList<Image> previous = new ArrayList<>();
 
     public CurrentImage() {
         this.image = null;
@@ -20,7 +19,7 @@ public class CurrentImage {
 
     public CurrentImage(Image image) {
         this.image = image;
-        valid = true;
+        this.valid = true;
     }
 
     public Image getImage() {
@@ -32,6 +31,7 @@ public class CurrentImage {
     public void setImage(Image image) {
         previous.add(this.image);
         this.image = image;
+        this.valid = true;
     }
 
     //TODO: Testar a função undo
@@ -45,6 +45,7 @@ public class CurrentImage {
             return null;
         try {
             temp = previous.remove(previous.size() - 1);
+            this.image = temp;
             if (previous.size() == 0)
                 valid = false;
         } catch(IndexOutOfBoundsException e) {
