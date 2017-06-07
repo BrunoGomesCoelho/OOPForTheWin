@@ -1,10 +1,10 @@
 package GUI.Main;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -23,10 +23,11 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable{
 
-    private File file;
-    private Image image = null;
+    private static File file;
+    private static Image image = null;
 
     @FXML private ImageView imageview;
+
 
     /**
      *
@@ -34,8 +35,8 @@ public class MainController implements Initializable{
      *
      *  @return The current image
      */
-    public Image getImage() {
-        return this.image;
+    public static Image getImage() {
+        return image;
     }
 
     /**
@@ -43,8 +44,8 @@ public class MainController implements Initializable{
      *
      * @param img A new image to be displayed
      */
-    public void setImage(Image img) {
-        this.image = img;
+    public static void setImage(Image img) {
+        image = img;
     }
 
     @Override
@@ -85,16 +86,16 @@ public class MainController implements Initializable{
                 new FileChooser.ExtensionFilter("PNG", "*.png"));
 
         // Search for an image
-        this.file = fc.showOpenDialog(null);
+        file = fc.showOpenDialog(null);
 
         // If the user select an image, show it
-        if (this.file != null) {
+        if (file != null) {
             // For test purpose only
             System.out.println(file.getAbsolutePath());
 
-            this.image = new Image(this.file.toURI().toString());
+            image = new Image(file.toURI().toString());
 
-            imageview.setImage(this.image);
+            imageview.setImage(image);
         }
     }
 
@@ -125,7 +126,8 @@ public class MainController implements Initializable{
      * @param event: the close button being pressed
      */
     public void closeAplication(ActionEvent event) {
-        Platform.exit();
+        Node node = (Node) event.getSource();
+        node.getScene().getWindow().hide();
     }
 
 
@@ -138,8 +140,8 @@ public class MainController implements Initializable{
      * @param event: the "refresh" button being pressed
      */
     public void refreshButton(ActionEvent event) {
-        if (this.image != null) {
-            imageview.setImage(this.image);
+        if (image != null) {
+            imageview.setImage(image);
         }
     }
 

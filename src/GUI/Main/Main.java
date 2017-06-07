@@ -12,9 +12,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
-        primaryStage.setTitle("Photocyll");
+        primaryStage.setTitle("Photocyl");
         primaryStage.setScene(new Scene(root, 1280,  720));
-        // primaryStage.setMaximized(true); inicializa a janela maximizada
+        // primaryStage.setMaximized(true); // Initializes the window maximized
         primaryStage.show();
     }
 
