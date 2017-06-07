@@ -1,6 +1,10 @@
 # Photocyl
 Final project of OOP
 
+- Link para o que falamos que iamos implementar:
+
+        https://www.overleaf.com/9610901vpynnzdrykcs#/34927327/
+
 - Link para o relátorio: 
 
         https://www.overleaf.com/9308801srxcvkdjrfdd
@@ -10,32 +14,42 @@ Final project of OOP
 
   - Criar manual
       
-  - (Cruz) Achar uma maneira de usar o tamanho nativo da tela
+  - Achar uma maneira de centralizar a imagem no centro da tela   
+      
+        - (Cruz) Achar uma maneira de usar o tamanho nativo da tela
+        
+  - Criar o Menu da direita (color picker)
 
-  - (M) Associar função de processamento com seu filtro
+  - (M) Associar função de processamento com seu filtro 
   
-  - (B) Mudar a imagem mostrada na tela conforme editada
+  - Mudar a imagem mostrada na tela conforme editada
+             
+  - Descobrir como que Da zoom 
   
-  - (B) Permitir um undo de edição
-       
-  - Fazer Save de arquivo
-    
-  - Descobrir como que ta zoom 
-  
-  - Botão new para criar uma imagem nova com a cor e a dimensão que o usuário desejar
+  - (B) Botão new para criar uma imagem nova com a cor e a dimensão que o usuário desejar
         
   - Colocar uma versão de copyright na about page (Cruz, você manja disso)
     
-  - Criar uma classe de exceções para as exceções de run time (ex: não existe arquivo fxml)
+  - (B) Criar uma classe de exceções para as exceções de run time (ex: não existe arquivo fxml)
   
-  - Clicar e pegar as coordenadas do pixel
+  - Recorte
+        
+        - Clicar e pegar as coordenadas do pixel
+        
+  - Rotação
              
 
 #Tasks done
+
    - Brunão:
         - 
         - Criar relatório
         - Transformar a BufferedImage para Image
+        - Permitir um undo de edição
+        - Fazer Save de arquivo
+        - SaveAs
+        - Close
+        
    - Cyrrilo:
         -
         - Filtros
@@ -170,6 +184,7 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
   - [ ] Iteradores
   
   - [ ] Algumas estruturas da Java.util (ex: Set, Map, Vector, ArrayList, etc)
+        - [X] ArrayList (undo)
   
   - [ ] Serialização (guardar objetos)
   
