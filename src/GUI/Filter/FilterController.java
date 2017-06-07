@@ -10,19 +10,19 @@ import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextAlignment;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 /**
+ * Class used to manipulate the image an apply filters
+ *
+ *
  * Created by marcello on 05/06/2017.
  */
 public class FilterController implements Initializable {
@@ -33,16 +33,33 @@ public class FilterController implements Initializable {
 
     // private String effect = null;
 
+
+    /**
+     *  Private method used to return a Vbox, containing the image
+     *  with a filter and a label with the filter's name. Iterate
+     *  over this method to all the filters.
+     *
+     *  @param img The image to apply the filter
+     *
+     *  @return A VBox, with a filter applied to the image
+     *  and the filter's name
+     */
     private VBox populate(Image img){
         VBox cell = new VBox();
 
         cell.setPadding(new Insets(10, 10, 10, 10));
         cell.setSpacing(10);
 
-        Label nameHere = new Label("Insert Name Here!");
-        Label LastNameHere = new Label("Insert Last Name Here!");
+        // TODO Switch case with all the filters 'i' should be an argument
 
-        cell.getChildren().addAll(nameHere, LastNameHere);
+        Label filterName = new Label("Filter name here");
+        ImageView preview = new ImageView();
+
+        preview.setPreserveRatio(true);
+        preview.setFitHeight(50);
+        preview.setImage(img);
+
+        cell.getChildren().addAll(preview, filterName);
 
         return cell;
     }
@@ -56,37 +73,9 @@ public class FilterController implements Initializable {
 
             ObservableList<VBox> items = FXCollections.observableArrayList();
             for (int i = 0; i < 5; i++) items.add(populate(img));
-            
-            list.setOrientation(Orientation.HORIZONTAL);
-            list.setItems(items);
-
-    /*        ObservableList<String> items = FXCollections.observableArrayList("Single", "Double", "Suite", "etc"
-            , "mais", "um", "outro", "quero", "o", "scroll", "muitos", "items", "pra", "mostrar", "");
 
             list.setOrientation(Orientation.HORIZONTAL);
             list.setItems(items);
-
-            // TODO Mudar o ListView para ListView<Vbox>
-
-            list.setCellFactory(param -> new ListCell<String>() {
-                private ImageView imageView = new ImageView();
-                @Override
-                public void updateItem(String name, boolean empty) {
-                    super.updateItem(name, empty);
-                    if (empty) {
-                        setText(null);
-                        setGraphic(null);
-                    } else {
-                        imageView.setImage(img);
-                        imageView.setPreserveRatio(true);
-                        // TODO: Só modificar esse valor que ele já mantem a proporção por causa da linha de cima
-                        imageView.setFitWidth(100);
-                        setGraphic(imageView);
-                        setText(name);
-                    }
-                }
-            });*/
-
         }
 
         else message.setText("Open an image to select a filter");

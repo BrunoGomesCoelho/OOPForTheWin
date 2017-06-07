@@ -2,9 +2,15 @@
     -fx-background-color: #353535;
 }
 
-#message {
-    -fx-text-fill: lightgray;
+.label {
     -fx-text-alignment: center;
+    -fx-font-family: monospace;
+    -fx-text-fill: black;
+}
+
+#message {
+    -fx-font-family: monospace;
+    -fx-text-fill: lightgray;
 }
 
 #list {
