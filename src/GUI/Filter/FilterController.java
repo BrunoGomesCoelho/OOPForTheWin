@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -13,6 +14,8 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 
 import java.net.URL;
@@ -26,9 +29,23 @@ public class FilterController implements Initializable {
 
     @FXML private Label message;
     @FXML private ImageView preview;
-    @FXML private ListView<String> list;
+    @FXML private ListView<VBox> list;
 
     // private String effect = null;
+
+    private VBox populate(Image img){
+        VBox cell = new VBox();
+
+        cell.setPadding(new Insets(10, 10, 10, 10));
+        cell.setSpacing(10);
+
+        Label nameHere = new Label("Insert Name Here!");
+        Label LastNameHere = new Label("Insert Last Name Here!");
+
+        cell.getChildren().addAll(nameHere, LastNameHere);
+
+        return cell;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -37,7 +54,13 @@ public class FilterController implements Initializable {
         if (img != null) {
             preview.setImage(img);
 
-            ObservableList<String> items = FXCollections.observableArrayList("Single", "Double", "Suite", "etc"
+            ObservableList<VBox> items = FXCollections.observableArrayList();
+            for (int i = 0; i < 5; i++) items.add(populate(img));
+            
+            list.setOrientation(Orientation.HORIZONTAL);
+            list.setItems(items);
+
+    /*        ObservableList<String> items = FXCollections.observableArrayList("Single", "Double", "Suite", "etc"
             , "mais", "um", "outro", "quero", "o", "scroll", "muitos", "items", "pra", "mostrar", "");
 
             list.setOrientation(Orientation.HORIZONTAL);
@@ -62,7 +85,7 @@ public class FilterController implements Initializable {
                         setText(name);
                     }
                 }
-            });
+            });*/
 
         }
 
