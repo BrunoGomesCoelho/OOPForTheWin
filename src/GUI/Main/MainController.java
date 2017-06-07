@@ -1,5 +1,6 @@
 package GUI.Main;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -55,6 +56,7 @@ public class MainController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         // This method is called before the window show up.
         // Use when it's necessary
+        this.current = new CurrentImage();
     }
 
 
@@ -136,8 +138,8 @@ public class MainController implements Initializable{
      * @param event: the close button being pressed
      */
     public void closeAplication(ActionEvent event) {
-        Node node = (Node) event.getSource();
-        node.getScene().getWindow().hide();
+        Platform.exit();
+        System.exit(0);
     }
 
 
@@ -150,7 +152,7 @@ public class MainController implements Initializable{
      * @param event: the "refresh" button being pressed
      */
     public void refreshButton(ActionEvent event) {
-        if (current.hasImage() != false) {
+        if (current.hasImage()) {
             imageview.setImage(current.getImage());
         }
     }

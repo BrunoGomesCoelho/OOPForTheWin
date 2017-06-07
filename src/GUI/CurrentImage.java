@@ -13,6 +13,11 @@ public class CurrentImage {
     ArrayList<Image> previous = null;
     int count = 0;
 
+    public CurrentImage() {
+        this.image = null;
+        this.valid = false;
+    }
+
     public CurrentImage(Image image) {
         this.image = image;
         valid = true;
@@ -20,8 +25,7 @@ public class CurrentImage {
 
     public Image getImage() {
         if (!valid)
-            throw new RuntimeException("Deu ruim, imagem não setada\n");
-            // TODO: Colocar aqui um tipo de exceção criada por nós
+            return null;
         return image;
     }
 
