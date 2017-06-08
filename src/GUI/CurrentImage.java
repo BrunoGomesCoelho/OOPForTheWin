@@ -15,11 +15,13 @@ public class CurrentImage {
     public CurrentImage() {
         this.image = null;
         this.valid = false;
+        previous.add(null);
     }
 
     public CurrentImage(Image image) {
         this.image = image;
         this.valid = true;
+        previous.add(null);
     }
 
     public Image getImage() {
@@ -40,12 +42,11 @@ public class CurrentImage {
     //TODO: Testar a função undo
     /**
      * Returns the last image edited, similar to using "CTRL z".
-     * @return Image: The last edited image if it exists, null otherwise
      */
     public void undo() {
         Image temp;
         if (!valid)
-            return ;
+            return;
         try {
             temp = previous.remove(previous.size() - 1);
             this.image = temp;

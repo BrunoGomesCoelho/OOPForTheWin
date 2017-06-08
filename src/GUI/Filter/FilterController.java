@@ -31,6 +31,7 @@ public class FilterController implements Initializable {
     @FXML private Label message;
     @FXML private ImageView preview;
     @FXML private ListView<VBox> list;
+    private int filterCount = 5;
 
     // private String effect = null;
 
@@ -73,7 +74,7 @@ public class FilterController implements Initializable {
             preview.setImage(img);
 
             ObservableList<VBox> items = FXCollections.observableArrayList();
-            for (int i = 0; i < 5; i++) items.add(populate(img));
+            for (int i = 0; i < filterCount; i++) items.add(populate(img));
 
             list.setOrientation(Orientation.HORIZONTAL);
             list.setItems(items);
