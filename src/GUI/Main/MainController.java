@@ -224,4 +224,10 @@ public class MainController implements Initializable{
         refreshButton(event);
     }
 
+
+    public void redoButton(ActionEvent event) {
+        current.redo();
+        refreshButton(event);
+    }
+
 }
