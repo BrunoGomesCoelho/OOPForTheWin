@@ -46,6 +46,7 @@ Final project of OOP
         - Criar relatório
         - Transformar a BufferedImage para Image
         - Permitir um undo de edição
+        - Permitir um redo de edição
         - Fazer Save de arquivo
         - SaveAs
         - Close

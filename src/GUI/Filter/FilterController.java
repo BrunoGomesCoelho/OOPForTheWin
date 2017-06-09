@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 
 
 /**
- * Class used to manipulate the image an apply filters
+ * Class used to manipulate the image an apply Filters
  *
  *
  * Created by marcello on 05/06/2017.
@@ -31,14 +31,16 @@ public class FilterController implements Initializable {
     @FXML private Label message;
     @FXML private ImageView preview;
     @FXML private ListView<VBox> list;
-    private int filterCount = 5;
+    private int filterCount = 4;
+
+
 
     // private String effect = null;
 
     /**
      *  Private method used to return a Vbox, containing the image
      *  with a filter and a label with the filter's name. Iterate
-     *  over this method to all the filters.
+     *  over this method to all the Filters.
      *
      *  @param img The image to apply the filter
      *
@@ -51,7 +53,7 @@ public class FilterController implements Initializable {
         cell.setPadding(new Insets(10, 10, 10, 10));
         cell.setSpacing(10);
 
-        // TODO Switch case with all the filters 'i' should be an argument
+        // TODO Switch case with all the Filters. 'i' should be an argument
 
         Label filterName = new Label("Filter name");
         filterName.setTextAlignment(TextAlignment.CENTER); // Not working

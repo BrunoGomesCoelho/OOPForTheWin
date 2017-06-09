@@ -1,4 +1,4 @@
-package imageProcessing.models;
+package imageProcessing.Models;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;

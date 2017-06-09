@@ -44,7 +44,7 @@ public class CurrentImage {
 
 
     /**
-     * Sets the current main image to be displayed.
+     * Sets the current Main image to be displayed.
      * @param image: the image to be displayed
      */
     public void setImage(Image image) {
@@ -55,7 +55,7 @@ public class CurrentImage {
         this.valid = true;
     }
 
-    
+
     // TODO: Testar a função undo & a redo
     /**
      * Undo the last edit done to a image, similar to using "CTRL z" in most programs.

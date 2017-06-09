@@ -1,7 +1,4 @@
-package imageProcessing.main;
-
-import imageProcessing.filters.*;
-import imageProcessing.models.*;
+package imageProcessing.Main;
 
 public class Main {
 

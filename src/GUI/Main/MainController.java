@@ -79,7 +79,7 @@ public class MainController implements Initializable{
 
 
     /**
-     * Open the image and show it at the main window.
+     * Open the image and show it at the Main window.
      * Linked to File -> Open button at menu bar
      *
      * @param event: the button being pressed

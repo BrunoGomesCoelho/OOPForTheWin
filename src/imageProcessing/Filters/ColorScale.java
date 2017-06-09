@@ -1,10 +1,10 @@
-package imageProcessing.filters;
+package imageProcessing.Filters;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 
-import imageProcessing.models.ImageModel;
+import imageProcessing.Models.ImageModel;
 import imageProcessing.utils.Utils;
 
 
