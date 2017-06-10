@@ -9,7 +9,7 @@ import imageProcessing.Models.ImageModel;
 import imageProcessing.utils.Utils;
 
 public class Enhancement {
-	static public int[][] getMinMax(ImageModel originalImage){
+	static private int[][] getMinMax(ImageModel originalImage){
 		BufferedImage img = originalImage.getBufferedImage();
 		Raster raster = img.getData();
 		int[][] minMax = new int[2][3];
@@ -56,7 +56,7 @@ public class Enhancement {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Contrast modulation");
 	}
 	
 	static public ImageModel negative(ImageModel originalImage){
@@ -74,7 +74,7 @@ public class Enhancement {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Negative");
 	}
 	
 	static public ImageModel binary(ImageModel originalImage){
@@ -96,7 +96,7 @@ public class Enhancement {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Binary");
 	}
 	
 	static public ImageModel grayScale(ImageModel originalImage){
@@ -119,7 +119,7 @@ public class Enhancement {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Gray Scale");
 	}
 	
 	static public ImageModel poster(ImageModel originalImage, int level){
@@ -136,7 +136,7 @@ public class Enhancement {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Poster");
 	}
 	
 	static public ImageModel noise(ImageModel originalImage, int level){
@@ -156,7 +156,7 @@ public class Enhancement {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Noise");
 	}
 	
 	static private double getDistance(int x1, int y1, int x2, int y2){
@@ -185,7 +185,7 @@ public class Enhancement {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Vignette");
 	}
 	
 	static public ImageModel vignette(ImageModel originalImage, int radius){
@@ -208,7 +208,7 @@ public class Enhancement {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Vignete");
 	}
 	
 	static public ImageModel vignette(ImageModel originalImage, int radius, int[] color){
@@ -232,7 +232,7 @@ public class Enhancement {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Vignete");
 	}
 	
 	static public ImageModel radioactive(ImageModel originalImage){
@@ -257,7 +257,7 @@ public class Enhancement {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Radioactive");
 	}
 	
 	static public ImageModel hue(ImageModel originalImage, double level){
@@ -291,7 +291,7 @@ public class Enhancement {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Hue");
 	}
 	
 	
@@ -326,7 +326,7 @@ public class Enhancement {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Saturate");
 	}
 	
 	static public ImageModel bright(ImageModel originalImage, double level){
@@ -360,7 +360,7 @@ public class Enhancement {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Bright");
 	}
 		
 	static public ImageModel pixelate(ImageModel originalImage, double size){
@@ -381,6 +381,6 @@ public class Enhancement {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Pixelate");
 	}
 }

@@ -1,5 +1,6 @@
 package imageProcessing.Models;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.Raster;
@@ -10,7 +11,10 @@ import javax.imageio.ImageIO;
 
 public class ImageModel {
 	private BufferedImage image;
-	
+
+	private String lastFilter;
+
+	// TODO: acho que da pra deletar isso (B)
 	public ImageModel(String filename) {
 		BufferedImage image;
 		File inFile;
@@ -25,28 +29,45 @@ public class ImageModel {
 			this.image = null;
 		}
 	}
-	
+
+
+	public ImageModel(Image image) {
+		this.image = (BufferedImage) image;
+	}
+
+
 	public ImageModel(BufferedImage img) {
 		setBufferedImage(img);
 	}
-	
+
+
+	public ImageModel(BufferedImage img, String filter) {
+		setBufferedImage(img);
+		this.lastFilter = filter;
+	}
+
+
 	public ImageModel(int width, int height, int imageType) {
 		this.image = new BufferedImage(width, height, imageType);
 	}
-	
+
 	public ImageModel(int width, int height) {
 		this.image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 	}
-	
+
+	public String getLastFilter() {
+		return lastFilter;
+	}
+
 	public BufferedImage getBufferedImage() {
 		return image;
 	}
-	
-	public Raster getRaster() { 
+
+	public Raster getRaster() {
 		 return this.image.getData();
 	}
-	
-	public WritableRaster getWritableRaster() { 
+
+	public WritableRaster getWritableRaster() {
 		 return this.image.getRaster();
 	}
 
@@ -62,8 +83,10 @@ public class ImageModel {
 		 
 		 return new ImageModel(img);
 	}
-	
-	public static boolean write(ImageModel image, String filename, String type) { 
+
+
+	// TODO: acho que da para deletar isso (B)
+	public static boolean write(ImageModel image, String filename, String type) {
 		File file;
 
 		try {
@@ -80,7 +103,7 @@ public class ImageModel {
 		return (i > -1 && j > -1 && i < r.getHeight() && j < r.getWidth());
 	}
 	
-	public static ImageModel blend(ImageModel img1, ImageModel img2, int x, int y, double p) { 
+	public static ImageModel blend(ImageModel img1, ImageModel img2, int x, int y, double p) {
 		ImageModel cnvImage = img1.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		
@@ -104,10 +127,10 @@ public class ImageModel {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Blend");
 	}
 	
-	public static ImageModel concat(ImageModel img1, ImageModel img2, int x, int y) { 
+	public static ImageModel concat(ImageModel img1, ImageModel img2, int x, int y) {
 		ImageModel cnvImage = img1.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		

@@ -7,18 +7,22 @@ import java.awt.image.WritableRaster;
 import imageProcessing.Models.ImageModel;
 
 public class Manipulate {
-	static public int VERTICAL = 0;
-	static public int HORIZONTAL = 1;
-	
+
+
+	// TODO
 	static public void resize() {
 		
 	}
-	
+
+
+	//TODO
 	static public void rotate() {
 		
 	}
-	
-	static public ImageModel strech(ImageModel originalImage, int dir, int size) {
+
+
+	// TODO OBS: O parametro "size" não é usado. Pode deletar @Cyrillo?
+	static public ImageModel strech(ImageModel originalImage, int size) {
 		ImageModel cnvImage = originalImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		Raster srcRaster = originalImage.getBufferedImage().getRaster();
@@ -34,10 +38,11 @@ public class Manipulate {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Stretch");
 	}
-	
-	static public ImageModel mirror(ImageModel originalImage, int dir) {
+
+
+	static public ImageModel mirror(ImageModel originalImage, String dir) {
 		ImageModel cnvImage = originalImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		Raster srcRaster = originalImage.getBufferedImage().getRaster();
@@ -48,16 +53,20 @@ public class Manipulate {
 		
 		for(i = 0; i < img.getHeight(); i++) {
 			for(j = 0; j < img.getWidth(); j++) {
-				
-				if(dir == VERTICAL) {
-					x = j;
-					y = img.getHeight() - 1 - i;
-				} else if(dir == HORIZONTAL) {
-					x = img.getWidth() - 1 - j;
-					y = i;
-				} else {
-					x = img.getWidth() - 1 - j;
-					y = img.getHeight() - 1- i;
+
+				switch (dir) {
+					case "vertical":
+						x = j;
+						y = img.getHeight() - 1 - i;
+						break;
+					case "horizontal":
+						x = img.getWidth() - 1 - j;
+						y = i;
+						break;
+					default:
+						x = img.getWidth() - 1 - j;
+						y = img.getHeight() - 1 - i;
+						break;
 				}
 				
 				for(k = 0; k < 3; k++) {					
@@ -66,6 +75,6 @@ public class Manipulate {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Mirror");
 	}
 }

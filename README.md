@@ -20,7 +20,9 @@ Final project of OOP
         
   - Criar o Menu da direita (color picker)
 
-  - (M) Associar função de processamento com seu filtro 
+  - Mudar a imagem depois que um filtro ser clicado
+   
+  - Verificar se não está demorando muito para processar todos os filtros (@LTKills, @Marcello)
   
   - Mudar a imagem mostrada na tela conforme editada
              
@@ -50,6 +52,7 @@ Final project of OOP
         - Fazer Save de arquivo
         - SaveAs
         - Close
+        - Menu de filtros
         
    - Cyrrilo:
         -

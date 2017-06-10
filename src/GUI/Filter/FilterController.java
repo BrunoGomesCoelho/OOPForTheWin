@@ -1,8 +1,10 @@
 package GUI.Filter;
 
 import GUI.Main.MainController;
+import imageProcessing.Utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -31,21 +33,17 @@ public class FilterController implements Initializable {
     @FXML private Label message;
     @FXML private ImageView preview;
     @FXML private ListView<VBox> list;
-    private int filterCount = 4;
-
-
 
     // private String effect = null;
 
     /**
      *  Private method used to return a Vbox, containing the image
      *  with a filter and a label with the filter's name. Iterate
-     *  over this method to all the Filters.
+     *  over this method to get all the Filters.
      *
-     *  @param img The image to apply the filter
+     *  @param img: The image to apply the filter
      *
-     *  @return A VBox, with a filter applied to the image
-     *  and the filter's name
+     *  @return A VBox, with a filter applied to the image and the filter's name
      */
     private VBox populate(Image img){
         VBox cell = new VBox();
@@ -53,15 +51,13 @@ public class FilterController implements Initializable {
         cell.setPadding(new Insets(10, 10, 10, 10));
         cell.setSpacing(10);
 
-        // TODO Switch case with all the Filters. 'i' should be an argument
-
-        Label filterName = new Label("Filter name");
-        filterName.setTextAlignment(TextAlignment.CENTER); // Not working
         ImageView preview = new ImageView();
-
         preview.setPreserveRatio(true);
         preview.setFitHeight(100);
-        preview.setImage(img);
+        preview.setImage(SwingFXUtils.toFXImage( (java.awt.image.BufferedImage) FilterInfo.nextFilter(SwingFXUtils.fromFXImage(img, null)), null )); // Calling the next filter
+
+        Label filterName = new Label(FilterInfo.getFilterName());
+        filterName.setTextAlignment(TextAlignment.CENTER); // Not working
 
         cell.getChildren().addAll(preview, filterName);
 
@@ -71,12 +67,13 @@ public class FilterController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Image img = MainController.getImage();
+	    FilterInfo filters = new FilterInfo(SwingFXUtils.fromFXImage(img, null));
 
         if (img != null) {
             preview.setImage(img);
 
             ObservableList<VBox> items = FXCollections.observableArrayList();
-            for (int i = 0; i < filterCount; i++) items.add(populate(img));
+            for (int i = 0; i < FilterInfo.getFilterCount(); i++) items.add(populate(img));
 
             list.setOrientation(Orientation.HORIZONTAL);
             list.setItems(items);

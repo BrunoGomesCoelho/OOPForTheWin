@@ -13,8 +13,10 @@ public class Utils {
      * @param img A imagem a ser convertida
      * @return Uma nova imagem, que pode ser usada para ser impreensa na tela
      */
-    public Image bufferdToImage(BufferedImage img) {
+    static public Image bufferdToImage(BufferedImage img) {
         return SwingFXUtils.toFXImage(img, null);
     }
+
+
 
 }

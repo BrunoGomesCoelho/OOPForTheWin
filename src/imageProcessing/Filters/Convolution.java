@@ -8,27 +8,27 @@ import imageProcessing.Models.ImageModel;
 import imageProcessing.utils.Utils;
 
 public class Convolution {
-	static public double[][] BLUR = {
+	private static double[][] BLUR = {
 		{0.04, 0.04, 0.04, 0.04, 0.04}, 
 		{0.04, 0.04, 0.04, 0.04, 0.04}, 
 		{0.04, 0.04, 0.04, 0.04, 0.04},  
 		{0.04, 0.04, 0.04, 0.04, 0.04}, 
 		{0.04, 0.04, 0.04, 0.04, 0.04}
 	};
-	
-	static public double[][] SHARPEN = {
+
+	private static double[][] SHARPEN = {
 		{0, -0.111, 0}, 
 		{-0.111, 1.5, -0.111},
 		{0, -0.111, 0}
 	};
 	
-	static public double[][] EMBOSS = {
+	private static double[][] EMBOSS = {
 		{-0.222, -0.111, 0}, 
 		{-0.111, 1.111, 0.111},
 		{0, 0.111, 0.222}
 	};
 	
-	static public double[][] OUTLINE = {
+	private static double[][] OUTLINE = {
 		{-0.111, -0.111, -0.111}, 
 		{-0.111, 2, -0.111},
 		{-0.111, -0.111, -0.111}
@@ -53,8 +53,29 @@ public class Convolution {
 			raster.setSample(jimg, iimg, k, Utils.truncate(rgb[k]));
 		}
 	}
-	
-	static public ImageModel convolution(ImageModel originalImage, double[][] mask){
+
+
+	static public ImageModel convolutionBlur(ImageModel model) {
+		return new ImageModel(convolution(model, BLUR), "Blur");
+	}
+
+
+	static public ImageModel convolutionEmboss(ImageModel model) {
+		return new ImageModel(convolution(model, EMBOSS), "Emboss");
+	}
+
+
+	static public ImageModel convolutionOutline(ImageModel model) {
+		return new ImageModel(convolution(model, OUTLINE), "Outline");
+	}
+
+
+	static public ImageModel convolutionSharpen(ImageModel model) {
+		return new ImageModel(convolution(model, SHARPEN), "Sharpen");
+	}
+
+
+	static private BufferedImage convolution(ImageModel originalImage, double[][] mask){
 		ImageModel cnvImage = originalImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
@@ -67,6 +88,6 @@ public class Convolution {
 			}
 		}
 		
-		return cnvImage;
+		return img;
 	}
 }

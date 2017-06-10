@@ -25,7 +25,7 @@ public class ColorScale {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Color scale scale");
 	}
 	
 	static private int addFilter(Raster raster, int i, int j, int channel, int n){
@@ -44,6 +44,6 @@ public class ColorScale {
 			}
 		}
 		
-		return new ImageModel(img);
+		return new ImageModel(img, "Color scale add");
 	}
 }
