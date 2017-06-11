@@ -16,11 +16,9 @@ Final project of OOP
       
   - Achar uma maneira de centralizar a imagem no centro da tela   
       
-        - (Cruz) Achar uma maneira de usar o tamanho nativo da tela
+  - Achar uma maneira de usar o tamanho nativo da tela
         
   - Criar o Menu da direita (color picker)
-
-  - Mudar a imagem depois que um filtro ser clicado
    
   - Verificar se não está demorando muito para processar todos os filtros (@LTKills, @Marcello)
   
@@ -30,16 +28,14 @@ Final project of OOP
   
   - (B) Botão new para criar uma imagem nova com a cor e a dimensão que o usuário desejar
         
-  - Colocar uma versão de copyright na about page (Cruz, você manja disso)
+  - Colocar uma versão de copyright na about page
     
   - (B) Criar uma classe de exceções para as exceções de run time (ex: não existe arquivo fxml)
   
   - Recorte
         
-        - Clicar e pegar as coordenadas do pixel
-        
-  - Rotação
-             
+  - Clicar e pegar as coordenadas do pixel
+                    
 
 #Tasks done
 
@@ -57,6 +53,7 @@ Final project of OOP
    - Cyrrilo:
         -
         - Filtros
+        - Rotação
    - Cruz:
         - 
         - 
@@ -70,7 +67,9 @@ Final project of OOP
         - About page
         - CSS do about
         - Layout da janela de filtros
-        - Mostrar a imagem principal na janela de filtros
+        - Mostrar a imagem principal na janela de filtros     
+        - Mudar a imagem depois que um filtro ser clicado     
+        - Paralelizar a aplicação dos filtros
         
 
 # Functions
@@ -82,7 +81,7 @@ Final project of OOP
     - [X] Espelhar (vetical, horizontal e diagonalmente)
     - [ ] Esticar (vertical e horizontal)
     - [ ] Resize
-    - [ ] Rotação
+    - [X] Rotação
     
   - [X] Filters
     - [X] Mundanças de canais HSL e RGB (dá para montar filtros tipo instagram com isso)
