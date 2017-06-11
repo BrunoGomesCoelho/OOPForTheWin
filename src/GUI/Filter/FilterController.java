@@ -54,7 +54,11 @@ public class FilterController implements Initializable {
         ImageView preview = new ImageView();
         preview.setPreserveRatio(true);
         preview.setFitHeight(100);
-        preview.setImage(SwingFXUtils.toFXImage( (java.awt.image.BufferedImage) FilterInfo.nextFilter(SwingFXUtils.fromFXImage(img, null)), null )); // Calling the next filter
+        preview.setImage(SwingFXUtils.toFXImage(
+                (java.awt.image.BufferedImage)
+                        FilterInfo.nextFilter(
+                                SwingFXUtils.fromFXImage(img, null)),
+                null )); // Calling the next filter
 
         Label filterName = new Label(FilterInfo.getFilterName());
         filterName.setTextAlignment(TextAlignment.CENTER); // Not working
@@ -67,13 +71,15 @@ public class FilterController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Image img = MainController.getImage();
-	    FilterInfo filters = new FilterInfo(SwingFXUtils.fromFXImage(img, null));
 
         if (img != null) {
             preview.setImage(img);
 
+            FilterInfo filters = new FilterInfo(SwingFXUtils.fromFXImage(img,
+                    null));
             ObservableList<VBox> items = FXCollections.observableArrayList();
-            for (int i = 0; i < FilterInfo.getFilterCount(); i++) items.add(populate(img));
+            for (int i = 0; i < FilterInfo.getFilterCount(); i++)
+                items.add(populate(img));
 
             list.setOrientation(Orientation.HORIZONTAL);
             list.setItems(items);
