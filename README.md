@@ -14,21 +14,17 @@ Final project of OOP
 
   - Criar manual
       
-  - Achar uma maneira de centralizar a imagem no centro da tela   
+  - Achar uma maneira de centralizar a imagem na tela   
       
-  - Achar uma maneira de usar o tamanho nativo da tela
-        
   - Criar o Menu da direita (color picker)
-   
-  - Verificar se não está demorando muito para processar todos os filtros (@LTKills, @Marcello)
-  
+    
   - Mudar a imagem mostrada na tela conforme editada
              
   - Descobrir como que Da zoom 
   
   - (B) Botão new para criar uma imagem nova com a cor e a dimensão que o usuário desejar
         
-  - Colocar uma versão de copyright na about page
+  - Colocar uma versão de copyright na About page
     
   - (B) Criar uma classe de exceções para as exceções de run time (ex: não existe arquivo fxml)
   
@@ -37,7 +33,7 @@ Final project of OOP
   - Clicar e pegar as coordenadas do pixel
                     
 
-#Tasks done
+# Tasks done
 
    - Brunão:
         - 
@@ -136,6 +132,8 @@ Final project of OOP
  - Adicionar tasks conforme achar necessário
  
  - Quando a task acabar, tirem ela da lista de tasks e mudam pra tasks done
+ 
+ - Tirar o card do git hub também 
    
  - Estruturação das packages:
     - Src
@@ -160,14 +158,11 @@ Final project of OOP
 # Coisas que necessitam ser implementadas. 
 Colocar um check junto com onde foi implementado (para sabermos o que mencionar na hora de fazer o relatório).
 
-- Exemplo: 
-    - [X] Threads (Na classe X)
-    
-- [ ] Exceções -> try-catch-finally ()
+- [X] Exceções -> try-catch-finally ()
   - [ ] Checked -> Compilation time exception
   - [ ] Unchecked -> Run-time exception
   
-- [ ] Override -> toString, equals, etc ()
+- [X] Override -> toString, equals, etc ()
 
 - [ ] Polimorfismo
   - [ ] Extends
@@ -184,14 +179,14 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
    - [ ] @assertEquals
    - [ ] @beforeClass
    
-  - [ ] Iteradores
+  - [x] Iteradores
   
   - [ ] Algumas estruturas da Java.util (ex: Set, Map, Vector, ArrayList, etc)
         - [X] ArrayList (undo)
   
   - [ ] Serialização (guardar objetos)
   
-  - [ ] Threads (talvez....)
+  - [X] Threads
   
   - [X] Interfaces
     
