@@ -132,9 +132,9 @@ public class MainController implements Initializable{
     public void saveAsButton(ActionEvent event) {
         FileChooser fc = Utils.fileWindow("Salvar imagem");
         File file = fc.showSaveDialog(null);
-        String extension = Utils.fileExtension(file);
 
         if (file != null) {
+            String extension = Utils.fileExtension(file);
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(current.getImage(),
                         null), extension, file);
