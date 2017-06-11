@@ -1,6 +1,5 @@
 package GUI.Filter;
 
-import imageProcessing.Filters.ColorScale;
 import imageProcessing.Filters.Convolution;
 import imageProcessing.Filters.Enhancement;
 import imageProcessing.Filters.Manipulate;
@@ -9,14 +8,13 @@ import imageProcessing.Models.ImageModel;
 import java.awt.*;
 
 /**
+ *
+ * Used to call the image processing functions
+ *
  * Created by Bruno on 08/06/2017.
  */
 public class FilterInfo {
     static private String[] names = {"ColorScale", "Convolution", "Enhancement", "Manipulate"};
-
-	public static int getFilterCount() {
-		return filterCount;
-	}
 
 	static private int filterCount = 20;
     static private int count;
@@ -25,24 +23,25 @@ public class FilterInfo {
     // TODO: Deletar depois que todos os filtros estejam funcioando
     static private ImageModel backup;
 
-
     public FilterInfo(Image image) {
-        this.count = 0;
-        this.model = new ImageModel(image);
-        this.backup = new ImageModel(image);
+        count = 0;
+        model = new ImageModel(image);
+        backup = new ImageModel(image);
     }
 
+	public static int getFilterCount() {
+		return filterCount;
+	}
 
-    static String getFilterName() {
+    public static String getFilterName() {
     	return model.getLastFilter();
     }
-
 
     // TODO: Chamar as funções do Cyrillo aqui. Usar uns parâmetros decentes porque não sei o que to passando (B)
 
 	// TODO: não seria bom perguntar para o usuário escolher um valor para o(s) parametro(s) ?
 
-    static public Image nextFilter(Image image) {
+     public static Image nextFilter(Image image) {
         switch (count++) {
             case 0: // TODO: paramêtro
                 //return ColorScale.add(model, 5, 100).getBufferedImage();
@@ -115,7 +114,7 @@ public class FilterInfo {
             // TODO: adicionar Manipulate.resize & Manipulate.rotate depois que prontos
 
             default:
-                throw new RuntimeException("Invalid filter couner called"); // TODO: add own type of exception
+                throw new RuntimeException("Invalid filter counter called"); // TODO: add own type of exception
         }
     }
 
@@ -126,6 +125,5 @@ public class FilterInfo {
             return model.getLastFilter();
         throw new RuntimeException("Invalid filter counter passed as argument"); // TODO: add own type of exception
     }
-
 
 }

@@ -18,8 +18,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 
+import java.beans.IntrospectionException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.stream.IntStream;
 
 
 /**
@@ -72,20 +74,31 @@ public class FilterController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Image img = MainController.getImage();
 
+        // To see how much time it takes to load
+        long start = System.currentTimeMillis();
+
         if (img != null) {
             preview.setImage(img);
 
             FilterInfo filters = new FilterInfo(SwingFXUtils.fromFXImage(img,
                     null));
             ObservableList<VBox> items = FXCollections.observableArrayList();
+
+            /* Sequential -- Takes too long
             for (int i = 0; i < FilterInfo.getFilterCount(); i++)
                 items.add(populate(img));
+            */
+
+            // Parallel loop -- Uses the number of cores the machine has
+            IntStream.range(0, FilterInfo.getFilterCount()).parallel().forEach(
+                    i -> items.add(populate(img)));
 
             list.setOrientation(Orientation.HORIZONTAL);
             list.setItems(items);
         }
 
         else message.setText("Open an image to select a filter");
+        System.out.println((System.currentTimeMillis() - start) / 1000 + "s");
     }
 
     /**
