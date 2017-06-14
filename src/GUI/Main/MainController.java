@@ -227,6 +227,10 @@ public class MainController implements Initializable{
     ====================================================================== */
 
     public void ColorPicker(MouseEvent event) {
+        /* TODO: Fazer algo com isso.
+         Por enquanto só imprime no console. Importante resaltar que ele pega a posição mesmo se nenhuma imagem
+            estiver na tela, contanto que esteja dentro do quadrado do imageView
+          */
         System.out.println("["+event.getX()+", "+event.getY()+"]");
     }
 
