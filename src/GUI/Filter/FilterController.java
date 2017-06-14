@@ -36,6 +36,9 @@ public class FilterController implements Initializable {
     @FXML private ImageView preview = null;
     @FXML private ListView<VBox> list;
 
+    public ImageView imageView;
+
+
     /**
      *  Private method used to return a Vbox, containing the image
      *  with a filter and a label with the filter's name. Iterate
@@ -73,7 +76,6 @@ public class FilterController implements Initializable {
 
         // Set function to do when clicked
         cell.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent event) {
                 preview.setImage(prv.getImage());
@@ -100,6 +102,11 @@ public class FilterController implements Initializable {
                     null));
             ObservableList<VBox> items = FXCollections.observableArrayList();
 
+            /* For normal para debugar os filtros TODO: remove
+            for(int i = 0; i<FilterInfo.getFilterCount(); i++)
+                items.add(populate(img));
+             */
+
             // Parallel loop -- Uses the number of cores the machine has
             // Apply every filter at the image and put them at the list
             IntStream.range(0, FilterInfo.getFilterCount()).parallel().forEach(
@@ -112,8 +119,10 @@ public class FilterController implements Initializable {
         // Set the text asking to open an image
         else message.setText("Open an image to select a filter");
 
-        // Show how long it took to open this window
+        // Show how long it took to open this window TODO:remove
         System.out.println((System.currentTimeMillis() - start) / 1000.0 + " s");
+
+        FilterInfo.clearFilterCount();
     }
 
     /**
@@ -136,7 +145,7 @@ public class FilterController implements Initializable {
         // If there's a img
         if (preview != null && preview.getImage() != null) {
             // Pass the image to the main window
-            MainController.setImage(preview.getImage());
+            MainController.addImage(preview.getImage());
 
             // Close this window
             Node node = (Node) event.getSource();

@@ -1,6 +1,7 @@
 package GUI;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 
@@ -14,19 +15,21 @@ public class CurrentImage {
     private boolean undoDone = false;
     private ArrayList<Image> previous = new ArrayList<>();
     private ArrayList<Image> next =  new ArrayList<>();
+    private ImageView imageView;
 
 
     public CurrentImage() {
         this.image = null;
         this.valid = false;
-        previous.add(null);
+        this.previous.add(null);
     }
 
 
     public CurrentImage(Image image) {
         this.image = image;
         this.valid = true;
-        previous.add(null);
+        this.previous.add(null);
+        this.imageView = new ImageView(image);
     }
 
 
@@ -48,9 +51,9 @@ public class CurrentImage {
      * @param image: the image to be displayed
      */
     public void setImage(Image image) {
-        if (undoDone)   // If the user makes a change after undoing something, destroy the redo list
-            next = new ArrayList<>();
-        previous.add(this.image);
+        if (this.undoDone)   // If the user makes a change after undoing something, destroy the redo list
+            this.next = new ArrayList<>();
+        this.previous.add(this.image);
         this.image = image;
         this.valid = true;
     }
@@ -96,5 +99,18 @@ public class CurrentImage {
      */
     public boolean hasImage() {
         return this.valid;
+    }
+
+
+    /**
+     * Gets a ImageView with the current
+     * @return
+     */
+    public ImageView getImageView() {
+        return imageView;
+    }
+
+    private void setImageView(ImageView imageView) {
+        this.imageView = imageView;
     }
 }

@@ -5,6 +5,7 @@ import imageProcessing.Filters.Enhancement;
 import imageProcessing.Filters.Manipulate;
 import imageProcessing.Models.ImageModel;
 
+import javax.swing.text.html.ImageView;
 import java.awt.*;
 
 /**
@@ -32,6 +33,10 @@ public class FilterInfo {
 	public static int getFilterCount() {
 		return filterCount;
 	}
+
+	public static void clearFilterCount() {
+        count = 0;
+    }
 
     public static String getFilterName() {
     	return model.getLastFilter();

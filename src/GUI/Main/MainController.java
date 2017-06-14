@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -27,20 +28,19 @@ import javax.imageio.ImageIO;
  */
 public class MainController implements Initializable{
 
-    private static CurrentImage current = null;
-
     private static File currentFile = null;
+    private static CurrentImage currentImage;
 
     @FXML private ImageView imageview;
 
 
     /**
-     *  Get the image beeing displayed
+     *  Gets the image being displayed
      *
      *  @return The current image
      */
     public static Image getImage() {
-        return current.getImage();
+        return currentImage.getImage();
     }
 
 
@@ -50,7 +50,7 @@ public class MainController implements Initializable{
      * @param img A new image to be displayed
      */
     public static void setImage(Image img) {
-        current.setImage(img);
+        currentImage.setImage(img);
     }
 
 
@@ -58,7 +58,7 @@ public class MainController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         // This method is called before the window show up.
         // Use when it's necessary
-        current = new CurrentImage();
+        currentImage = new CurrentImage();
     }
 
 
@@ -97,8 +97,8 @@ public class MainController implements Initializable{
             System.out.println(file.getAbsolutePath());
 
             currentFile = file;
-            current.setImage(new Image(file.toURI().toString()));
-            imageview.setImage(current.getImage());
+            currentImage.setImage(new Image(file.toURI().toString()));
+            imageview.setImage(currentImage.getImage());
         }
     }
 
@@ -109,17 +109,17 @@ public class MainController implements Initializable{
      * @param event: the "save" button being pressed
      */
     public void saveButton(ActionEvent event) {
+        if (currentFile == null || currentImage.getImage() == null)
+            return;
         String extension = Utils.fileExtension(currentFile);
 
         // TODO: Testar isso depois de termos algo que edite a imagem
-        if (currentFile != null) {
-            try {
-                ImageIO.write(SwingFXUtils.fromFXImage(current.getImage(),
-                        null), extension, currentFile);
-            } catch (IOException ex) {
-                // TODO; essa é a melhor maneira de ignorar isso...?
-                System.out.println(ex.getMessage());
-            }
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(currentImage.getImage(),
+                    null), extension, currentFile);
+        } catch (IOException ex) {
+            // TODO; essa é a melhor maneira de ignorar isso...?
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -133,10 +133,10 @@ public class MainController implements Initializable{
         FileChooser fc = Utils.fileWindow("Salvar imagem");
         File file = fc.showSaveDialog(null);
 
-        if (file != null) {
+        if (file != null && currentImage.getImage() != null) {
             String extension = Utils.fileExtension(file);
             try {
-                ImageIO.write(SwingFXUtils.fromFXImage(current.getImage(),
+                ImageIO.write(SwingFXUtils.fromFXImage(currentImage.getImage(),
                         null), extension, file);
             } catch (IOException ex) {
                 // TODO; essa é a melhor maneira de ignorar isso...?
@@ -159,6 +159,18 @@ public class MainController implements Initializable{
 
     // Edit ==================================================================
 
+
+    public static void addImage(Image image) {
+        currentImage.setImage(image);
+    }
+
+
+    public void refresh() {
+        if (currentImage.hasImage()) {
+            imageview.setImage(currentImage.getImage());
+        }
+    }
+
     /**
      * Method to refresh the image after some filter/tool has modified it
      * Linked to Edit -> Refresh button at the menu bar
@@ -166,9 +178,7 @@ public class MainController implements Initializable{
      * @param event: the "refresh" button being pressed
      */
     public void refreshButton(ActionEvent event) {
-        if (current.hasImage()) {
-            imageview.setImage(current.getImage());
-        }
+        refresh();
     }
 
 
@@ -187,7 +197,9 @@ public class MainController implements Initializable{
         Parent root = FXMLLoader.load(getClass().getResource("../Filter/Filter.fxml"));
         filterStage.setTitle("Select a filter");
         filterStage.setScene(new Scene(root, 800,  600));
-        filterStage.show();
+        filterStage.showAndWait();
+        System.out.println("hmmmm");
+        refresh();
     }
 
 
@@ -214,20 +226,23 @@ public class MainController implements Initializable{
     /*                          Buttons
     ====================================================================== */
 
-    public void negative(ActionEvent event) {
-        // Use this method to call the negative function
+    public void ColorPicker(MouseEvent event) {
+        System.out.println("["+event.getX()+", "+event.getY()+"]");
     }
 
 
     public void undoButton(ActionEvent event) {
-        current.undo();
+        currentImage.undo();
         refreshButton(event);
     }
 
 
     public void redoButton(ActionEvent event) {
-        current.redo();
+        currentImage.redo();
         refreshButton(event);
     }
+
+    // Image ==================================================================
+
 
 }

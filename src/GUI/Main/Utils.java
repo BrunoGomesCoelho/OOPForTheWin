@@ -25,7 +25,6 @@ class Utils {
         fc.setTitle(s);
         fc.setInitialDirectory(new File(System.getProperty("user.home")));
         fc.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
                 new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
                 new FileChooser.ExtensionFilter("PNG", "*.png"));
         return fc;
