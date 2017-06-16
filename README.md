@@ -69,14 +69,14 @@ Final project of OOP
         
 
 # Functions
-  - [ ] Crop
-    - [ ] Seleção retangular
-    - [ ] Seleção direta (com o mouse)
+  - [X] Crop
+    - [X] Seleção retangular
+    - [X] Seleção direta (com o mouse)
     
   - Distorção e Redimensionalização 
     - [X] Espelhar (vetical, horizontal e diagonalmente)
-    - [ ] Esticar (vertical e horizontal)
-    - [ ] Resize
+    - [X] Esticar (vertical e horizontal)
+    - [X] Resize
     - [X] Rotação
     
   - [X] Filters
@@ -86,14 +86,14 @@ Final project of OOP
     - [X] Convolução de matrizes: Blur, sharp
   
   - [ ] Desenho
-    - [ ] Brush (desenhar com o mouse)
-    - [ ] Bucket
+    - [X] Brush (desenhar com o mouse)
+    - [X] Bucket
     - [ ] Color selector (menu e por pixel na imagem)
  
   - [ ] Extra
     - [ ] Filtros pré-prontos (e.g. foto envelhecida)
     - [ ] Prioridade de cada layer e sobreposição desses
-    - [ ] Seleção por isomorfismo (mesma cor, textura, etc)
+    - [X] Seleção por isomorfismo (mesma cor, textura, etc)
     - [ ] Remoção de ruído
     - [ ] Formas geométricas e Adesivos padrão
     - [ ] Abrir uma imagem remotamente
@@ -181,7 +181,7 @@ Colocar um check junto com onde foi implementado (para sabermos o que mencionar 
    
   - [x] Iteradores
   
-  - [ ] Algumas estruturas da Java.util (ex: Set, Map, Vector, ArrayList, etc)
+  - [X] Algumas estruturas da Java.util (ex: Set, Map, Vector, ArrayList, etc)
         - [X] ArrayList (undo)
   
   - [ ] Serialização (guardar objetos)
