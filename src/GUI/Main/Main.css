@@ -31,6 +31,7 @@
     /*visibility: hidden;*/
     /*-fx-opacity: 0;*/
 }
+
 /* ======================================================================== */
 
 #leftMenu {
@@ -42,5 +43,4 @@
 }
 
 #separatorLeftMenu {
-    -fx-background-color: lightgray;
 }
