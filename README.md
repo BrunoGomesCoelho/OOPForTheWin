@@ -17,20 +17,17 @@ Final project of OOP
   - Achar uma maneira de centralizar a imagem na tela   
       
   - Criar o Menu da direita (color picker)
-    
-  - Mudar a imagem mostrada na tela conforme editada
              
   - Descobrir como que Da zoom 
   
-  - (B) Botão new para criar uma imagem nova com a cor e a dimensão que o usuário desejar
+  - Botão new para criar uma imagem nova com a cor e a dimensão que o usuário desejar
         
   - Colocar uma versão de copyright na About page
     
-  - (B) Criar uma classe de exceções para as exceções de run time (ex: não existe arquivo fxml)
+  - Criar uma classe de exceções para as exceções de run time (ex: não existe arquivo fxml)
   
   - Recorte
         
-  - Clicar e pegar as coordenadas do pixel
                     
 
 # Tasks done
@@ -47,6 +44,7 @@ Final project of OOP
         - Menu de filtros
         
    - Cyrillo:
+        -
         - Convolução de Imagens
         - Filtros e Realce
         - Manipulação de canais RGB E HSB
@@ -71,7 +69,7 @@ Final project of OOP
         - CSS do about
         - Layout da janela de filtros
         - Mostrar a imagem principal na janela de filtros     
-        - Mudar a imagem depois que um filtro ser clicado     
+        - Mudar a imagem depois que um filtro é clicado     
         - Paralelizar a aplicação dos filtros
         
 
