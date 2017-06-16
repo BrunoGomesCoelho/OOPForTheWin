@@ -46,10 +46,17 @@ Final project of OOP
         - Close
         - Menu de filtros
         
-   - Cyrrilo:
-        -
-        - Filtros
+   - Cyrillo:
+        - Convolução de Imagens
+        - Filtros e Realce
+        - Manipulação de canais RGB E HSB
+        - Recorte retângular
+        - Redimensionamento e Stretch
         - Rotação
+        - Espelho
+        - Métodos para desenho
+        - Bucket
+        
    - Cruz:
         - 
         - 
