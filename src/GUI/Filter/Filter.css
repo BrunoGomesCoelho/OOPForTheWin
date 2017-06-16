@@ -2,7 +2,60 @@
     -fx-background-color: #353535;
 }
 
-#message {
-    -fx-text-fill: lightgray;
+.label {
     -fx-text-alignment: center;
+    -fx-font-family: monospace;
+    -fx-text-fill: black;
+}
+
+#message {
+    -fx-font-family: monospace;
+    -fx-text-fill: lightgray;
+}
+
+.list-cell {
+    -fx-background-color: #292826;
+}
+
+.list-cell .label {
+    -fx-text-alignment: center;
+    -fx-text-fill: lightgray;
+}
+
+.list-cell:focused {
+    -fx-background-color: dodgerblue;
+}
+
+
+#list {
+    -fx-background-color: #292826;
+}
+
+#ok_button {
+    -fx-background-color:
+            #000000,
+            linear-gradient(#7ebcea, #2f4b8f),
+            linear-gradient(#426ab7, #263e75),
+            linear-gradient(#395cab, #223768);
+    -fx-background-insets: 0,1,2,3;
+    /*-fx-background-radius: 3,2,2,2;*/
+    -fx-background-radius: 8,7,6;
+    -fx-padding: 10 20 10 20;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+#ok_button Text {
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.8) , 0, 0.0 , 0 , 1);
+}
+
+#cancel_button {
+    -fx-background-color:
+            linear-gradient(#f2f2f2, #f2f2f2),
+            linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+            linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }

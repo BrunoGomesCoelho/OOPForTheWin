@@ -1,52 +1,116 @@
 package GUI;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 
 /**
  * Class that mantains the current image being edited in memory.
+ * Also keeps two ArrayLists that allow the user undo/redo their last edited image.
  */
 public class CurrentImage {
-    Image image = null;
-    boolean set = false;
-    ArrayList<Image> previous = null;
-    int count = 0;
+    private Image image = null;
+    private boolean valid = false;
+    private boolean undoDone = false;
+    private ArrayList<Image> previous = new ArrayList<>();
+    private ArrayList<Image> next =  new ArrayList<>();
+    private ImageView imageView;
+
+
+    public CurrentImage() {
+        this.image = null;
+        this.valid = false;
+        this.previous.add(null);
+    }
+
 
     public CurrentImage(Image image) {
         this.image = image;
-        set = true;
+        this.valid = true;
+        this.previous.add(null);
+        this.imageView = new ImageView(image);
     }
 
+
+    /**
+     * Gets the current image being displayed
+     * @return Image: The image being displayed, null if there's no image.
+     */
     public Image getImage() {
-        if (!set)
-            throw new RuntimeException("Deu ruim, imagem não setada\n");
-            // TODO: Colocar aqui um tipo de exceção criada por nós
+        if (!valid) {
+            System.out.println("No valid image");
+            return null;
+        }
         return image;
     }
 
-    public void setImage(Image image) {
-        previous.add(this.image);
-        this.image = image;
-    }
 
-    //TODO: Testar a função undo
     /**
-     * Returns the last image edited, similar to using "CTRL z".
-     * @return Image: The last edited image if it exists, null otherwise
+     * Sets the current Main image to be displayed.
+     * @param image: the image to be displayed
      */
-    public Image undo() {
-        Image temp;
-        if (!set)
-            return null;
-        try {
-            temp = previous.remove(previous.size() - 1);
-            if (previous.size() == 0)
-                set = false;
-        } catch(IndexOutOfBoundsException e) {
-            return null;
-        }
-        return temp;
+    public void setImage(Image image) {
+        if (this.undoDone)   // If the user makes a change after undoing something, destroy the redo list
+            this.next = new ArrayList<>();
+        this.previous.add(this.image);
+        this.image = image;
+        this.valid = true;
     }
 
+
+    // TODO: Testar a função undo & a redo
+    /**
+     * Undo the last edit done to a image, similar to using "CTRL z" in most programs.
+     */
+    public void undo() {
+        Image temp;
+        if (!valid || this.previous.size() == 1) // If the image isnt valid or theres only the "nulL" image stored
+            return;
+        try {
+            temp = this.previous.remove(this.previous.size() - 1); // Removing it from the undo list
+            next.add(this.image); // We add it to the redo list
+            this.image = temp;
+        } catch(IndexOutOfBoundsException e) { // TODO: criar um tipo de exceção para isso
+            System.out.println(e);
+            this.valid = false;
+        }
+    }
+
+
+    /**
+     * Redo the last edit done to a image, similar to using "CTRL SHIFT z" in most programs.
+     */
+    public void redo() {
+        Image temp;
+        try {
+            temp = this.next.remove(this.next.size() - 1);
+            this.previous.add(this.image);
+            this.image = temp;
+            undoDone = true;
+        } catch(IndexOutOfBoundsException e) { // TODO: criar um tipo de exceção para isso
+            System.out.println(e);
+        }
+    }
+
+
+    /**
+     * Check if the current image being displayed is valid (not null).
+     */
+    public boolean hasImage() {
+        return this.valid;
+    }
+
+
+    /**
+     * Gets a ImageView with the current
+     * @return
+     */
+    public ImageView getImageView() {
+        return imageView;
+    }
+
+    private void setImageView(ImageView imageView) {
+        this.imageView = imageView;
+    }
 }

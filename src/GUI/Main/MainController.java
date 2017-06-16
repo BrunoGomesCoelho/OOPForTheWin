@@ -1,14 +1,16 @@
 package GUI.Main;
 
+import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -17,27 +19,30 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * Created by marcello on 02/06/17.
- */
+import GUI.CurrentImage;
 
+import javax.imageio.ImageIO;
+
+/**
+ * Class that implements the controllers for the Main window
+ */
 public class MainController implements Initializable{
 
-    private static File file;
-    private static Image image = null;
+    private static File currentFile = null;
+    private static CurrentImage currentImage;
 
     @FXML private ImageView imageview;
 
 
     /**
-     *
-     *  Get the image beeing displayed
+     *  Gets the image being displayed
      *
      *  @return The current image
      */
     public static Image getImage() {
-        return image;
+        return currentImage.getImage();
     }
+
 
     /**
      * Set the image to a new one
@@ -45,13 +50,15 @@ public class MainController implements Initializable{
      * @param img A new image to be displayed
      */
     public static void setImage(Image img) {
-        image = img;
+        currentImage.setImage(img);
     }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // This method is called before the window show up.
         // Use when it's necessary
+        currentImage = new CurrentImage();
     }
 
 
@@ -70,32 +77,28 @@ public class MainController implements Initializable{
         //  TODO Create a window when press the "new" button
     }
 
+
     /**
-     * Open the image and show it at the main window.
+     * Open the image and show it at the Main window.
      * Linked to File -> Open button at menu bar
      *
      * @param event: the button being pressed
      */
     public void openButton(ActionEvent event) {
         // Set up the file chooser
-        FileChooser fc = new FileChooser();
-        fc.setInitialDirectory(new File(System.getProperty("user.home")));
-        fc.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-                new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
-                new FileChooser.ExtensionFilter("PNG", "*.png"));
+        FileChooser fc = Utils.fileWindow("Abrir imagen");
 
         // Search for an image
-        file = fc.showOpenDialog(null);
+        File file = fc.showOpenDialog(null);
 
         // If the user select an image, show it
         if (file != null) {
-            // For test purpose only
+            // For test purpose only TODO deletar
             System.out.println(file.getAbsolutePath());
 
-            image = new Image(file.toURI().toString());
-
-            imageview.setImage(image);
+            currentFile = file;
+            currentImage.setImage(new Image(file.toURI().toString()));
+            imageview.setImage(currentImage.getImage());
         }
     }
 
@@ -106,7 +109,18 @@ public class MainController implements Initializable{
      * @param event: the "save" button being pressed
      */
     public void saveButton(ActionEvent event) {
-        // TODO Implement the save action
+        if (currentFile == null || currentImage.getImage() == null)
+            return;
+        String extension = Utils.fileExtension(currentFile);
+
+        // TODO: Testar isso depois de termos algo que edite a imagem
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(currentImage.getImage(),
+                    null), extension, currentFile);
+        } catch (IOException ex) {
+            // TODO; essa é a melhor maneira de ignorar isso...?
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
@@ -116,7 +130,19 @@ public class MainController implements Initializable{
      * @param event: the "save as" button being pressed
      */
     public void saveAsButton(ActionEvent event) {
-        // TODO Implement the saveas action
+        FileChooser fc = Utils.fileWindow("Salvar imagem");
+        File file = fc.showSaveDialog(null);
+
+        if (file != null && currentImage.getImage() != null) {
+            String extension = Utils.fileExtension(file);
+            try {
+                ImageIO.write(SwingFXUtils.fromFXImage(currentImage.getImage(),
+                        null), extension, file);
+            } catch (IOException ex) {
+                // TODO; essa é a melhor maneira de ignorar isso...?
+                System.out.println(ex.getMessage());
+            }
+        }
     }
 
     /**
@@ -126,12 +152,24 @@ public class MainController implements Initializable{
      * @param event: the close button being pressed
      */
     public void closeAplication(ActionEvent event) {
-        Node node = (Node) event.getSource();
-        node.getScene().getWindow().hide();
+        Platform.exit();
+        System.exit(0);
     }
 
 
     // Edit ==================================================================
+
+
+    public static void addImage(Image image) {
+        currentImage.setImage(image);
+    }
+
+
+    public void refresh() {
+        if (currentImage.hasImage()) {
+            imageview.setImage(currentImage.getImage());
+        }
+    }
 
     /**
      * Method to refresh the image after some filter/tool has modified it
@@ -140,9 +178,7 @@ public class MainController implements Initializable{
      * @param event: the "refresh" button being pressed
      */
     public void refreshButton(ActionEvent event) {
-        if (image != null) {
-            imageview.setImage(image);
-        }
+        refresh();
     }
 
 
@@ -161,7 +197,9 @@ public class MainController implements Initializable{
         Parent root = FXMLLoader.load(getClass().getResource("../Filter/Filter.fxml"));
         filterStage.setTitle("Select a filter");
         filterStage.setScene(new Scene(root, 800,  600));
-        filterStage.show();
+        filterStage.showAndWait();
+        System.out.println("hmmmm");
+        refresh();
     }
 
 
@@ -188,8 +226,27 @@ public class MainController implements Initializable{
     /*                          Buttons
     ====================================================================== */
 
-    public void negative(ActionEvent event) {
-        // Use this method to call the negative function
+    public void ColorPicker(MouseEvent event) {
+        /* TODO: Fazer algo com isso.
+         Por enquanto só imprime no console. Importante resaltar que ele pega a posição mesmo se nenhuma imagem
+            estiver na tela, contanto que esteja dentro do quadrado do imageView
+          */
+        System.out.println("["+event.getX()+", "+event.getY()+"]");
     }
+
+
+    public void undoButton(ActionEvent event) {
+        currentImage.undo();
+        refreshButton(event);
+    }
+
+
+    public void redoButton(ActionEvent event) {
+        currentImage.redo();
+        refreshButton(event);
+    }
+
+    // Image ==================================================================
+
 
 }
