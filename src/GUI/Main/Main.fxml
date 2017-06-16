@@ -28,6 +28,9 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
+                  <MenuItem mnemonicParsing="false" onAction="#undoButton" text="Undo                       Ctrl+Z" />
+                  <MenuItem mnemonicParsing="false" onAction="#redoButton" text="Redo                       Ctrl+Y" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#refreshButton" text="Refresh" />
             </items>
           </Menu>
@@ -49,9 +52,9 @@
          <children>
           <AnchorPane fx:id="leftMenu" minHeight="0.0" minWidth="0.0" prefHeight="691.0" prefWidth="158.0" stylesheets="@Main.css">
                <children>
-                  <Button layoutX="-3.0" layoutY="49.0" mnemonicParsing="false" stylesheets="@Main.css" text="Negative" />
-                  <Button fx:id="undoButton" layoutX="-1.0" layoutY="111.0" mnemonicParsing="false" onAction="#undoButton" prefHeight="25.0" prefWidth="53.0" stylesheets="@Main.css" text="Undo" />
-                  <Button fx:id="redoButton" layoutY="157.0" mnemonicParsing="false" onAction="#redoButton" prefHeight="25.0" prefWidth="53.0" stylesheets="@Main.css" text="Redo" />
+                  <Button layoutX="-3.0" layoutY="49.0" mnemonicParsing="false" stylesheets="@Main.css" text="Select" />
+                  <Button layoutX="-1.0" layoutY="111.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" stylesheets="@Main.css" text="Bucket" />
+                  <Button layoutY="157.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" stylesheets="@Main.css" text="Crop" />
                </children>
             </AnchorPane>
          </children>

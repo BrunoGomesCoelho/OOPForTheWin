@@ -54,6 +54,18 @@ public class MainController implements Initializable{
     }
 
 
+    public static void addImage(Image image) {
+        currentImage.setImage(image);
+    }
+
+
+    public void refresh() {
+        if (currentImage.hasImage()) {
+            imageview.setImage(currentImage.getImage());
+        }
+    }
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // This method is called before the window show up.
@@ -159,18 +171,16 @@ public class MainController implements Initializable{
 
     // Edit ==================================================================
 
-
-    public static void addImage(Image image) {
-        currentImage.setImage(image);
+    public void undoButton(ActionEvent event) {
+        currentImage.undo();
+        refreshButton(event);
     }
 
 
-    public void refresh() {
-        if (currentImage.hasImage()) {
-            imageview.setImage(currentImage.getImage());
-        }
+    public void redoButton(ActionEvent event) {
+        currentImage.redo();
+        refreshButton(event);
     }
-
     /**
      * Method to refresh the image after some filter/tool has modified it
      * Linked to Edit -> Refresh button at the menu bar
@@ -234,17 +244,6 @@ public class MainController implements Initializable{
         System.out.println("["+event.getX()+", "+event.getY()+"]");
     }
 
-
-    public void undoButton(ActionEvent event) {
-        currentImage.undo();
-        refreshButton(event);
-    }
-
-
-    public void redoButton(ActionEvent event) {
-        currentImage.redo();
-        refreshButton(event);
-    }
 
     // Image ==================================================================
 
