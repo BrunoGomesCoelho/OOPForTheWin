@@ -1,18 +1,31 @@
-package imageProcessing.Filters;
+package imageProcessing.filters;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 
-import imageProcessing.Models.ImageModel;
+import imageProcessing.models.ImageModel;
 import imageProcessing.utils.Utils;
 
-
+/**
+ * Classe para a modifica��o de cor em sistemas RGB
+ */
 public class ColorScale {
 	static private int scaleFilter(Raster raster, int i, int j, int channel, double alpha){
 		return Utils.truncate(raster.getSample(j, i, channel) * alpha);
 	}
 	
+	/**
+	 * M�todo para a modifica��o de um canal RGB atraves de um fator de multiplica��o
+	 *
+	 * Ex.: scale(img, 0, 1.25) - Acrecimo de 25% em vermelho
+	 * Ex.: scale(img, 2, 0.75) - 75% da quantidade de azul da imagem original
+	 *
+	 * @param originalImage
+	 * @param channel - canal RGB que ser� modificado (R - 0; G - 1; B - 2)
+	 * @param alpha - fator multiplicativo do canal. Valores de 0 at� 255 (No entanto, valores entre 0 e 5 s�o mais relevantes)
+	 * @return
+	 */
 	static public ImageModel scale(ImageModel originalImage, int channel, double alpha){
 		ImageModel cnvImage = originalImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
@@ -32,6 +45,16 @@ public class ColorScale {
 		return Utils.truncate(raster.getSample(j, i, channel) + n);
 	}
 	
+	/**
+	 * M�todo para a modifica��o de um canal RGB atraves de um fator aditivo
+	 *
+	 * Ex.: scale(img, 0, 25) - todos os valores de vermelho ter�o um acrescimo de 25
+	 *
+	 * @param originalImage
+	 * @param channel - canal RGB que ser� modificado (R - 0; G - 1; B - 2)
+	 * @param alpha - fator aditivo do canal. Valores de 0 at� 255
+	 * @return imagem modificada
+	 */
 	static public ImageModel add(ImageModel originalImage, int channel, int n){
 		ImageModel cnvImage = originalImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();

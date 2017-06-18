@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="720.0" minWidth="1280.0" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Main.MainController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="720.0" minWidth="1280.0" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Main.MainController">
    <top>
       <MenuBar stylesheets="@Main.css" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#newButton" text="New" />
-                  <MenuItem mnemonicParsing="false" onAction="#openButton" text="Open                       Ctrl+O" />
+                  <MenuItem mnemonicParsing="false" onAction="#openButton" text="Open            Ctrl+O" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#saveButton" text="Save" />
                   <MenuItem mnemonicParsing="false" onAction="#saveAsButton" text="Save as" />
@@ -28,9 +28,6 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#undoButton" text="Undo                       Ctrl+Z" />
-                  <MenuItem mnemonicParsing="false" onAction="#redoButton" text="Redo                       Ctrl+Y" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#refreshButton" text="Refresh" />
             </items>
           </Menu>
@@ -52,9 +49,9 @@
          <children>
           <AnchorPane fx:id="leftMenu" minHeight="0.0" minWidth="0.0" prefHeight="691.0" prefWidth="158.0" stylesheets="@Main.css">
                <children>
-                  <Button layoutX="-3.0" layoutY="49.0" mnemonicParsing="false" stylesheets="@Main.css" text="Select" />
-                  <Button layoutX="-1.0" layoutY="111.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" stylesheets="@Main.css" text="Bucket" />
-                  <Button layoutY="157.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" stylesheets="@Main.css" text="Crop" />
+                  <Button layoutX="-3.0" layoutY="49.0" mnemonicParsing="false" stylesheets="@Main.css" text="Negative" />
+                  <Button fx:id="undoButton" layoutX="-1.0" layoutY="111.0" mnemonicParsing="false" onAction="#undoButton" prefHeight="25.0" prefWidth="53.0" stylesheets="@Main.css" text="Undo" />
+                  <Button fx:id="redoButton" layoutY="157.0" mnemonicParsing="false" onAction="#redoButton" prefHeight="25.0" prefWidth="53.0" stylesheets="@Main.css" text="Redo" />
                </children>
             </AnchorPane>
          </children>
@@ -64,7 +61,7 @@
     <AnchorPane fx:id="centerMenu" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" stylesheets="@Main.css" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="imageview" fitHeight="375.0" fitWidth="528.0" layoutX="310.0" layoutY="144.0" onMouseClicked="#ColorPicker" pickOnBounds="true" preserveRatio="true" />
-            <Separator fx:id="separatorLeftMenu" layoutX="-13.0" layoutY="-1.0" maxHeight="845.0" orientation="VERTICAL" prefHeight="711.0" prefWidth="20.0" stylesheets="@Main.css" />
+            <Separator layoutX="-13.0" layoutY="-1.0" maxHeight="845.0" orientation="VERTICAL" prefHeight="711.0" prefWidth="20.0" stylesheets="@Main.css" />
          </children>
       </AnchorPane>
    </center>

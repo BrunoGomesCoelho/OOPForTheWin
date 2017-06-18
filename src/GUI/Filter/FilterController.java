@@ -28,7 +28,6 @@ import java.util.stream.IntStream;
  * Class used to manipulate the image an apply Filters
  *
  *
- * Created by marcello on 05/06/2017.
  */
 public class FilterController implements Initializable {
 

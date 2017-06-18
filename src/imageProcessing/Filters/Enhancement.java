@@ -1,16 +1,20 @@
-package imageProcessing.Filters;
+package filters;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 
-import imageProcessing.Models.ImageModel;
-import imageProcessing.utils.Utils;
+import models.ImageModel;
+import utils.Utils;
 
 public class Enhancement {
-	static private int[][] getMinMax(ImageModel originalImage){
-		BufferedImage img = originalImage.getBufferedImage();
+	/**
+	 * @param srcImage - Imagem original
+	 * @return os valores m�ximos e m�nimos para cada um dos canais RGB da imagem original
+	 */
+	static public int[][] getMinMax(ImageModel srcImage){
+		BufferedImage img = srcImage.getBufferedImage();
 		Raster raster = img.getData();
 		int[][] minMax = new int[2][3];
 		int i, j, k, channel;
@@ -40,12 +44,18 @@ public class Enhancement {
 		return (raster.getSample(j, i, k) - minMax[0][k]) * 255 / (minMax[1][k] - minMax[0][k]);
 	}
 	
-	static public ImageModel contrastModulation(ImageModel originalImage){
-		ImageModel cnvImage = originalImage.copy();
+	/**
+	 * M�todo para o realce de imagens com baixa varia��o de cor
+	 *
+	 * @param srcImage - Imagem Original
+	 * @return Imagem real�ada
+	 */
+	static public ImageModel contrastModulation(ImageModel srcImage){
+		ImageModel cnvImage = srcImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
 	
-		int[][] minMax = getMinMax(originalImage);
+		int[][] minMax = getMinMax(srcImage);
 		int i, j, k;
 		
 		for(i = 0; i < img.getHeight(); i++) {
@@ -59,8 +69,14 @@ public class Enhancement {
 		return new ImageModel(img, "Contrast modulation");
 	}
 	
-	static public ImageModel negative(ImageModel originalImage){
-		ImageModel cnvImage = originalImage.copy();
+	/**
+	 * M�todo para a invers�o de valor dos pixel da imagem
+	 *
+	 * @param srcImage - Imagem original
+	 * @return Imagem invertida produzida
+	 */
+	static public ImageModel negative(ImageModel srcImage){
+		ImageModel cnvImage = srcImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
 		
@@ -77,8 +93,15 @@ public class Enhancement {
 		return new ImageModel(img, "Negative");
 	}
 	
-	static public ImageModel binary(ImageModel originalImage){
-		ImageModel cnvImage = originalImage.copy();
+	/**
+	 * M�todo para a binariza��o da imagem, de acordo com o bit mais significativo
+	 * da m�dia dos canais RGB
+	 *
+	 * @param srcImage - Imagem original
+	 * @return Imagem bin�ria produzida
+	 */
+	static public ImageModel binary(ImageModel srcImage){
+		ImageModel cnvImage = srcImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
 		double grayScale;
@@ -99,8 +122,14 @@ public class Enhancement {
 		return new ImageModel(img, "Binary");
 	}
 	
-	static public ImageModel grayScale(ImageModel originalImage){
-		ImageModel cnvImage = originalImage.copy();
+	/**
+	 * M�todo para a cria��o de uma imagem preto e branco a partir de uma imagem RGB
+	 *
+	 * @param srcImage - Imagem original
+	 * @return Imagem em escala de cinza
+	 */
+	static public ImageModel grayScale(ImageModel srcImage){
+		ImageModel cnvImage = srcImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
 
@@ -122,8 +151,16 @@ public class Enhancement {
 		return new ImageModel(img, "Gray Scale");
 	}
 	
-	static public ImageModel poster(ImageModel originalImage, int level){
-		ImageModel cnvImage = originalImage.copy();
+	/**
+	 * M�todo para a discretiza��o da imagem atrav�s da remo��o dos bits menos significativos
+	 * da imagem original
+	 *
+	 * @param srcImage - imagem original
+	 * @param level - n�vel de discretiza��o, entre 0 (menor discretiza��o) e 8 (m�xima discretiza��o)
+	 * @return imagem discretizada
+	 */
+	static public ImageModel poster(ImageModel srcImage, int level){
+		ImageModel cnvImage = srcImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
 		int i, j;
@@ -139,8 +176,15 @@ public class Enhancement {
 		return new ImageModel(img, "Poster");
 	}
 	
-	static public ImageModel noise(ImageModel originalImage, int level){
-		ImageModel cnvImage = originalImage.copy();
+	/**
+	 * M�todo para a inclus�o de ru�do em imagens
+	 *
+	 * @param srcImage - imagem original
+	 * @param level - n�vel de ruidez da imagem. valores entre 0 e 255
+	 * @return imagem ruidosa
+	 */
+	static public ImageModel noise(ImageModel srcImage, int level){
+		ImageModel cnvImage = srcImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
 		int i, j, k;
@@ -159,12 +203,15 @@ public class Enhancement {
 		return new ImageModel(img, "Noise");
 	}
 	
-	static private double getDistance(int x1, int y1, int x2, int y2){
-		return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-	}
-	
-	static public ImageModel vignette(ImageModel originalImage){
-		ImageModel cnvImage = originalImage.copy();
+	/**
+	 * M�todo para a inclus�o de vinheta negra em imagens,
+	 * baseada no comprimento da diagonal
+	 *
+	 * @param srcImage - imagem original
+	 * @return imagem com a nova vinheta
+	 */
+	static public ImageModel vignette(ImageModel srcImage){
+		ImageModel cnvImage = srcImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
 		int i, j, k, x, y;
@@ -173,11 +220,11 @@ public class Enhancement {
 		x = img.getWidth() / 2;
 		y = img.getHeight() / 2;
 		
-		div = getDistance(0, 0, img.getWidth(), img.getHeight()) / 1.5;
+		div = Utils.getDistance(0, 0, img.getWidth(), img.getHeight()) / 1.5;
 
 		for(i = 0; i < img.getHeight(); i++) {
 			for(j = 0; j < img.getWidth(); j++) {
-				dist = getDistance(x, y, j, i);
+				dist = Utils.getDistance(x, y, j, i);
 				
 				for(k = 0; k < 3; k++) {
 					raster.setSample(j, i, k, Utils.truncate(raster.getSample(j, i, k) - 255 * dist / div));
@@ -188,8 +235,15 @@ public class Enhancement {
 		return new ImageModel(img, "Vignette");
 	}
 	
-	static public ImageModel vignette(ImageModel originalImage, int radius){
-		ImageModel cnvImage = originalImage.copy();
+	/**
+	 * M�todo para a inclus�o de vinheta negra em imagens
+	 *
+	 * @param srcImage - imagem original
+	 * @param radius - tamanho do raio da vinheta, com esta centralizada. qualquer valor inteiro
+	 * @return imagem com a nova vinheta
+	 */
+	static public ImageModel vignette(ImageModel srcImage, int radius){
+		ImageModel cnvImage = srcImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
 		int i, j, k, x, y;
@@ -200,7 +254,7 @@ public class Enhancement {
 
 		for(i = 0; i < img.getHeight(); i++) {
 			for(j = 0; j < img.getWidth(); j++) {
-				dist = getDistance(x, y, j, i);
+				dist = Utils.getDistance(x, y, j, i);
 				
 				for(k = 0; k < 3; k++) {
 					raster.setSample(j, i, k, Utils.truncate(raster.getSample(j, i, k) - 255 * dist / radius));
@@ -211,8 +265,16 @@ public class Enhancement {
 		return new ImageModel(img, "Vignete");
 	}
 	
-	static public ImageModel vignette(ImageModel originalImage, int radius, int[] color){
-		ImageModel cnvImage = originalImage.copy();
+	 /**
+	  * M�todo para a inclus�o de vinheta colorida em imagens
+	  *
+	  * @param srcImage - imagem original
+	  * @param radius - tamanho do raio da vinheta, com esta centralizada. qualquer valor inteiro
+	  * @param color - cor da vinheta
+	  * @return imagem com a nova vinheta
+	  */
+	static public ImageModel vignette(ImageModel srcImage, int radius, int[] color){
+		ImageModel cnvImage = srcImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
 		int i, j, k, x, y;
@@ -220,11 +282,11 @@ public class Enhancement {
 		
 		x = img.getWidth() / 2;
 		y = img.getHeight() / 2;
-		diag = getDistance(0, 0, img.getWidth(), img.getHeight()) / 1.5;
+		diag = Utils.getDistance(0, 0, img.getWidth(), img.getHeight()) / 1.5;
 		
 		for(i = 0; i < img.getHeight(); i++) {
 			for(j = 0; j < img.getWidth(); j++) {
-				dist = getDistance(x, y, j, i);
+				dist = Utils.getDistance(x, y, j, i);
 				
 				for(k = 0; k < 3; k++) {
 					raster.setSample(j, i, k, Utils.truncate(raster.getSample(j, i, k) - 255 * dist / radius) + color[k] * dist / diag);
@@ -235,8 +297,14 @@ public class Enhancement {
 		return new ImageModel(img, "Vignete");
 	}
 	
-	static public ImageModel radioactive(ImageModel originalImage){
-		ImageModel cnvImage = originalImage.copy();
+	/**
+	 * M�todo para a modifica��o dos pixel baseado na invers�o de canais do sistema HSB
+	 *
+	 * @param srcImage - imagem original
+	 * @return imagem modificada
+	 */
+	static public ImageModel radioactive(ImageModel srcImage){
+		ImageModel cnvImage = srcImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
 		Color c;
@@ -260,8 +328,15 @@ public class Enhancement {
 		return new ImageModel(img, "Radioactive");
 	}
 	
-	static public ImageModel hue(ImageModel originalImage, double level){
-		ImageModel cnvImage = originalImage.copy();
+	/**
+	 * M�todo para a manipula��o do Hue (colora��o) dos pixels de uma imagem
+	 *
+	 * @param srcImage - imagem original
+	 * @param level - n�vel da modifica��o - valores entre -1.0 e 1.0
+	 * @return imagem com nova colora��o
+	 */
+	static public ImageModel hue(ImageModel srcImage, double level){
+		ImageModel cnvImage = srcImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
 		Color c;
@@ -294,9 +369,15 @@ public class Enhancement {
 		return new ImageModel(img, "Hue");
 	}
 	
-	
-	static public ImageModel saturate(ImageModel originalImage, double level){
-		ImageModel cnvImage = originalImage.copy();
+	/**
+	 * M�todo para a manipula��o da satura��o dos pixels de uma imagem
+	 *
+	 * @param srcImage - imagem original
+	 * @param level - n�vel da modifica��o - valores entre -1.0 e 1.0
+	 * @return imagem com nova satura��o
+	 */
+	static public ImageModel saturate(ImageModel srcImage, double level){
+		ImageModel cnvImage = srcImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
 		Color c;
@@ -329,8 +410,15 @@ public class Enhancement {
 		return new ImageModel(img, "Saturate");
 	}
 	
-	static public ImageModel bright(ImageModel originalImage, double level){
-		ImageModel cnvImage = originalImage.copy();
+	/**
+	 * M�todo para a manipula��o da luminosidade dos pixels de uma imagem
+	 *
+	 * @param srcImage - imagem original
+	 * @param level - n�vel da modifica��o - valores entre -1.0 e 1.0
+	 * @return imagem com nova luminosidade
+	 */
+	static public ImageModel bright(ImageModel srcImage, double level){
+		ImageModel cnvImage = srcImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
 		Color c;
@@ -363,8 +451,15 @@ public class Enhancement {
 		return new ImageModel(img, "Bright");
 	}
 		
-	static public ImageModel pixelate(ImageModel originalImage, double size){
-		ImageModel cnvImage = originalImage.copy();
+	/**
+	 * M�todo que gera uma vers�o pixelada da imagem original
+	 *
+	 * @param srcImage - Imagem Original
+	 * @param size - tamanho de cada "pixel" gerado. Valores entre 0 e a dimens�o m�xima da imagem
+	 * @return a imagem pixelada
+	 */
+	static public ImageModel pixelate(ImageModel srcImage, double size){
+		ImageModel cnvImage = srcImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
 		
