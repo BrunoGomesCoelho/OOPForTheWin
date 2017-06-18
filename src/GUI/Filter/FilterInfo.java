@@ -1,11 +1,11 @@
 package GUI.Filter;
 
+import imageProcessing.Filters.ColorScale;
 import imageProcessing.Filters.Convolution;
 import imageProcessing.Filters.Enhancement;
 import imageProcessing.Filters.Manipulate;
 import imageProcessing.Models.ImageModel;
 
-import javax.swing.text.html.ImageView;
 import java.awt.*;
 
 /**
@@ -48,13 +48,13 @@ public class FilterInfo {
 
      public static Image nextFilter(Image image) {
         switch (count++) {
-            case 0: // TODO: paramêtro
-                //return ColorScale.add(model, 5, 100).getBufferedImage();
-	            return backup.getBufferedImage();
+            case 0: // TODO: paramêtro, valor de 0 a 255
+                return ColorScale.add(model, "red", 123).getBufferedImage();
+	            // return backup.getBufferedImage();
 
             case 1: // TODO: paramêtro
-                //return ColorScale.scale(model, 5, 0.5).getBufferedImage();
-	            return backup.getBufferedImage();
+                return ColorScale.scale(model, "blue", 1.8).getBufferedImage();
+	            // return backup.getBufferedImage();
 
             case 2:
                 return Convolution.convolutionBlur(model).getBufferedImage();
@@ -71,9 +71,9 @@ public class FilterInfo {
             case 6:
                 return Enhancement.binary(model).getBufferedImage();
 
-            case 7: // TODO: paramêtro
-                //return Enhancement.bright(model, 0.5).getBufferedImage();
-	            return backup.getBufferedImage();
+            case 7: // TODO: paramêtro entre -1 e 1
+                return Enhancement.bright(model, 0.5).getBufferedImage();
+	            // return backup.getBufferedImage();
 
             case 8:
                 return Enhancement.contrastModulation(model).getBufferedImage();
@@ -82,30 +82,31 @@ public class FilterInfo {
                 return Enhancement.grayScale(model).getBufferedImage();
 
             case 10: // TODO: parametro
-                // return Enhancement.hue(model, 0.5).getBufferedImage();
-	            return backup.getBufferedImage();
+                return Enhancement.hue(model, -0.8).getBufferedImage();
+	            // return backup.getBufferedImage();
 
             case 11:
                 return Enhancement.negative(model).getBufferedImage();
 
             case 12:    // TODO: parametro
-                // return Enhancement.noise(model, 4).getBufferedImage();
-	            return backup.getBufferedImage();
+                return Enhancement.noise(model, 122).getBufferedImage();
+	            // return backup.getBufferedImage();
 
             case 13:    // TODO: parametro
-                // return Enhancement.pixelate(model, 10).getBufferedImage();
-	            return backup.getBufferedImage();
+                // TODO: Acho que se a imagem não for no mínimo 10 por 10 pixels vai dar ruim
+                return Enhancement.pixelate(model, 10).getBufferedImage();
+	            // return backup.getBufferedImage();
 
             case 14:    // TODO: parametro
-                // return Enhancement.poster(model, 10).getBufferedImage();
-	            return backup.getBufferedImage();
+                return Enhancement.poster(model, 4).getBufferedImage();
+	            // return backup.getBufferedImage();
 
             case 15:
                 return Enhancement.radioactive(model).getBufferedImage();
 
             case 16:    // TODO: parametro
-                // return Enhancement.saturate(model, 0.5).getBufferedImage();
-	            return backup.getBufferedImage();
+                return Enhancement.saturate(model, 0.5).getBufferedImage();
+	            // return backup.getBufferedImage();
 
             case 17:    // TODO: tem outros tipos de vignette, escolhi esse por enquanto
                 return Enhancement.vignette(model).getBufferedImage();

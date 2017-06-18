@@ -46,7 +46,7 @@ public class Enhancement {
 	}
 	
 	/**
-	 * M�todo para o realce de imagens com baixa varia��o de cor
+	 * Método para o realce de imagens com baixa varia��o de cor
 	 *
 	 * @param srcImage - Imagem Original
 	 * @return Imagem real�ada
@@ -71,7 +71,7 @@ public class Enhancement {
 	}
 	
 	/**
-	 * M�todo para a invers�o de valor dos pixel da imagem
+	 * Método para a invers�o de valor dos pixel da imagem
 	 *
 	 * @param srcImage - Imagem original
 	 * @return Imagem invertida produzida
@@ -95,7 +95,7 @@ public class Enhancement {
 	}
 	
 	/**
-	 * M�todo para a binariza��o da imagem, de acordo com o bit mais significativo
+	 * Método para a binariza��o da imagem, de acordo com o bit mais significativo
 	 * da m�dia dos canais RGB
 	 *
 	 * @param srcImage - Imagem original
@@ -122,9 +122,10 @@ public class Enhancement {
 		
 		return new ImageModel(img, "Binary");
 	}
-	
+
+
 	/**
-	 * M�todo para a cria��o de uma imagem preto e branco a partir de uma imagem RGB
+	 * Método para a cria��o de uma imagem preto e branco a partir de uma imagem RGB
 	 *
 	 * @param srcImage - Imagem original
 	 * @return Imagem em escala de cinza
@@ -153,7 +154,7 @@ public class Enhancement {
 	}
 	
 	/**
-	 * M�todo para a discretiza��o da imagem atrav�s da remo��o dos bits menos significativos
+	 * Método para a discretiza��o da imagem atrav�s da remo��o dos bits menos significativos
 	 * da imagem original
 	 *
 	 * @param srcImage - imagem original
@@ -178,7 +179,7 @@ public class Enhancement {
 	}
 	
 	/**
-	 * M�todo para a inclus�o de ru�do em imagens
+	 * Método para a inclus�o de ru�do em imagens
 	 *
 	 * @param srcImage - imagem original
 	 * @param level - n�vel de ruidez da imagem. valores entre 0 e 255
@@ -205,7 +206,7 @@ public class Enhancement {
 	}
 	
 	/**
-	 * M�todo para a inclus�o de vinheta negra em imagens,
+	 * Método para a inclus�o de vinheta negra em imagens,
 	 * baseada no comprimento da diagonal
 	 *
 	 * @param srcImage - imagem original
@@ -237,7 +238,7 @@ public class Enhancement {
 	}
 	
 	/**
-	 * M�todo para a inclus�o de vinheta negra em imagens
+	 * Método para a inclus�o de vinheta negra em imagens
 	 *
 	 * @param srcImage - imagem original
 	 * @param radius - tamanho do raio da vinheta, com esta centralizada. qualquer valor inteiro
@@ -267,7 +268,7 @@ public class Enhancement {
 	}
 	
 	 /**
-	  * M�todo para a inclus�o de vinheta colorida em imagens
+	  * Método para a inclus�o de vinheta colorida em imagens
 	  *
 	  * @param srcImage - imagem original
 	  * @param radius - tamanho do raio da vinheta, com esta centralizada. qualquer valor inteiro
@@ -299,7 +300,7 @@ public class Enhancement {
 	}
 	
 	/**
-	 * M�todo para a modifica��o dos pixel baseado na invers�o de canais do sistema HSB
+	 * Método para a modifica��o dos pixel baseado na invers�o de canais do sistema HSB
 	 *
 	 * @param srcImage - imagem original
 	 * @return imagem modificada
@@ -330,7 +331,7 @@ public class Enhancement {
 	}
 	
 	/**
-	 * M�todo para a manipula��o do Hue (colora��o) dos pixels de uma imagem
+	 * Método para a manipula��o do Hue (colora��o) dos pixels de uma imagem
 	 *
 	 * @param srcImage - imagem original
 	 * @param level - n�vel da modifica��o - valores entre -1.0 e 1.0
@@ -371,7 +372,7 @@ public class Enhancement {
 	}
 	
 	/**
-	 * M�todo para a manipula��o da satura��o dos pixels de uma imagem
+	 * Método para a manipula��o da satura��o dos pixels de uma imagem
 	 *
 	 * @param srcImage - imagem original
 	 * @param level - n�vel da modifica��o - valores entre -1.0 e 1.0
@@ -412,7 +413,7 @@ public class Enhancement {
 	}
 	
 	/**
-	 * M�todo para a manipula��o da luminosidade dos pixels de uma imagem
+	 * Método para a manipula��o da luminosidade dos pixels de uma imagem
 	 *
 	 * @param srcImage - imagem original
 	 * @param level - n�vel da modifica��o - valores entre -1.0 e 1.0
@@ -453,7 +454,7 @@ public class Enhancement {
 	}
 		
 	/**
-	 * M�todo que gera uma vers�o pixelada da imagem original
+	 * Método que gera uma vers�o pixelada da imagem original
 	 *
 	 * @param srcImage - Imagem Original
 	 * @param size - tamanho de cada "pixel" gerado. Valores entre 0 e a dimens�o m�xima da imagem

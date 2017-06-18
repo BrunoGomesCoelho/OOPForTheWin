@@ -23,15 +23,15 @@ public class ColorScale {
 	 * Ex.: scale(img, 2, 0.75) - 75% da quantidade de azul da imagem original
 	 *
 	 * @param originalImage: a imagem original
-	 * @param channel - canal RGB que ser� modificado (R - 0; G - 1; B - 2)
+	 * @param op - canal RGB que ser� modificado (R - 0; G - 1; B - 2)
 	 * @param alpha - fator multiplicativo do canal. Valores de 0 at� 255 (No entanto, valores entre 0 e 5 s�o mais relevantes)
 	 * @return
 	 */
-	static public ImageModel scale(ImageModel originalImage, int channel, double alpha){
+	static public ImageModel scale(ImageModel originalImage, String op, double alpha){
 		ImageModel cnvImage = originalImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = cnvImage.getWritableRaster();
-		int i, j;
+		int i, j, channel = selectChannel(op);;
 		
 		for(i = 0; i < img.getHeight(); i++) {
 			for(j = 0; j < img.getWidth(); j++) {
@@ -47,20 +47,20 @@ public class ColorScale {
 	}
 	
 	/**
-	 * M�todo para a modifica��o de um canal RGB atraves de um fator aditivo
+	 * Método para a modifica��o de um canal RGB atraves de um fator aditivo
 	 *
 	 * Ex.: scale(img, 0, 25) - todos os valores de vermelho ter�o um acrescimo de 25
 	 *
-	 * @param originalImage
-	 * @param channel - canal RGB que ser� modificado (R - 0; G - 1; B - 2)
-	 * @param alpha - fator aditivo do canal. Valores de 0 at� 255
+	 * @param originalImage: a imagem original
+	 * @param op - canal RGB que ser� modificado (R - 0; G - 1; B - 2)
+	 * @param n - fator aditivo do canal. Valores de 0 at� 255
 	 * @return imagem modificada
 	 */
-	static public ImageModel add(ImageModel originalImage, int channel, int n){
+	static public ImageModel add(ImageModel originalImage, String op, int n){
 		ImageModel cnvImage = originalImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
-		int i, j;
+		int i, j, channel = selectChannel(op);
 		
 		for(i = 0; i < img.getHeight(); i++) {
 			for(j = 0; j < img.getWidth(); j++) {
@@ -69,5 +69,16 @@ public class ColorScale {
 		}
 		
 		return new ImageModel(img, "Color scale add");
+	}
+
+
+	private static int selectChannel(String channel) {
+		if (channel.equals("red"))
+			return 0;
+		else if (channel.equals("grenn"))
+			return 1;
+		else if (channel.equals("blue"))
+			return 2;
+		throw new RuntimeException("Wrong color typed used");
 	}
 }
