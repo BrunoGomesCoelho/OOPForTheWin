@@ -1,4 +1,4 @@
-package utils;
+package imageProcessing.utils;
 
 public class Utils {
 	static public int truncate(double x){

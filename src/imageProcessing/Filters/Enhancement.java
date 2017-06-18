@@ -1,12 +1,13 @@
-package filters;
+package imageProcessing.Filters;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 
-import models.ImageModel;
-import utils.Utils;
+
+import imageProcessing.Models.ImageModel;
+import imageProcessing.utils.Utils;
 
 public class Enhancement {
 	/**

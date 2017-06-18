@@ -1,27 +1,28 @@
-package imageProcessing.filters;
+package imageProcessing.Filters;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 
-import imageProcessing.models.ImageModel;
+import imageProcessing.Models.ImageModel;
 import imageProcessing.utils.Utils;
 
 /**
- * Classe para a modifica��o de cor em sistemas RGB
+ * Classe para a modificação de cor em sistemas RGB
  */
 public class ColorScale {
+
 	static private int scaleFilter(Raster raster, int i, int j, int channel, double alpha){
 		return Utils.truncate(raster.getSample(j, i, channel) * alpha);
 	}
 	
 	/**
-	 * M�todo para a modifica��o de um canal RGB atraves de um fator de multiplica��o
+	 * Método para a modificação de um canal RGB atraves de um fator de multiplicação
 	 *
 	 * Ex.: scale(img, 0, 1.25) - Acrecimo de 25% em vermelho
 	 * Ex.: scale(img, 2, 0.75) - 75% da quantidade de azul da imagem original
 	 *
-	 * @param originalImage
+	 * @param originalImage: a imagem original
 	 * @param channel - canal RGB que ser� modificado (R - 0; G - 1; B - 2)
 	 * @param alpha - fator multiplicativo do canal. Valores de 0 at� 255 (No entanto, valores entre 0 e 5 s�o mais relevantes)
 	 * @return

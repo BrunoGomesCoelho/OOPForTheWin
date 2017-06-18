@@ -1,4 +1,4 @@
-package models;
+package imageProcessing.Models;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -6,8 +6,9 @@ import java.awt.image.Raster;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+
 /**
- *  Classe para a representação de uma região em uma imagem, com coordenadas (x, y)
+ *  Classe para a representaï¿½ï¿½o de uma regiï¿½o em uma imagem, com coordenadas (x, y)
  *
  */
 public class RegionModel {
@@ -17,8 +18,8 @@ public class RegionModel {
 		points = new HashMap<Integer, ArrayList<Integer>>();
 	}
 	/**
-	 * Método que adiciona um novo ponto (x, y) ao objeto. Não existem pontos repetidos.
-	 * Ela deve receber uma série de pontos de leitura do mouse e armazenar eles nesta estrutura!
+	 * MÃ©todo que adiciona um novo ponto (x, y) ao objeto. Nï¿½o existem pontos repetidos.
+	 * Ela deve receber uma sï¿½rie de pontos de leitura do mouse e armazenar eles nesta estrutura!
 	 * 
 	 * @param x - coordenadas do ponto
 	 * @param y - coordenadas do ponto
@@ -34,7 +35,7 @@ public class RegionModel {
 			}
 			
 		} else {
-			list = new ArrayList<Integer>();
+			list = new ArrayList<>();
 			points.put(y, list);
 		}
 		
@@ -42,11 +43,11 @@ public class RegionModel {
 	}
 	
 	/**
-	 * Método que confere se um ponto (x, y) está presente no objeto
+	 * M[etodo que confere se um ponto (x, y) estï¿½ presente no objeto
 	 * 
 	 * @param x - coordenadas do ponto
 	 * @param y - coordenadas do ponto
-	 * @return um boolean indicando a existência ou não do ponto
+	 * @return um boolean indicando a existï¿½ncia ou nï¿½o do ponto
 	 */
 	public boolean contains(int x, int y){
 		ArrayList<Integer> list;
@@ -60,7 +61,7 @@ public class RegionModel {
 	}
 	
 	/**
-	 * Método para a ordenação dos valores de y.
+	 * MÃ©todo para a ordenaï¿½ï¿½o dos valores de y.
 	 */
 	public void sort(){
 		ArrayList<Integer> list;
@@ -72,24 +73,24 @@ public class RegionModel {
 		
 	}
 	/**
-	 * Método que retorna a estrutura que contém os pontos.
+	 * MÃ©todo que retorna a estrutura que contï¿½m os pontos.
 	 * 
-	 * @return HashMap contendo os pontos. As chaves são os valores de y contidos na região,
-	 * enquanto que os valores são ArrayLists contendo os valores de x relacionados ao y especificado.
+	 * @return HashMap contendo os pontos. As chaves sï¿½o os valores de y contidos na regiï¿½o,
+	 * enquanto que os valores sï¿½o ArrayLists contendo os valores de x relacionados ao y especificado.
 	 */
 	public HashMap<Integer, ArrayList<Integer>> getPoints(){
 		return points;
 	}
 	
 	/**
-	 * Método que confere se um ponto pertence a uma mesma região indicada pela cor ref
+	 * MÃ©todo que confere se um ponto pertence a uma mesma regiï¿½o indicada pela cor ref
 	 * 
 	 * @param raster - imagem analizada
 	 * @param i - coordenadas do pixel
 	 * @param j - coordenadas do pixel
-	 * @param level - nível de detalhe da seleção - 0 à 8 (ordem de detalhe decrescente)
-	 * @param ref - cor de referência da região
-	 * @return
+	 * @param level - nï¿½vel de detalhe da seleï¿½ï¿½o - 0 ï¿½ 8 (ordem de detalhe decrescente)
+	 * @param ref - cor de referï¿½ncia da regiï¿½o
+	 * @return // TODO, nÃ£o sei o eu vem aqui
 	 */
 	static private boolean sameRegion(Raster raster, int i, int j, int level, Color ref){
 		return (raster.getSample(j, i, 0) >> level << level == ref.getRed() &&
@@ -98,13 +99,13 @@ public class RegionModel {
 	}
 	
 	/**
-	 * Método para criação de um objeto RegionModel baseada em seleção por região por cor
+	 * MÃ©todo para criaï¿½ï¿½o de um objeto RegionModel baseada em seleï¿½ï¿½o por regiï¿½o por cor
 	 * 
 	 * @param src - imagem original
 	 * @param x - Coordenadas do clique do mouse
 	 * @param y - Coordenadas do clique do mouse
-	 * @param level - nível de detalhe da seleção - 0 à 8 (ordem de detalhe decrescente)
-	 * @return A região selecionada
+	 * @param level - nï¿½vel de detalhe da seleï¿½ï¿½o - 0 ï¿½ 8 (ordem de detalhe decrescente)
+	 * @return A regiï¿½o selecionada
 	 */
 	
 	static public RegionModel selectRegion(ImageModel src, int x, int y, int level){

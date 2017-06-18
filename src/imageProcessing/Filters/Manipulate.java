@@ -1,4 +1,4 @@
-package filters;
+package imageProcessing.Filters;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
@@ -6,12 +6,11 @@ import java.awt.image.WritableRaster;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import models.ImageModel;
-import models.RegionModel;
+import imageProcessing.Models.ImageModel;
+
+import imageProcessing.Models.RegionModel;
 
 public class Manipulate {
-	static public int VERTICAL = 0;
-	static public int HORIZONTAL = 1;
 	
 	/**
 	 * Fun��o para normaliza��o de um valor n, do intervalo [min, max] para [a, b];
@@ -27,11 +26,11 @@ public class Manipulate {
 	 */
 	
 	static private int normalize(int n, int min, int max, int a, int b){
-		return (int) ((b - a)*(n - min)/(max - min) + a);
+		return ((b - a)*(n - min)/(max - min) + a);
 	}
 	
 	/**
-	 * M�todo de redimensionamento de uma imagem
+	 * Método de redimensionamento de uma imagem
 	 * 
 	 * @param srcImage - imagem original
 	 * @param sizeX - dimens�es da nova imagem, sendo > 0
@@ -62,7 +61,7 @@ public class Manipulate {
 	}
 	
 	/**
-	 * M�todo de redimensionamento de uma imagem de acordo com um fator de escala
+	 * Método de redimensionamento de uma imagem de acordo com um fator de escala
 	 * 
 	 * @param srcImage - imagem original
 	 * @param percent - fator de escala. se percent == 0.75 a nova imagem ser� 75% menor que a original
@@ -93,7 +92,7 @@ public class Manipulate {
 	}
 	
 	/**
-	 * M�todo que retorna se um ponto est� ou n�o contido em uma imagem img
+	 * Método que retorna se um ponto est� ou n�o contido em uma imagem img
 	 * 
 	 * @param img - imagem analizada
 	 * @param x - coordenadas do pixel
@@ -143,18 +142,18 @@ public class Manipulate {
 	}
 	
 	/**
-	 * M�todo que estica uma imagem de acordo com um tamanho passado por par�metro.
+	 * Método que estica uma imagem de acordo com um tamanho passado por par�metro.
 	 * 
 	 * @param srcImage - imagem original
 	 * @param size - nova dimens�o da imagem esticada (maior que 0).
 	 * @param dir - dire��o na qual a imagem ser� esticada (horizontal ou vertical)
 	 * @return imagem modificada
 	 */
-	static public ImageModel strech(ImageModel srcImage, int size, int dir) {
+	static public ImageModel strech(ImageModel srcImage, int size, String dir) {
 		ImageModel cnvImage;
 		Raster srcRaster = srcImage.getBufferedImage().getRaster();
 		
-		if(dir == VERTICAL) {
+		if(dir.equals("vertical")) {
 			cnvImage = new ImageModel(srcRaster.getWidth(), size);
 		} else {
 			cnvImage = new ImageModel(size, srcRaster.getHeight());
@@ -168,7 +167,7 @@ public class Manipulate {
 		
 		for(i = 0; i < img.getHeight(); i++) {
 			for(j = 0; j < img.getWidth(); j++) {
-				if(dir == VERTICAL){
+				if(dir.equals("vertical")) {
 					x = j;
 					y = normalize(i, 0, size, 0, srcRaster.getHeight());
 				} else {
@@ -185,13 +184,13 @@ public class Manipulate {
 	}
 	
 	/**
-	 * M�todo que espelha uma imagem de acordo a dire��o dada.
+	 * Método que espelha uma imagem de acordo a dire��o dada.
 	 * 
 	 * @param srcImage - imagem original
 	 * @param dir - dire��o na qual a imagem ser� espelhada (horizontal, vertical ou diagonal)
 	 * @return imagem modificada
 	 */
-	static public ImageModel mirror(ImageModel srcImage, int dir) {
+	static public ImageModel mirror(ImageModel srcImage, String dir) {
 		ImageModel cnvImage = srcImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		Raster srcRaster = srcImage.getBufferedImage().getRaster();
@@ -202,16 +201,20 @@ public class Manipulate {
 		
 		for(i = 0; i < img.getHeight(); i++) {
 			for(j = 0; j < img.getWidth(); j++) {
-				
-				if(dir == VERTICAL) {
-					x = j;
-					y = img.getHeight() - 1 - i;
-				} else if(dir == HORIZONTAL) {
-					x = img.getWidth() - 1 - j;
-					y = i;
-				} else {
-					x = img.getWidth() - 1 - j;
-					y = img.getHeight() - 1- i;
+
+				switch (dir) {
+					case "vertical":
+						x = j;
+						y = img.getHeight() - 1 - i;
+						break;
+					case "horizontal":
+						x = img.getWidth() - 1 - j;
+						y = i;
+						break;
+					default:
+						x = img.getWidth() - 1 - j;
+						y = img.getHeight() - 1 - i;
+						break;
 				}
 				
 				for(k = 0; k < 3; k++) {					
@@ -223,7 +226,7 @@ public class Manipulate {
 		return new ImageModel(img);
 	}
 	/**
-	 * M�todo de recorte retangular da imagem
+	 * Método de recorte retangular da imagem
 	 * 
 	 * @param srcImage - imagem original
 	 * @param x1 - coordenadas do primeiro ponto (esquerda e acima)
@@ -252,9 +255,9 @@ public class Manipulate {
 	}
 	
 	/**
-	 * M�todo de recorte direto da imagem, atrav�s da classe RegionModel
+	 * Método de recorte direto da imagem, atrav�s da classe RegionModel
 	 * 
-	 * @param srcImage
+	 * @param srcImage: a imagem original
 	 * @param r - regi�o que ser� cortada
 	 * @return imagem com a regi�o destacada
 	 */
@@ -287,7 +290,7 @@ public class Manipulate {
 	}
 	
 	/**
-	 * M�todo que, dado um ponto (x, y) contido na imagem, seleciona e recorta uma regi�o da imagem
+	 * Método que, dado um ponto (x, y) contido na imagem, seleciona e recorta uma regi�o da imagem
 	 * baseada na semelhan�a por cor.
 	 * 
 	 * @param srcImage - imagem original

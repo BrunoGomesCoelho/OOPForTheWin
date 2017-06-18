@@ -1,24 +1,24 @@
-package draw;
+package imageProcessing.draw;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 
-import models.ImageModel;
+import imageProcessing.Models.ImageModel;
 
 /**
- *  Classe para a operação de preenchimento de cor, conhecido como balde (Bucket)
+ *  Classe para a operaÃ§Ã£o de preenchimento de cor, conhecido como balde (Bucket)
  *
  */
 public class Bucket {
 	/**
-	 * 
+	 *
 	 * @param srcImg - Imagem original
-	 * @param x - Coordenada do clique do mouse 
-	 * @param y - Coordenada do clique do mouse 
+	 * @param x - Coordenada do clique do mouse
+	 * @param y - Coordenada do clique do mouse
 	 * @param c - Cor de preenchimento
-	 * @param level - nível de detalhe do preenchimento, indo de 0 (máximo detalhe) à 8 (imagem inteira) 
-	 * @return Uma nova imagem com as modificações feitas 
+	 * @param level - nÃ­vel de detalhe do preenchimento, indo de 0 (mÃ¡ximo detalhe) Ã¡ 8 (imagem inteira)
+	 * @return Uma nova imagem com as modificaÃ§Ãµes feitas
 	 */
 	static public ImageModel paint(ImageModel srcImg, int x, int y, Color c, int level){
 		ImageModel newImg = srcImg.copy(); 

@@ -1,4 +1,7 @@
-package main;
+package imageProcessing.Main;
+
+
+/*
 import java.awt.Color;
 
 import draw.Brush;
@@ -154,7 +157,6 @@ public class Main {
 		coolOldEffect = ColorScale.add(coolOldEffect, 0, 20);
 		coolOldEffect = ColorScale.add(coolOldEffect, 1, 20);
 		ImageModel.write(coolOldEffect, "wanted", "jpg");
-		*/
 		
 		res = Manipulate.rotate(i, - 2* Math.PI / 5);
 		ImageModel.write(res, "batataROTATE", "png");
@@ -177,3 +179,5 @@ public class Main {
 		System.out.printf("THE END");
 	}
 }
+
+*/
