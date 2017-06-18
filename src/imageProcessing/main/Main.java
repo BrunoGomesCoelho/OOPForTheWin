@@ -1,16 +1,18 @@
-package imageProcessing.main;
+package main;
+import java.awt.Color;
 
-import imageProcessing.filters.*;
-import imageProcessing.models.*;
+import draw.Brush;
+import draw.Bucket;
+import filters.*;
+import models.*;
 
 public class Main {
 
 	public static void main(String[] args) {
-		/*
-		ImageModel i = new ImageModel("peeps.jpg");
+		ImageModel i = new ImageModel("wolf.jpg");
 		ImageModel i2 = new ImageModel("heart2.jpg");
 		ImageModel res;
-
+		/*
 		res = Convolution.convolution(i, Convolution.SHARPEN);
 		
 		for(int a = 0 ; a < 3; a++) {
@@ -20,6 +22,7 @@ public class Main {
 		ImageModel.write(res, "batataSHARPEN", "jpg");
 
 		res = Enhancement.radioactive(i);
+		
 		res = ImageModel.blend(i, res, 0, 0, 0.25);
 		ImageModel.write(res, "batataRADIOACTIVE", "jpg");
 		
@@ -104,7 +107,7 @@ public class Main {
 		ImageModel.write(res, "batataNO_GREEN", "jpg");
 		
 		res = Enhancement.pixelate(i, 15);
-		ImageModel.write(res, "batataPIXELATE", "jpg");
+		ImageModel.write(res, "batataPIXELATE", "jpg");	
 		
 		res = Manipulate.mirror(i, Manipulate.VERTICAL);
 		ImageModel.write(res, "batataVERTICAL", "jpg");		
@@ -115,6 +118,35 @@ public class Main {
 		res = Manipulate.mirror(i, 3);
 		ImageModel.write(res, "batataMIROR_DIAGONNAL", "jpg");
 		
+		res = Manipulate.strech(i, 500, Manipulate.VERTICAL);
+		ImageModel.write(res, "batataSCRETCHVERTICAL", "jpg");
+		
+		res = Manipulate.strech(i, 3000, Manipulate.HORIZONTAL);
+		ImageModel.write(res, "batataSCRETCHHORIZONTAL", "jpg");
+		
+		res = Manipulate.crop(i, 100, 100, 200, 500);
+		ImageModel.write(res, "batataCROPRECT", "jpg");
+		
+		res = Manipulate.resize(i, 500, 500);
+		ImageModel.write(res, "batataRESIZE", "jpg");
+		
+		res = Manipulate.resize(i, 1.5);
+		ImageModel.write(res, "batataRESIZEPERCENT", "jpg");
+		
+		Color c = new Color(255, 10, 200);
+		res = Brush.paint(i, 50, 50, 400, c);
+		ImageModel.write(res, "batataDRAWCIRCLE", "jpg");
+		
+		c = new Color(255, 200, 100);
+		res = Brush.paintSquare(i, 50, 50, 200, c);
+		ImageModel.write(res, "batataDRAWSQUARE", "jpg");
+		
+		c = new Color(255, 200, 100);
+		res = Bucket.paint(i, 200, 200, c, 6);
+		c = new Color(25, 200, 0);
+		res = Bucket.paint(res, 0, 0, c, 6);
+		ImageModel.write(res, "batataBUCKET", "jpg");
+		
 		ImageModel coolOldEffect = Convolution.convolution(i, Convolution.BLUR);
 		coolOldEffect = Enhancement.noise(coolOldEffect, 12);
 		coolOldEffect = Enhancement.poster(coolOldEffect, 5);
@@ -122,8 +154,26 @@ public class Main {
 		coolOldEffect = ColorScale.add(coolOldEffect, 0, 20);
 		coolOldEffect = ColorScale.add(coolOldEffect, 1, 20);
 		ImageModel.write(coolOldEffect, "wanted", "jpg");
+		*/
+		
+		res = Manipulate.rotate(i, - 2* Math.PI / 5);
+		ImageModel.write(res, "batataROTATE", "png");
+		
+		res = Manipulate.selectionCrop(i, 200, 200, 6);
+		ImageModel.write(i, "batataNOTSELECTIONCROP", "png");
+		
+		RegionModel eita = new RegionModel();
+		
+		int n = 300;
+		for(int j = 0; j < n; j++){
+			eita.addPoint(300, j);
+			eita.addPoint(j, j);
+		}
+		
+		eita.sort();
+		res = Manipulate.crop(i, eita);
+		ImageModel.write(res, "batataCROPREGION", "jpg");
 		
 		System.out.printf("THE END");
-		*/
 	}
 }

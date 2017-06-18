@@ -1,12 +1,14 @@
-package imageProcessing.filters;
+package filters;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.util.Arrays;
 
-import imageProcessing.models.ImageModel;
-import imageProcessing.utils.Utils;
-
+import models.ImageModel;
+import utils.Utils;
+/**
+ * Classe para a operação de convolução de matrizes
+ */
 public class Convolution {
 	static public double[][] BLUR = {
 		{0.04, 0.04, 0.04, 0.04, 0.04}, 
