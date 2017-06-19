@@ -111,33 +111,39 @@ public class Manipulate {
 	static public ImageModel rotate(ImageModel srcImage, double angle) {
 		Raster srcRaster = srcImage.getBufferedImage().getRaster();
 		ImageModel cnvImage = new ImageModel(srcRaster.getWidth(), srcRaster.getHeight(), BufferedImage.TYPE_INT_ARGB);
-		
+
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
-		
+
 		int i, j, k;
 		int x, y;
-		
+
 		for(i = 0; i < img.getHeight(); i++) {
 			for(j = 0; j < img.getWidth(); j++) {
 				x = (int) ((j - img.getWidth() / 2)* Math.cos(angle) - (i - img.getHeight() / 2) * Math.sin(angle));
-				x += img.getWidth() / 2; 
-				
+				x += img.getWidth() / 2;
+
 				y = (int) ((j - img.getWidth() / 2) * Math.sin(angle) + (i - img.getHeight() / 2) * Math.cos(angle));
 				y += img.getHeight() / 2;
-				
-				if(withinBorders(raster, x, y) && withinBorders(raster, x + 1, y)) {
+
+				if(withinBorders(raster, x, y)) {
 					for(k = 0; k < 3; k++) {
 						raster.setSample(x, y, k, srcRaster.getSample(j, i, k));
-						raster.setSample(x + 1, y, k, srcRaster.getSample(j, i, k));
+						if(withinBorders(raster, x + 1, y))
+							raster.setSample(x + 1, y, k, srcRaster.getSample(j, i, k));
+						if(withinBorders(raster, x, y + 1))
+							raster.setSample(x, y + 1, k, srcRaster.getSample(j, i, k));
 					}
-					
+
 					raster.setSample(x, y, k, 255);
-					raster.setSample(x + 1, y, k, 255);
+					if(withinBorders(raster, x + 1, y))
+						raster.setSample(x + 1, y, k, 255);
+					if(withinBorders(raster, x, y + 1))
+						raster.setSample(x, y + 1, k, 255);
 				}
 			}
 		}
-		
+
 		return new ImageModel(img);
 	}
 	

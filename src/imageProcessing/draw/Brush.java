@@ -29,10 +29,10 @@ public class Brush {
 		WritableRaster raster = bImg.getRaster();
 		
 		int i, j;
-		
+
 		for(i = y - r; i < y + r && i < bImg.getHeight(); i++) {
 			if(i > -1) {
-				for(j = y - r; j < y + r && j < bImg.getWidth(); j++) {
+				for(j = x - r; j < x + r && j < bImg.getWidth(); j++) {
 					if(j > -1 && getDistance(x, y, j, i) <= r) {
 						raster.setSample(j, i, 0, c.getRed());
 						raster.setSample(j, i, 1, c.getGreen());
@@ -64,7 +64,7 @@ public class Brush {
 		
 		for(i = y - size; i < y + size && i < bImg.getHeight(); i++) {
 			if(i > -1) {
-				for(j = y - size; j < y + size && j < bImg.getWidth(); j++) {
+				for(j = x - size; j < x + size && j < bImg.getWidth(); j++) {
 					if(j > -1) {
 						raster.setSample(j, i, 0, c.getRed());
 						raster.setSample(j, i, 1, c.getGreen());

@@ -2,11 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -50,14 +52,14 @@
          <children>
           <AnchorPane fx:id="leftMenu" minHeight="0.0" minWidth="0.0" prefHeight="691.0" prefWidth="158.0" stylesheets="@Main.css">
                <children>
-                  <ButtonBar layoutX="-3.0" layoutY="49.0">
-                     <buttons>
-                        <Button mnemonicParsing="false" stylesheets="@Main.css" text="Negative" />
-                     </buttons>
-                  </ButtonBar>
-                  <Button fx:id="undoButton" layoutY="174.0" mnemonicParsing="false" onAction="#undoButton" prefHeight="25.0" prefWidth="53.0" stylesheets="@Main.css" text="Undo" />
-                  <Button fx:id="redoButton" layoutY="220.0" mnemonicParsing="false" onAction="#redoButton" prefHeight="25.0" prefWidth="53.0" stylesheets="@Main.css" text="Redo" />
-                  <Button fx:id="paintButton" layoutX="-6.0" layoutY="85.0" mnemonicParsing="false" onAction="#paintButton" stylesheets="@Main.css" text="Paint" />
+                  <ButtonBar layoutX="-3.0" layoutY="49.0" />
+                  <Button fx:id="undoButton" layoutY="310.0" mnemonicParsing="false" onAction="#undoButton" prefHeight="25.0" prefWidth="53.0" stylesheets="@Main.css" text="Undo" />
+                  <Button fx:id="redoButton" layoutY="356.0" mnemonicParsing="false" onAction="#redoButton" prefHeight="25.0" prefWidth="53.0" stylesheets="@Main.css" text="Redo" />
+                  <Button fx:id="brushcirculo" layoutY="99.0" mnemonicParsing="false" onAction="#brushCircleButton" prefHeight="26.0" prefWidth="125.0" stylesheets="@Main.css" text="Brush Circulo" />
+                  <ColorPicker layoutY="49.0" />
+                  <Button fx:id="brushsquare" layoutY="138.0" mnemonicParsing="false" onAction="#brushSquareButton" stylesheets="@Main.css" text="Brush Quadrado" />
+                  <TextField fx:id="rotateText" layoutX="1.0" layoutY="202.0" prefHeight="26.0" prefWidth="111.0" promptText="Ângulo (graus)" />
+                  <Button fx:id="rotate" layoutX="124.0" layoutY="203.0" mnemonicParsing="false" onAction="#rotateButton" text="Rotate" />
                </children>
             </AnchorPane>
          </children>
@@ -66,7 +68,7 @@
    <center>
     <AnchorPane fx:id="centerMenu" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" stylesheets="@Main.css" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="imageview" fitHeight="375.0" fitWidth="528.0" layoutX="310.0" layoutY="144.0" onMouseClicked="#imageClicked" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imageView" fitHeight="375.0" fitWidth="528.0" layoutX="310.0" layoutY="144.0" onMouseClicked="#imageClicked" pickOnBounds="true" preserveRatio="true" />
             <Separator layoutX="-13.0" layoutY="-1.0" maxHeight="845.0" orientation="VERTICAL" prefHeight="711.0" prefWidth="20.0" stylesheets="@Main.css" />
          </children>
       </AnchorPane>

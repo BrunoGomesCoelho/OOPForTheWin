@@ -1,20 +1,33 @@
 package GUI.Main;
 
+import GUI.CurrentImage;
+import static GUI.Main.Utils.resizePixel;
+
+import imageProcessing.Filters.Manipulate;
 import imageProcessing.Models.ImageModel;
+import static imageProcessing.draw.Brush.paint;
+import static imageProcessing.draw.Brush.paintSquare;
+
+import static imageProcessing.Filters.Manipulate.rotate;
 
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 
 import java.awt.*;
 import java.io.File;
@@ -22,11 +35,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import GUI.CurrentImage;
 
-import javax.imageio.ImageIO;
 
-import static imageProcessing.draw.Brush.paint;
 
 /**
  * Class that implements the controllers for the Main window
@@ -36,12 +46,14 @@ public class MainController implements Initializable{
     private static File currentFile = null;
     private static CurrentImage currentImage;
 
-    @FXML private ImageView imageview;
+    @FXML private ImageView imageView;
+    @FXML private javafx.scene.control.TextField rotateText;
 
-    private boolean paintButtonOn;
+	private boolean brushCircleButtonOn;
+	private boolean brushSquareButtonOn;
 
 
-    /**
+	/**
      *  Gets the image being displayed
      *
      *  @return The current image
@@ -105,7 +117,8 @@ public class MainController implements Initializable{
 
             currentFile = file;
             currentImage.setImage(new Image(file.toURI().toString()));
-            imageview.setImage(currentImage.getImage());
+            imageView.setImage(currentImage.getImage());
+            imageView.setPickOnBounds(true); // Allows us to click on the borders of the image
         }
     }
 
@@ -174,7 +187,7 @@ public class MainController implements Initializable{
 
     public void refresh() {
         if (currentImage.hasImage()) {
-            imageview.setImage(currentImage.getImage());
+            imageView.setImage(currentImage.getImage());
         }
     }
 
@@ -233,11 +246,17 @@ public class MainController implements Initializable{
     /*                          Buttons
     ====================================================================== */
 
-    public void imageClicked(MouseEvent event) {
-    	if (paintButtonOn) {
-    		paintImage(event);
-	    }
-    }
+	public void undoButton(ActionEvent event) {
+		currentImage.undo();
+		refreshButton(event);
+	}
+
+
+	public void redoButton(ActionEvent event) {
+		currentImage.redo();
+		refreshButton(event);
+	}
+
 
     public void colorPickerButton(MouseEvent event) {
         /* TODO: Fazer algo com isso.
@@ -248,36 +267,78 @@ public class MainController implements Initializable{
     }
 
 
-    public void paintButton() {
-    	paintButtonOn = true;
-    }
+	public void rotateButton(ActionEvent event) {
+		ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(currentImage.getImage(), null));
+		String text = rotateText.getText();
+		double angle, rad;
+
+		System.out.println("chegou aqui"); // TODO
+		// If the user has not writen a valid angle, abort
+		try {
+			angle = Double.parseDouble(text);
+		} catch(NumberFormatException e) {
+			System.out.println("The user did not put in a valid angle, aborting");
+			return;
+		}
+
+		rad = (2*Math.PI * angle) / 360; // Converting the angle to radians
+
+		newModel = Manipulate.rotate(model, rad);
+		currentImage.setImage(SwingFXUtils.toFXImage(newModel.getBufferedImage(), null));
+		refresh();
+	}
 
 
-    public void paintImage(MouseEvent event) {
-    	// TODO: this
-	    Image img = MainController.getImage();
+    public void brushCircleButton() { brushCircleButtonOn = true; }
+
+    public void brushSquareButton() { brushSquareButtonOn = true; }
+
+
+    /*                          Image Clicked
+    ====================================================================== */
+
+
+	public void imageClicked(MouseEvent event) {
+		if (! currentImage.hasImage()) // If theres no image on screen, abort
+			return;
+
+		else if (brushCircleButtonOn)
+			brushCircle(event);
+		else if (brushSquareButtonOn)
+			brushSquare(event);
+	}
+
+
+	private void brushSquare(MouseEvent event) {
+		// Inicializing images and models
+		ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(currentImage.getImage(), null));
+
+		// Brush information
+		int brushSize = 10;
+		Color black = new Color(0, 0,0 );
+
+		double[] imagePixels = resizePixel(imageView, event.getX(), event.getY());
+
+		newModel = paintSquare(model, (int) imagePixels[0], (int) imagePixels[1], brushSize, black);
+
+		currentImage.setImage(SwingFXUtils.toFXImage(newModel.getBufferedImage(), null));
+		refresh();
+	}
+
+	private void brushCircle(MouseEvent event) {
+    	// Inicializing images and models
 	    ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(currentImage.getImage(), null));
 
+	    // Brush information
 	    int brushSize = 10;
 	    Color black = new Color(0, 0,0 );
 
-	    newModel = paint(model, (int) event.getY(), (int) event.getX(), brushSize, black);
-	    System.out.println("entrou aqui tá gente");
-	    System.out.println("["+ (int) event.getX()+", "+(int) event.getY()+"]");
+		double[] imagePixels = resizePixel(imageView, event.getX(), event.getY());
+
+	    newModel = paint(model, (int) imagePixels[0], (int) imagePixels[1], brushSize, black);
+	    //newModel = imageProcessing.draw.Bucket.paint(model, (int) x, (int) y, brushSize, black);
 	    currentImage.setImage(SwingFXUtils.toFXImage(newModel.getBufferedImage(), null));
 	    refresh();
-    }
-
-
-    public void undoButton(ActionEvent event) {
-        currentImage.undo();
-        refreshButton(event);
-    }
-
-
-    public void redoButton(ActionEvent event) {
-        currentImage.redo();
-        refreshButton(event);
     }
 
     // Image ==================================================================
