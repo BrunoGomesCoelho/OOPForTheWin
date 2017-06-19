@@ -90,7 +90,7 @@ public class RegionModel {
 	 * @param j - coordenadas do pixel
 	 * @param level - n�vel de detalhe da sele��o - 0 � 8 (ordem de detalhe decrescente)
 	 * @param ref - cor de refer�ncia da regi�o
-	 * @return // TODO, não sei o eu vem aqui
+	 * @return a região que tem a mesma cor que a passada
 	 */
 	static private boolean sameRegion(Raster raster, int i, int j, int level, Color ref){
 		return (raster.getSample(j, i, 0) >> level << level == ref.getRed() &&

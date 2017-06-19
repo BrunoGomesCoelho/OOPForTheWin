@@ -14,23 +14,6 @@ public class ImageModel {
 
 	private String lastFilter;
 
-	// TODO: acho que da pra deletar isso (B)
-	public ImageModel(String filename) {
-		BufferedImage image;
-		File inFile;
-
-		try {
-			inFile = new File(filename);
-			image = ImageIO.read(inFile);
-
-			this.image = image;
-		} catch (Exception e) {
-			System.out.println("Could not read the file");
-			this.image = null;
-		}
-	}
-
-
 	public ImageModel(Image image) {
 		this.image = (BufferedImage) image;
 	}

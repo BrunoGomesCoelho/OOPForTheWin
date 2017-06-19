@@ -101,8 +101,17 @@ public class MainController implements Initializable{
      * @param event: the button being pressed
      */
     public void newButton(ActionEvent event) {
-        // TODO: não está funfando
-	    WritableImage image = new WritableImage(1280, 720);
+	    int width = 1280, height = 720;
+	    WritableImage image = new WritableImage(width, height);
+	    Color white = new Color(255, 255, 255);
+
+
+	    // The image created has its pixels as transparent, so we set all of them as white
+	    for (int i = 0; i < width; i++) {
+		    for (int j = 0; j < height; j++) {
+			    image.getPixelWriter().setColor(i, j, convertColorToAwt(white));
+		    }
+	    }
 
 	    currentImage.setImage(image);
 	    imageView.setImage(currentImage.getImage());
@@ -125,9 +134,6 @@ public class MainController implements Initializable{
 
         // If the user select an image, show it
         if (file != null) {
-            // For test purpose only TODO deletar
-            System.out.println(file.getAbsolutePath());
-
             currentFile = file;
             currentImage.setImage(new Image(file.toURI().toString()));
             imageView.setImage(currentImage.getImage());
@@ -146,12 +152,10 @@ public class MainController implements Initializable{
             return;
         String extension = Utils.fileExtension(currentFile);
 
-        // TODO: Testar isso depois de termos algo que edite a imagem
         try {
             ImageIO.write(SwingFXUtils.fromFXImage(currentImage.getImage(),
                     null), extension, currentFile);
         } catch (IOException ex) {
-            // TODO; essa é a melhor maneira de ignorar isso...?
             System.out.println(ex.getMessage());
         }
     }
@@ -172,7 +176,6 @@ public class MainController implements Initializable{
                 ImageIO.write(SwingFXUtils.fromFXImage(currentImage.getImage(),
                         null), extension, file);
             } catch (IOException ex) {
-                // TODO; essa é a melhor maneira de ignorar isso...?
                 System.out.println(ex.getMessage());
             }
         }
@@ -198,7 +201,7 @@ public class MainController implements Initializable{
     }
 
 
-    public void refresh() {
+    private void refresh() {
         if (currentImage.hasImage()) {
             imageView.setImage(currentImage.getImage());
         }
@@ -244,7 +247,7 @@ public class MainController implements Initializable{
      * It's linked to (Filter -> Select a Filter) button at the menu bar
      *
      * @param event: the button being pressed
-     * @throws Exception: TODO
+     * @throws Exception: if the filter file is not found
      */
     public void selectFilterButton(ActionEvent event) throws Exception{
         Stage filterStage = new Stage();
@@ -264,7 +267,7 @@ public class MainController implements Initializable{
      * Method that opens the about window. It's linked to (Help -> About) button at the menu bar
      * @param event: the "About" button being pressed
      *
-     * @throws IOException: TODO
+     * @throws IOException: if the filter file is not found
      */
     public void aboutButton(ActionEvent event) throws IOException {
         Stage aboutStage = new Stage();

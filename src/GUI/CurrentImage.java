@@ -59,7 +59,6 @@ public class CurrentImage {
     }
 
 
-    // TODO: Testar a função undo & a redo
     /**
      * Undo the last edit done to a image, similar to using "CTRL z" in most programs.
      */
@@ -71,7 +70,7 @@ public class CurrentImage {
             temp = this.previous.remove(this.previous.size() - 1); // Removing it from the undo list
             next.add(this.image); // We add it to the redo list
             this.image = temp;
-        } catch(IndexOutOfBoundsException e) { // TODO: criar um tipo de exceção para isso
+        } catch(IndexOutOfBoundsException e) {
             System.out.println(e);
             this.valid = false;
         }
@@ -88,7 +87,7 @@ public class CurrentImage {
             this.previous.add(this.image);
             this.image = temp;
             undoDone = true;
-        } catch(IndexOutOfBoundsException e) { // TODO: criar um tipo de exceção para isso
+        } catch(IndexOutOfBoundsException e) {
             System.out.println(e);
         }
     }

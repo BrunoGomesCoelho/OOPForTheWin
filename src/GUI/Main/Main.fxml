@@ -73,7 +73,7 @@
    <center>
     <AnchorPane fx:id="centerMenu" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" stylesheets="@Main.css" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="imageView" fitHeight="375.0" fitWidth="528.0" layoutX="310.0" layoutY="144.0" onMouseClicked="#imageClicked" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imageView" fitHeight="375.0" fitWidth="528.0" layoutX="310.0" layoutY="144.0" onMouseClicked="#imageClicked" onMouseDragged="#imageClicked" pickOnBounds="true" preserveRatio="true" />
             <Separator layoutX="-13.0" layoutY="-1.0" maxHeight="845.0" orientation="VERTICAL" prefHeight="711.0" prefWidth="20.0" stylesheets="@Main.css" />
          </children>
       </AnchorPane>

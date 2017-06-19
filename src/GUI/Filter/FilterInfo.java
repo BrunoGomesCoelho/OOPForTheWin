@@ -37,8 +37,6 @@ public class FilterInfo {
     	return model.getLastFilter();
     }
 
-    // TODO: Chamar as funções do Cyrillo aqui. Usar uns parâmetros decentes porque não sei o que to passando (B)
-
      public static Image nextFilter(Image image) {
         switch (count++) {
             case 0: // TODO: paramêtro, valor de 0 a 255
@@ -85,10 +83,11 @@ public class FilterInfo {
                 return Enhancement.noise(model, 122).getBufferedImage();
 	            // return backup.getBufferedImage();
 
-            case 13:    // TODO: parametro
-                // TODO: Acho que se a imagem não for no mínimo 10 por 10 pixels vai dar ruim
-                return Enhancement.pixelate(model, 10).getBufferedImage();
-	            // return backup.getBufferedImage();
+            case 13:
+            	// TODO: parametro
+	            if (model.getBufferedImage().getHeight() > 15 && model.getBufferedImage().getWidth() > 15)
+                    return Enhancement.pixelate(model, 15).getBufferedImage();
+	            return model.getBufferedImage();
 
             case 14:    // TODO: parametro
                 return Enhancement.poster(model, 6).getBufferedImage();
@@ -110,10 +109,8 @@ public class FilterInfo {
             case 19:
                 return Manipulate.mirror(model, "horizontal").getBufferedImage();
 
-            // TODO: adicionar Manipulate.resize & Manipulate.rotate depois que prontos
-
             default:
-                throw new RuntimeException("Invalid filter counter called"); // TODO: add own type of exception
+                throw new RuntimeException("Invalid filter counter called");
         }
     }
 
@@ -122,7 +119,7 @@ public class FilterInfo {
     public String toString() {
         if ( count <= filterCount)
             return model.getLastFilter();
-        throw new RuntimeException("Invalid filter counter passed as argument"); // TODO: add own type of exception
+        throw new RuntimeException("Invalid filter counter passed as argument");
     }
 
 }
