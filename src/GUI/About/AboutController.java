@@ -8,7 +8,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by marcello on 06/06/17.
+ * Class that implements the controllers for the "About Page" window
  */
 public class AboutController implements Initializable {
 

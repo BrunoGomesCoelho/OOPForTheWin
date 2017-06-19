@@ -1,6 +1,5 @@
 package GUI.Main;
 
-import GUI.Filter.FilterController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

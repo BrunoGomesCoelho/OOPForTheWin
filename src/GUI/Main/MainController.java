@@ -27,6 +27,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 
 import javafx.stage.FileChooser;
@@ -55,7 +56,6 @@ public class MainController implements Initializable{
     @FXML private ColorPicker colorPicker;
     @FXML private TextField largura;
 	@FXML private TextField altura;
-
 
 	private boolean brushCircleButtonOn;
 	private boolean brushSquareButtonOn;
@@ -91,19 +91,22 @@ public class MainController implements Initializable{
     }
 
 
-    /*                          Menu
-    ======================================================================== */
 
     // File ==================================================================
 
     /**
-     * Opens a new window to select a blank image, choosing the color and size
+     * Create a new 1280 x 720 blank white image.
      * Linked to File -> New button
      *
      * @param event: the button being pressed
      */
     public void newButton(ActionEvent event) {
-        //  TODO Create a window when press the "new" button
+        // TODO: não está funfando
+	    WritableImage image = new WritableImage(1280, 720);
+
+	    currentImage.setImage(image);
+	    imageView.setImage(currentImage.getImage());
+	    imageView.setPickOnBounds(true); // Allows us to click on the borders of the image
     }
 
 
@@ -210,8 +213,6 @@ public class MainController implements Initializable{
     public void refreshButton(ActionEvent event) {
         refresh();
     }
-
-
 
 	public void resizeButton(ActionEvent event) {
     	if (!currentImage.hasImage()) // If we don't currently have a valid image, abort

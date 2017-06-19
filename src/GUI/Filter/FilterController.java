@@ -5,7 +5,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -25,17 +24,13 @@ import java.util.stream.IntStream;
 
 
 /**
- * Class used to manipulate the image an apply Filters
- *
- *
+ * Class used to manipulate the image and apply filters inside the "Filter" window
  */
 public class FilterController implements Initializable {
 
     @FXML private Label message;
     @FXML private ImageView preview = null;
     @FXML private ListView<VBox> list;
-
-    public ImageView imageView;
 
 
     /**
@@ -74,12 +69,7 @@ public class FilterController implements Initializable {
         cell.getChildren().addAll(prv, filterName);
 
         // Set function to do when clicked
-        cell.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                preview.setImage(prv.getImage());
-            }
-        });
+        cell.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> preview.setImage(prv.getImage()));
 
         return cell;
     }
@@ -89,9 +79,6 @@ public class FilterController implements Initializable {
         // Get the image from the main window
         Image img = MainController.getImage();
 
-        // Compute how long it takes to open this window
-        long start = System.currentTimeMillis();
-
         // If there's an image at the main window
         if (img != null) {
             // Set the large image
@@ -100,11 +87,6 @@ public class FilterController implements Initializable {
             FilterInfo filters = new FilterInfo(SwingFXUtils.fromFXImage(img,
                     null));
             ObservableList<VBox> items = FXCollections.observableArrayList();
-
-            /* For normal para debugar os filtros TODO: remove
-            for(int i = 0; i<FilterInfo.getFilterCount(); i++)
-                items.add(populate(img));
-             */
 
             // Parallel loop -- Uses the number of cores the machine has
             // Apply every filter at the image and put them at the list
@@ -117,9 +99,6 @@ public class FilterController implements Initializable {
 
         // Set the text asking to open an image
         else message.setText("Abra uma imagem para selecionar um filtro");
-
-        // Show how long it took to open this window TODO:remove
-        System.out.println((System.currentTimeMillis() - start) / 1000.0 + " s");
 
         FilterInfo.clearFilterCount();
     }

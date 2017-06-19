@@ -15,36 +15,29 @@ import java.awt.*;
  * Created by Bruno on 08/06/2017.
  */
 public class FilterInfo {
-    static private String[] names = {"ColorScale", "Convolution", "Enhancement", "Manipulate"};
 
 	static private int filterCount = 20;
     static private int count;
     static private ImageModel model;
 
-    // TODO: Deletar depois que todos os filtros estejam funcioando
-    static private ImageModel backup;
-
-    public FilterInfo(Image image) {
+    FilterInfo(Image image) {
         count = 0;
         model = new ImageModel(image);
-        backup = new ImageModel(image);
     }
 
-	public static int getFilterCount() {
+	static int getFilterCount() {
 		return filterCount;
 	}
 
-	public static void clearFilterCount() {
+	static void clearFilterCount() {
         count = 0;
     }
 
-    public static String getFilterName() {
+    static String getFilterName() {
     	return model.getLastFilter();
     }
 
     // TODO: Chamar as funções do Cyrillo aqui. Usar uns parâmetros decentes porque não sei o que to passando (B)
-
-	// TODO: não seria bom perguntar para o usuário escolher um valor para o(s) parametro(s) ?
 
      public static Image nextFilter(Image image) {
         switch (count++) {
@@ -53,7 +46,7 @@ public class FilterInfo {
 	            // return backup.getBufferedImage();
 
             case 1: // TODO: paramêtro
-                return ColorScale.scale(model, "blue", 1.8).getBufferedImage();
+                return ColorScale.scale(model, "blue", 4).getBufferedImage();
 	            // return backup.getBufferedImage();
 
             case 2:
@@ -72,7 +65,7 @@ public class FilterInfo {
                 return Enhancement.binary(model).getBufferedImage();
 
             case 7: // TODO: paramêtro entre -1 e 1
-                return Enhancement.bright(model, 0.5).getBufferedImage();
+                return Enhancement.bright(model, 0.8).getBufferedImage();
 	            // return backup.getBufferedImage();
 
             case 8:
@@ -98,14 +91,14 @@ public class FilterInfo {
 	            // return backup.getBufferedImage();
 
             case 14:    // TODO: parametro
-                return Enhancement.poster(model, 4).getBufferedImage();
+                return Enhancement.poster(model, 6).getBufferedImage();
 	            // return backup.getBufferedImage();
 
             case 15:
                 return Enhancement.radioactive(model).getBufferedImage();
 
             case 16:    // TODO: parametro
-                return Enhancement.saturate(model, 0.5).getBufferedImage();
+                return Enhancement.saturate(model, 0.8).getBufferedImage();
 	            // return backup.getBufferedImage();
 
             case 17:    // TODO: tem outros tipos de vignette, escolhi esse por enquanto
@@ -127,7 +120,7 @@ public class FilterInfo {
 
     @Override
     public String toString() {
-        if ( count <= filterCount) // TODO: verificar se menor ou igual funciona
+        if ( count <= filterCount)
             return model.getLastFilter();
         throw new RuntimeException("Invalid filter counter passed as argument"); // TODO: add own type of exception
     }

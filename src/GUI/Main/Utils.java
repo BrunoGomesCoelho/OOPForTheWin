@@ -59,7 +59,7 @@ class Utils {
         fc.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
                 new FileChooser.ExtensionFilter("PNG", "*.png"),
-	            new FileChooser.ExtensionFilter("PNG", "*.jpg"));
+	            new FileChooser.ExtensionFilter("JPG", "*.jpg"));
         return fc;
     }
 
