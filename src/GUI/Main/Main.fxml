@@ -53,8 +53,8 @@
           <AnchorPane fx:id="leftMenu" minHeight="0.0" minWidth="0.0" prefHeight="691.0" prefWidth="158.0" stylesheets="@Main.css">
                <children>
                   <ButtonBar layoutX="-3.0" layoutY="49.0" />
-                  <Button fx:id="undoButton" layoutY="380.0" mnemonicParsing="false" onAction="#undoButton" prefHeight="25.0" prefWidth="53.0" stylesheets="@Main.css" text="Undo" />
-                  <Button fx:id="redoButton" layoutY="426.0" mnemonicParsing="false" onAction="#redoButton" prefHeight="25.0" prefWidth="53.0" stylesheets="@Main.css" text="Redo" />
+                  <Button fx:id="undoButton" layoutY="514.0" mnemonicParsing="false" onAction="#undoButton" prefHeight="25.0" prefWidth="53.0" stylesheets="@Main.css" text="Undo" />
+                  <Button fx:id="redoButton" layoutY="560.0" mnemonicParsing="false" onAction="#redoButton" prefHeight="25.0" prefWidth="53.0" stylesheets="@Main.css" text="Redo" />
                   <Button fx:id="brushcirculo" layoutY="121.0" mnemonicParsing="false" onAction="#brushCircleButton" prefHeight="26.0" prefWidth="125.0" stylesheets="@Main.css" text="Brush Circulo" />
                   <ColorPicker fx:id="colorPicker" layoutY="77.0" />
                   <Button fx:id="brushsquare" layoutY="160.0" mnemonicParsing="false" onAction="#brushSquareButton" stylesheets="@Main.css" text="Brush Quadrado" />
@@ -62,6 +62,9 @@
                   <Button fx:id="rotate" layoutX="120.0" layoutY="285.0" mnemonicParsing="false" onAction="#rotateButton" text="Rotate" />
                   <Button fx:id="bucket" layoutX="1.0" layoutY="204.0" mnemonicParsing="false" onAction="#bucketButton" stylesheets="@Main.css" text="Bucket" />
                   <Button fx:id="colorSelector" layoutY="36.0" mnemonicParsing="false" onAction="#colorSelectorButton" stylesheets="@Main.css" text="Selecionar cor" />
+                  <Button fx:id="resize" layoutY="370.0" mnemonicParsing="false" onAction="#resizeButton" prefHeight="26.0" prefWidth="125.0" stylesheets="@Main.css" text="Resize" />
+                  <TextField fx:id="largura" layoutX="46.0" layoutY="407.0" prefHeight="26.0" prefWidth="111.0" promptText="Largura" />
+                  <TextField fx:id="altura" layoutX="46.0" layoutY="442.0" prefHeight="26.0" prefWidth="111.0" promptText="Altura" />
                </children>
             </AnchorPane>
          </children>

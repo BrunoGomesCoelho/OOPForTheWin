@@ -1,9 +1,7 @@
 package imageProcessing.utils;
 
 import imageProcessing.Models.ImageModel;
-import javafx.scene.paint.*;
 
-import java.awt.*;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;

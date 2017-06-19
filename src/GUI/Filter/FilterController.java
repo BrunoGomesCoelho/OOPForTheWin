@@ -116,7 +116,7 @@ public class FilterController implements Initializable {
         }
 
         // Set the text asking to open an image
-        else message.setText("Open an image to select a filter");
+        else message.setText("Abra uma imagem para selecionar um filtro");
 
         // Show how long it took to open this window TODO:remove
         System.out.println((System.currentTimeMillis() - start) / 1000.0 + " s");

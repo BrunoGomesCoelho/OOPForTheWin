@@ -2,15 +2,16 @@ package GUI.Main;
 
 import GUI.CurrentImage;
 
-import static imageProcessing.utils.Utils.convertColorToAwt;
-import static imageProcessing.utils.Utils.convertColorToScene;
-import static GUI.Main.Utils.resizePixel;
-
 import imageProcessing.Filters.Manipulate;
 import imageProcessing.Models.ImageModel;
+
+import static imageProcessing.utils.Utils.convertColorToAwt;
+import static imageProcessing.utils.Utils.convertColorToScene;
+import static imageProcessing.utils.Utils.colorSelect;
+import static GUI.Main.Utils.resizePixel;
 import static imageProcessing.draw.Brush.paint;
 import static imageProcessing.draw.Brush.paintSquare;
-import static imageProcessing.utils.Utils.colorSelect;
+import static imageProcessing.Filters.Manipulate.resize;
 
 import imageProcessing.draw.Bucket;
 import javafx.application.Platform;
@@ -52,6 +53,9 @@ public class MainController implements Initializable{
     @FXML private ImageView imageView;
     @FXML private javafx.scene.control.TextField rotateText;
     @FXML private ColorPicker colorPicker;
+    @FXML private TextField largura;
+	@FXML private TextField altura;
+
 
 	private boolean brushCircleButtonOn;
 	private boolean brushSquareButtonOn;
@@ -111,7 +115,7 @@ public class MainController implements Initializable{
      */
     public void openButton(ActionEvent event) {
         // Set up the file chooser
-        FileChooser fc = Utils.fileWindow("Abrir imagen");
+        FileChooser fc = Utils.fileWindowOpen("Abrir imagen");
 
         // Search for an image
         File file = fc.showOpenDialog(null);
@@ -156,7 +160,7 @@ public class MainController implements Initializable{
      * @param event: the "save as" button being pressed
      */
     public void saveAsButton(ActionEvent event) {
-        FileChooser fc = Utils.fileWindow("Salvar imagem");
+        FileChooser fc = Utils.fileWindowSave("Salvar imagem");
         File file = fc.showSaveDialog(null);
 
         if (file != null && currentImage.getImage() != null) {
@@ -205,6 +209,29 @@ public class MainController implements Initializable{
      */
     public void refreshButton(ActionEvent event) {
         refresh();
+    }
+
+
+
+	public void resizeButton(ActionEvent event) {
+    	if (!currentImage.hasImage()) // If we don't currently have a valid image, abort
+    		return;
+
+		ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(currentImage.getImage(), null));
+		int x, y;
+
+		// Try reading the information from the user, if it fails we abort
+		try {
+			x = Integer.parseInt(largura.getText());
+			y = Integer.parseInt(altura.getText());
+		} catch (NumberFormatException e) {
+			System.out.println("The user did not put in a valid angle, aborting");
+			return;
+		}
+
+		newModel = resize(model, x, y);
+		currentImage.setImage(SwingFXUtils.toFXImage(newModel.getBufferedImage(), null));
+		refresh();
     }
 
 
@@ -265,6 +292,9 @@ public class MainController implements Initializable{
 
 
 	public void rotateButton(ActionEvent event) {
+		if (!currentImage.hasImage()) // If we don't currently have a valid image, abort
+			return;
+
 		ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(currentImage.getImage(), null));
 		String text = rotateText.getText();
 		double angle, rad;

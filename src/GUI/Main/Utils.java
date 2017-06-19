@@ -2,15 +2,12 @@ package GUI.Main;
 
 import javafx.geometry.Bounds;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.*;
 import javafx.stage.FileChooser;
 
-import java.awt.*;
-import java.awt.Color;
 import java.io.File;
 
 /**
- * Class that implements basic behaviours for the GUI
+ * Class that implements basic behaviours for the GUI.
  */
 class Utils {
 
@@ -32,8 +29,7 @@ class Utils {
         double x = oldX / xScale;
         double y = oldY / yScale;
 
-        double[] newPixels = {x, y};
-        return newPixels;
+	    return new double[]{x, y};
     }
 
 
@@ -48,13 +44,41 @@ class Utils {
 
     }
 
-    static FileChooser fileWindow(String s) {
+
+	/**
+	 * Functions that opens a window to let us choose a image to be opened.
+	 * We allow jpg, jpeg, and png file to be used.
+	 *
+	 * @param s: The title of the window
+	 * @return: A new FileChooser object
+	 */
+	static FileChooser fileWindowOpen(String s) {
         FileChooser fc = new FileChooser();
         fc.setTitle(s);
         fc.setInitialDirectory(new File(System.getProperty("user.home")));
         fc.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
-                new FileChooser.ExtensionFilter("PNG", "*.png"));
+                new FileChooser.ExtensionFilter("PNG", "*.png"),
+	            new FileChooser.ExtensionFilter("PNG", "*.jpg"));
         return fc;
     }
+
+
+	/**
+	 * Functions that opens a window to let us choose a image to be saved.
+	 * We allow jpeg and png file to be used. Jpg files are excluded since they do not work well
+	 * with image processing.
+	 *
+	 * @param s: The title of the window
+	 * @return: A new FileChooser object
+	 */
+	static FileChooser fileWindowSave(String s) {
+		FileChooser fc = new FileChooser();
+		fc.setTitle(s);
+		fc.setInitialDirectory(new File(System.getProperty("user.home")));
+		fc.getExtensionFilters().addAll(
+				new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
+				new FileChooser.ExtensionFilter("PNG", "*.png"));
+		return fc;
+	}
 }
