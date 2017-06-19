@@ -1,5 +1,7 @@
 package GUI.Main;
 
+import imageProcessing.Models.ImageModel;
+
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -14,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +25,8 @@ import java.util.ResourceBundle;
 import GUI.CurrentImage;
 
 import javax.imageio.ImageIO;
+
+import static imageProcessing.draw.Brush.paint;
 
 /**
  * Class that implements the controllers for the Main window
@@ -32,6 +37,8 @@ public class MainController implements Initializable{
     private static CurrentImage currentImage;
 
     @FXML private ImageView imageview;
+
+    private boolean paintButtonOn;
 
 
     /**
@@ -226,12 +233,39 @@ public class MainController implements Initializable{
     /*                          Buttons
     ====================================================================== */
 
-    public void ColorPicker(MouseEvent event) {
+    public void imageClicked(MouseEvent event) {
+    	if (paintButtonOn) {
+    		paintImage(event);
+	    }
+    }
+
+    public void colorPickerButton(MouseEvent event) {
         /* TODO: Fazer algo com isso.
          Por enquanto só imprime no console. Importante resaltar que ele pega a posição mesmo se nenhuma imagem
             estiver na tela, contanto que esteja dentro do quadrado do imageView
           */
         System.out.println("["+event.getX()+", "+event.getY()+"]");
+    }
+
+
+    public void paintButton() {
+    	paintButtonOn = true;
+    }
+
+
+    public void paintImage(MouseEvent event) {
+    	// TODO: this
+	    Image img = MainController.getImage();
+	    ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(currentImage.getImage(), null));
+
+	    int brushSize = 10;
+	    Color black = new Color(0, 0,0 );
+
+	    newModel = paint(model, (int) event.getY(), (int) event.getX(), brushSize, black);
+	    System.out.println("entrou aqui tá gente");
+	    System.out.println("["+ (int) event.getX()+", "+(int) event.getY()+"]");
+	    currentImage.setImage(SwingFXUtils.toFXImage(newModel.getBufferedImage(), null));
+	    refresh();
     }
 
 
