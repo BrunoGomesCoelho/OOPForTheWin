@@ -84,25 +84,12 @@ public class ImageModel {
 		 return new ImageModel(img);
 	}
 
-
-	// TODO: acho que da para deletar isso (B)
-	public static boolean write(ImageModel image, String filename, String type) {
-		File file;
-
-		try {
-			file = new File(filename + "." + type);
-			ImageIO.write(image.getBufferedImage(), type, file);
-			return true;
-		} catch (Exception e) {
-			System.out.println("Could not write the file");
-			return false;
-		}
-	}
 	
 	private static boolean isInside(Raster r, int i, int j){
 		return (i > -1 && j > -1 && i < r.getHeight() && j < r.getWidth());
 	}
-	
+
+
 	public static ImageModel blend(ImageModel img1, ImageModel img2, int x, int y, double p) {
 		ImageModel cnvImage = img1.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
@@ -154,4 +141,5 @@ public class ImageModel {
 		
 		return new ImageModel(img);
 	}
+
 }

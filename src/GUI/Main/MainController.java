@@ -2,15 +2,15 @@ package GUI.Main;
 
 import GUI.CurrentImage;
 
-import static GUI.Main.Utils.convertColor;
+import static imageProcessing.utils.Utils.convertColorToAwt;
+import static imageProcessing.utils.Utils.convertColorToScene;
 import static GUI.Main.Utils.resizePixel;
 
 import imageProcessing.Filters.Manipulate;
 import imageProcessing.Models.ImageModel;
 import static imageProcessing.draw.Brush.paint;
 import static imageProcessing.draw.Brush.paintSquare;
-
-import static imageProcessing.Filters.Manipulate.rotate;
+import static imageProcessing.utils.Utils.colorSelect;
 
 import imageProcessing.draw.Bucket;
 import javafx.application.Platform;
@@ -32,7 +32,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
-import java.awt.*;
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -56,6 +56,7 @@ public class MainController implements Initializable{
 	private boolean brushCircleButtonOn;
 	private boolean brushSquareButtonOn;
 	private boolean bucketButtonOn;
+	private boolean colorSelectorButtonOn;
 
 
 	/**
@@ -268,7 +269,6 @@ public class MainController implements Initializable{
 		String text = rotateText.getText();
 		double angle, rad;
 
-		System.out.println("chegou aqui"); // TODO
 		// If the user has not writen a valid angle, abort
 		try {
 			angle = Double.parseDouble(text);
@@ -299,8 +299,14 @@ public class MainController implements Initializable{
 		buttonsOff();
 		bucketButtonOn = true;
 	}
+
+	public void colorSelectorButton() {
+		buttonsOff();
+		colorSelectorButtonOn = true;
+	}
 	
 	private void buttonsOff() {
+		colorSelectorButtonOn = false;
 		bucketButtonOn = false;
 		brushSquareButtonOn = false;
 		brushCircleButtonOn = false;
@@ -322,6 +328,16 @@ public class MainController implements Initializable{
 			brushSquare(event);
 		else if (bucketButtonOn)
 			bucket(event);
+		else if (colorSelectorButtonOn)
+			colorSelector(event);
+	}
+
+	private void colorSelector(MouseEvent event) {
+		ImageModel model = new ImageModel(SwingFXUtils.fromFXImage(currentImage.getImage(), null));
+		double[] imagePixels = resizePixel(imageView, event.getX(), event.getY());
+
+		javafx.scene.paint.Color color = convertColorToAwt(colorSelect(model, (int) imagePixels[0], (int) imagePixels[1]));
+		colorPicker.setValue(color);
 	}
 
 
@@ -331,7 +347,7 @@ public class MainController implements Initializable{
 
 		// Brush information
 		int brushSize = 10;
-		Color color = convertColor(colorPicker.getValue());
+		Color color = convertColorToScene(colorPicker.getValue());
 
 		double[] imagePixels = resizePixel(imageView, event.getX(), event.getY());
 
@@ -347,7 +363,7 @@ public class MainController implements Initializable{
 
 	    // Brush information
 	    int brushSize = 10;
-		Color color = convertColor(colorPicker.getValue());
+		Color color = convertColorToScene(colorPicker.getValue());
 
 		double[] imagePixels = resizePixel(imageView, event.getX(), event.getY());
 
@@ -361,8 +377,8 @@ public class MainController implements Initializable{
 		ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(currentImage.getImage(), null));
 
 		// Bucket information
-		int level = 3;
-		Color color = convertColor(colorPicker.getValue());
+		int level = 6;
+		Color color = convertColorToScene(colorPicker.getValue());
 
 		double[] imagePixels = resizePixel(imageView, event.getX(), event.getY());
 
