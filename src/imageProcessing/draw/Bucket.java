@@ -33,8 +33,6 @@ public class Bucket {
 		
 		int i, j;
 
-		System.out.println("image height: " + raster.getHeight() + "image width: " + raster.getWidth() + " ");
-		
 		for(i = 0; i < raster.getHeight(); i++) {
 			for(j = 0; j < raster.getWidth(); j++) {
 				if(raster.getSample(j, i, 0) >> level << level == selected.getRed() &&

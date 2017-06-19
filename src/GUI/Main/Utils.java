@@ -2,8 +2,11 @@ package GUI.Main;
 
 import javafx.geometry.Bounds;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.*;
 import javafx.stage.FileChooser;
 
+import java.awt.*;
+import java.awt.Color;
 import java.io.File;
 
 /**
@@ -34,6 +37,21 @@ class Utils {
     }
 
 
+	/**
+	 * Method that converts a javafx.scene.paint.Color to java.awt.Color.
+	 *
+	 *
+	 * @param oldColor: the old color, in a javafx.scene.paint.Color format
+	 * @return: The new color, as a java.awt.Color
+	 */
+	static Color convertColor(javafx.scene.paint.Color oldColor) {
+	    java.awt.Color newColor = new java.awt.Color((float) oldColor.getRed(),
+			    (float) oldColor.getGreen(),
+			    (float) oldColor.getBlue(),
+			    (float) oldColor.getOpacity());
+
+	    return newColor;
+    }
 
     /**
      * Gets the extension of a given file and returns it as a string

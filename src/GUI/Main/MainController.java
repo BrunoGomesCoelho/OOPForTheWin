@@ -1,6 +1,8 @@
 package GUI.Main;
 
 import GUI.CurrentImage;
+
+import static GUI.Main.Utils.convertColor;
 import static GUI.Main.Utils.resizePixel;
 
 import imageProcessing.Filters.Manipulate;
@@ -10,6 +12,7 @@ import static imageProcessing.draw.Brush.paintSquare;
 
 import static imageProcessing.Filters.Manipulate.rotate;
 
+import imageProcessing.draw.Bucket;
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -48,9 +51,11 @@ public class MainController implements Initializable{
 
     @FXML private ImageView imageView;
     @FXML private javafx.scene.control.TextField rotateText;
+    @FXML private ColorPicker colorPicker;
 
 	private boolean brushCircleButtonOn;
 	private boolean brushSquareButtonOn;
+	private boolean bucketButtonOn;
 
 
 	/**
@@ -258,15 +263,6 @@ public class MainController implements Initializable{
 	}
 
 
-    public void colorPickerButton(MouseEvent event) {
-        /* TODO: Fazer algo com isso.
-         Por enquanto só imprime no console. Importante resaltar que ele pega a posição mesmo se nenhuma imagem
-            estiver na tela, contanto que esteja dentro do quadrado do imageView
-          */
-        System.out.println("["+event.getX()+", "+event.getY()+"]");
-    }
-
-
 	public void rotateButton(ActionEvent event) {
 		ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(currentImage.getImage(), null));
 		String text = rotateText.getText();
@@ -289,9 +285,27 @@ public class MainController implements Initializable{
 	}
 
 
-    public void brushCircleButton() { brushCircleButtonOn = true; }
+    public void brushCircleButton() {
+	    buttonsOff();
+		brushCircleButtonOn = true;
+	}
 
-    public void brushSquareButton() { brushSquareButtonOn = true; }
+    public void brushSquareButton() {
+	    buttonsOff();
+		brushSquareButtonOn = true;
+	}
+
+	public void bucketButton() {
+		buttonsOff();
+		bucketButtonOn = true;
+	}
+	
+	private void buttonsOff() {
+		bucketButtonOn = false;
+		brushSquareButtonOn = false;
+		brushCircleButtonOn = false;
+	}
+	
 
 
     /*                          Image Clicked
@@ -306,6 +320,8 @@ public class MainController implements Initializable{
 			brushCircle(event);
 		else if (brushSquareButtonOn)
 			brushSquare(event);
+		else if (bucketButtonOn)
+			bucket(event);
 	}
 
 
@@ -315,11 +331,11 @@ public class MainController implements Initializable{
 
 		// Brush information
 		int brushSize = 10;
-		Color black = new Color(0, 0,0 );
+		Color color = convertColor(colorPicker.getValue());
 
 		double[] imagePixels = resizePixel(imageView, event.getX(), event.getY());
 
-		newModel = paintSquare(model, (int) imagePixels[0], (int) imagePixels[1], brushSize, black);
+		newModel = paintSquare(model, (int) imagePixels[0], (int) imagePixels[1], brushSize, color);
 
 		currentImage.setImage(SwingFXUtils.toFXImage(newModel.getBufferedImage(), null));
 		refresh();
@@ -331,17 +347,28 @@ public class MainController implements Initializable{
 
 	    // Brush information
 	    int brushSize = 10;
-	    Color black = new Color(0, 0,0 );
+		Color color = convertColor(colorPicker.getValue());
 
 		double[] imagePixels = resizePixel(imageView, event.getX(), event.getY());
 
-	    newModel = paint(model, (int) imagePixels[0], (int) imagePixels[1], brushSize, black);
-	    //newModel = imageProcessing.draw.Bucket.paint(model, (int) x, (int) y, brushSize, black);
+	    newModel = paint(model, (int) imagePixels[0], (int) imagePixels[1], brushSize, color);
 	    currentImage.setImage(SwingFXUtils.toFXImage(newModel.getBufferedImage(), null));
 	    refresh();
     }
 
-    // Image ==================================================================
+	private void bucket(MouseEvent event) {
+		// Inicializing images and models
+		ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(currentImage.getImage(), null));
 
+		// Bucket information
+		int level = 3;
+		Color color = convertColor(colorPicker.getValue());
+
+		double[] imagePixels = resizePixel(imageView, event.getX(), event.getY());
+
+		newModel = Bucket.paint(model, (int) imagePixels[0], (int) imagePixels[1], color, level);
+		currentImage.setImage(SwingFXUtils.toFXImage(newModel.getBufferedImage(), null));
+		refresh();
+	}
 
 }
