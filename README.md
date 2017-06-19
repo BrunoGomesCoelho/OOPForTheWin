@@ -54,6 +54,7 @@ Final project of OOP
         - Espelho
         - Métodos para desenho
         - Bucket
+        - Color Selection (Varinha)
         
    - Cruz:
         - 
@@ -78,7 +79,7 @@ Final project of OOP
     - [X] Seleção retangular
     - [X] Seleção direta (com o mouse)
     
-  - Distorção e Redimensionalização 
+  - [X] Distorção e Redimensionalização 
     - [X] Espelhar (vetical, horizontal e diagonalmente)
     - [X] Esticar (vertical e horizontal)
     - [X] Resize
@@ -90,10 +91,10 @@ Final project of OOP
     - [X] Inclusão de ruído
     - [X] Convolução de matrizes: Blur, sharp
   
-  - [ ] Desenho
+  - [X] Desenho
     - [X] Brush (desenhar com o mouse)
     - [X] Bucket
-    - [ ] Color selector (menu e por pixel na imagem)
+    - [X] Color selector (menu e por pixel na imagem)
  
   - [ ] Extra
     - [ ] Filtros pré-prontos (e.g. foto envelhecida)
