@@ -3,11 +3,15 @@ Final project of OOP
 
 - Link para o que falamos que iamos implementar:
 
-        https://www.overleaf.com/9610901vpynnzdrykcs#/34927327/
+     https://www.overleaf.com/9610901vpynnzdrykcs#/34927327/
 
-- Link para o relátorio: 
+- Link para o relátorio de implementação: 
 
-        https://www.overleaf.com/9308801srxcvkdjrfdd
+     https://www.overleaf.com/9308801srxcvkdjrfdd
+     
+- Link para o manual do usuário: 
+
+     https://www.overleaf.com/10052261rjptfvqhvjcv#/37012161/
         
         
 # TODO
