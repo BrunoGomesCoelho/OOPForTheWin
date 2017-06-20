@@ -1,4 +1,4 @@
-package GUI.Filter;
+package GUI.Main.Filter;
 
 import GUI.Main.MainController;
 import javafx.collections.FXCollections;
@@ -20,7 +20,6 @@ import javafx.scene.text.TextAlignment;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.stream.IntStream;
 
 
 /**

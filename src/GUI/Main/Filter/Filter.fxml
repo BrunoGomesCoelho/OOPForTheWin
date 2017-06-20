@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@Filter.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Filter.FilterController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@Filter.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Main.Filter.FilterController">
       <ListView fx:id="list" layoutX="61.0" layoutY="356.0" prefHeight="174.0" prefWidth="665.0" stylesheets="@Filter.css" />
       <Button fx:id="ok_button" layoutX="626.0" layoutY="549.0" mnemonicParsing="false" onAction="#okButton" prefHeight="26.0" prefWidth="63.0" stylesheets="@Filter.css" text="OK" />
       <Button fx:id="cancel_button" layoutX="711.0" layoutY="549.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="35.0" prefWidth="63.0" stylesheets="@Filter.css" text="Cancel" />

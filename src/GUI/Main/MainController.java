@@ -251,7 +251,7 @@ public class MainController implements Initializable{
      */
     public void selectFilterButton(ActionEvent event) throws Exception{
         Stage filterStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../Filter/Filter.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Filter/Filter.fxml"));
         filterStage.setTitle("Select a filter");
         filterStage.setScene(new Scene(root, 800,  600));
         filterStage.showAndWait();
@@ -270,7 +270,7 @@ public class MainController implements Initializable{
      */
     public void aboutButton(ActionEvent event) throws IOException {
         Stage aboutStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../About/AboutPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("About/AboutPage.fxml"));
         aboutStage.setTitle("About");
         aboutStage.setResizable(false);
         aboutStage.setScene(new Scene(root, 600,  400));

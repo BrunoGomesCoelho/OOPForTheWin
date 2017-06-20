@@ -1,4 +1,4 @@
-package GUI.Filter;
+package GUI.Main.Filter;
 
 import imageProcessing.Filters.ColorScale;
 import imageProcessing.Filters.Convolution;
