@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class CurrentImage {
     private Image image = null;
+    private int maxMemory = 50;
     private boolean valid = false;
     private boolean undoDone = false;
     private ArrayList<Image> previous = new ArrayList<>();
@@ -53,7 +54,12 @@ public class CurrentImage {
     public void setImage(Image image) {
         if (this.undoDone)   // If the user makes a change after undoing something, destroy the redo list
             this.next = new ArrayList<>();
-        this.previous.add(this.image);
+        // Since we have a limited heap, we can not always store all the edits in risk of stack overflow.
+        // In this case, we remove the last edit and store the new image in its place.
+        if (this.previous.size() == this.maxMemory)
+            this.previous.add(this.maxMemory - 1, this.image);
+        else
+            this.previous.add(this.image);
         this.image = image;
         this.valid = true;
     }
@@ -102,8 +108,8 @@ public class CurrentImage {
 
 
     /**
-     * Gets a ImageView with the current
-     * @return
+     * Gets a ImageView with the current image
+     * @return: the ImageView
      */
     public ImageView getImageView() {
         return imageView;

@@ -88,10 +88,8 @@ public class FilterController implements Initializable {
                     null));
             ObservableList<VBox> items = FXCollections.observableArrayList();
 
-            // Parallel loop -- Uses the number of cores the machine has
-            // Apply every filter at the image and put them at the list
-            IntStream.range(0, FilterInfo.getFilterCount()).parallel().forEach(
-                    i -> items.add(populate(img)));
+            for(int i = 0; i<FilterInfo.getFilterCount(); i++)
+                items.add(populate(img));
 
             list.setOrientation(Orientation.HORIZONTAL);
             list.setItems(items);
