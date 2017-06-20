@@ -32,7 +32,7 @@ public class AboutController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         text.setText(about);
-            copyright_text.setText(copy);
+        copyright_text.setText(copy);
     }
 
 }
