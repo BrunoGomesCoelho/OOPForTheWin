@@ -13,4 +13,9 @@
 
 #copyright {
     -fx-text-alignment: center;
+    -fx-font-size: 16px;
+}
+
+#copyright_text {
+    -fx-font-size: 12px;
 }
