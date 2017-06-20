@@ -85,7 +85,7 @@ public class ColorScale {
 		switch (channel) {
 			case "red":
 				return 0;
-			case "grenn":
+			case "green":
 				return 1;
 			case "blue":
 				return 2;
