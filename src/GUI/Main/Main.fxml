@@ -21,7 +21,7 @@
           <Menu mnemonicParsing="false" text="File">
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#newButton" text="New" />
-                  <MenuItem mnemonicParsing="false" onAction="#openButton" text="Open            Ctrl+O" />
+                  <MenuItem mnemonicParsing="false" onAction="#openButton" text="Open" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#saveButton" text="Save" />
                   <MenuItem mnemonicParsing="false" onAction="#saveAsButton" text="Save as" />
