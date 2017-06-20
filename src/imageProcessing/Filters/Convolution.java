@@ -9,7 +9,7 @@ import imageProcessing.utils.Utils;
 
 
 /**
- * Classe para a operação de convolução de matrizes
+ * Class for doing matrix convolutions
  */
 public class Convolution {
 	private static double[][] BLUR = {

@@ -7,18 +7,18 @@ import java.awt.image.WritableRaster;
 import imageProcessing.Models.ImageModel;
 
 /**
- *  Classe para a operação de preenchimento de cor, conhecido como balde (Bucket)
+ *  Class for swapping a connected area with the same color with another, typically know as "bucket"
  *
  */
 public class Bucket {
 	/**
 	 *
-	 * @param srcImg - Imagem original
-	 * @param x - Coordenada do clique do mouse
-	 * @param y - Coordenada do clique do mouse
-	 * @param c - Cor de preenchimento
-	 * @param level - nível de detalhe do preenchimento, indo de 0 (máximo detalhe) á 8 (imagem inteira)
-	 * @return Uma nova imagem com as modificações feitas
+	 * @param srcImg - Original image
+	 * @param x - The mouse's x coordinate
+	 * @param y - The mouse's y coordinate
+	 * @param c - The new collor to be used in filling the area
+	 * @param level - Level of detail while filling the area, from 0 (maximum detail) to 8 (the whole image)
+	 * @return A new image with the modifications done
 	 */
 	static public ImageModel paint(ImageModel srcImg, int x, int y, Color c, int level){
 		ImageModel newImg = srcImg.copy(); 

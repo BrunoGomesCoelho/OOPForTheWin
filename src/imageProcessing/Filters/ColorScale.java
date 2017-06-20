@@ -8,30 +8,32 @@ import imageProcessing.Models.ImageModel;
 import imageProcessing.utils.Utils;
 
 /**
- * Classe para a modificação de cor em sistemas RGB
+ * Class that modifies color bases on a RGB (red, green, blue) system.
  */
 public class ColorScale {
 
 	static private int scaleFilter(Raster raster, int i, int j, int channel, double alpha){
 		return Utils.truncate(raster.getSample(j, i, channel) * alpha);
 	}
-	
+
+
 	/**
-	 * Método para a modificação de um canal RGB atraves de um fator de multiplicação
+	 * Methor for modifying a RGB channel using a multiplication factor
 	 *
-	 * Ex.: scale(img, 0, 1.25) - Acrecimo de 25% em vermelho
-	 * Ex.: scale(img, 2, 0.75) - 75% da quantidade de azul da imagem original
+	 * Ex.: scale(img, 0, 1.25) - a 25% increase in red
+	 * Ex.: scale(img, 2, 0.75) - a 75% decrease in the amount of blue in the original image
 	 *
-	 * @param originalImage: a imagem original
-	 * @param op - canal RGB que ser� modificado (R - 0; G - 1; B - 2)
-	 * @param alpha - fator multiplicativo do canal. Valores de 0 at� 255 (No entanto, valores entre 0 e 5 s�o mais relevantes)
-	 * @return
+	 * @param originalImage: the original image
+	 * @param op - the RGB channel that will be modified
+	 * @param alpha - the multiplication factor of the channel. Values from 0 to 255
+	 *              (but values from 0 to 5 have the most profound effect)
+	 * @return the modified ImageModel
 	 */
 	static public ImageModel scale(ImageModel originalImage, String op, double alpha){
 		ImageModel cnvImage = originalImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = cnvImage.getWritableRaster();
-		int i, j, channel = selectChannel(op);;
+		int i, j, channel = selectChannel(op);
 		
 		for(i = 0; i < img.getHeight(); i++) {
 			for(j = 0; j < img.getWidth(); j++) {
@@ -45,16 +47,17 @@ public class ColorScale {
 	static private int addFilter(Raster raster, int i, int j, int channel, int n){
 		return Utils.truncate(raster.getSample(j, i, channel) + n);
 	}
-	
+
+
 	/**
-	 * Método para a modifica��o de um canal RGB atraves de um fator aditivo
+	 * Method for modifying a RGB channel using a additive factor.
 	 *
-	 * Ex.: scale(img, 0, 25) - todos os valores de vermelho ter�o um acrescimo de 25
+	 * Ex.: scale(img, 0, 25) - All the values of red will have a 25% increase.
 	 *
-	 * @param originalImage: a imagem original
-	 * @param op - canal RGB que ser� modificado (R - 0; G - 1; B - 2)
-	 * @param n - fator aditivo do canal. Valores de 0 at� 255
-	 * @return imagem modificada
+	 * @param originalImage: The original iamge
+	 * @param op - the RGB channel that will be modified
+	 * @param n - The additive factor of the channel. Values from 0 to 255.
+	 * @return the modified ImageModel
 	 */
 	static public ImageModel add(ImageModel originalImage, String op, int n){
 		ImageModel cnvImage = originalImage.copy();
@@ -72,13 +75,21 @@ public class ColorScale {
 	}
 
 
+	/**
+	 * Function that select a channel (red, green, blue) decoding it into a int representation.
+	 * (red = 0, blue = 1, green = 2)
+	 * @param channel: The selected channel, as a string
+	 * @return A int that represents that channel
+	 */
 	private static int selectChannel(String channel) {
-		if (channel.equals("red"))
-			return 0;
-		else if (channel.equals("grenn"))
-			return 1;
-		else if (channel.equals("blue"))
-			return 2;
+		switch (channel) {
+			case "red":
+				return 0;
+			case "grenn":
+				return 1;
+			case "blue":
+				return 2;
+		}
 		throw new RuntimeException("Wrong color typed used");
 	}
 }

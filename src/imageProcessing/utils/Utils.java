@@ -10,11 +10,11 @@ public class Utils {
 
 
 	/**
-	 * Método que retorna a cor de um pixel na posição (x, y) da imagem
+	 * Method that returns the color of a given pixel in the image
 	 * @param originalImage: a imagem original
-	 * @param x - coordenadas do pixel
-	 * @param y - coordenadas do pixel
-	 * @return objeto Color contendo a cor selecionada
+	 * @param x - the x coordinate of the pixel
+	 * @param y - the y coordinate of the pixel
+	 * @return A color object containing the color at that point
 	 */
 	static public Color colorSelect(ImageModel originalImage, int x, int y){
 		ImageModel cnvImage = originalImage.copy();

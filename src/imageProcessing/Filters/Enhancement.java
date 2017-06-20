@@ -11,10 +11,10 @@ import imageProcessing.utils.Utils;
 
 public class Enhancement {
 	/**
-	 * @param srcImage - Imagem original
-	 * @return os valores m�ximos e m�nimos para cada um dos canais RGB da imagem original
+	 * @param srcImage - Original image
+	 * @return The maximum and minimum values for each one of the RGB channels in the original image.
 	 */
-	static public int[][] getMinMax(ImageModel srcImage){
+	private static int[][] getMinMax(ImageModel srcImage){
 		BufferedImage img = srcImage.getBufferedImage();
 		Raster raster = img.getData();
 		int[][] minMax = new int[2][3];
@@ -46,10 +46,10 @@ public class Enhancement {
 	}
 	
 	/**
-	 * Método para o realce de imagens com baixa varia��o de cor
+	 * Method for the highlighting of images with a low color variance.
 	 *
-	 * @param srcImage - Imagem Original
-	 * @return Imagem real�ada
+	 * @param srcImage Original image
+	 * @return the highlighted image
 	 */
 	static public ImageModel contrastModulation(ImageModel srcImage){
 		ImageModel cnvImage = srcImage.copy();
@@ -71,10 +71,10 @@ public class Enhancement {
 	}
 	
 	/**
-	 * Método para a invers�o de valor dos pixel da imagem
+	 * Methor for the inversion of the value of the pixels in a image
 	 *
-	 * @param srcImage - Imagem original
-	 * @return Imagem invertida produzida
+	 * @param srcImage Original image
+	 * @return the inverted image
 	 */
 	static public ImageModel negative(ImageModel srcImage){
 		ImageModel cnvImage = srcImage.copy();
@@ -95,11 +95,10 @@ public class Enhancement {
 	}
 	
 	/**
-	 * Método para a binariza��o da imagem, de acordo com o bit mais significativo
-	 * da m�dia dos canais RGB
+	 * Method for the binarization of the image, using the most significant bit of the average of the RGB channels
 	 *
-	 * @param srcImage - Imagem original
-	 * @return Imagem bin�ria produzida
+	 * @param srcImage Original image
+	 * @return the binary image produced
 	 */
 	static public ImageModel binary(ImageModel srcImage){
 		ImageModel cnvImage = srcImage.copy();
@@ -125,10 +124,10 @@ public class Enhancement {
 
 
 	/**
-	 * Método para a cria��o de uma imagem preto e branco a partir de uma imagem RGB
+	 * Method for creating a black and white image
 	 *
-	 * @param srcImage - Imagem original
-	 * @return Imagem em escala de cinza
+	 * @param srcImage Original image
+	 * @return the greyscale image produced
 	 */
 	static public ImageModel grayScale(ImageModel srcImage){
 		ImageModel cnvImage = srcImage.copy();
@@ -154,12 +153,11 @@ public class Enhancement {
 	}
 	
 	/**
-	 * Método para a discretiza��o da imagem atrav�s da remo��o dos bits menos significativos
-	 * da imagem original
+	 * Method for the discretization of a image by removing the least significant bits in the original image
 	 *
-	 * @param srcImage - imagem original
-	 * @param level - n�vel de discretiza��o, entre 0 (menor discretiza��o) e 8 (m�xima discretiza��o)
-	 * @return imagem discretizada
+	 * @param srcImage Original image
+	 * @param level - The level of discretization, between 0 (little discretization) and 8 (maximum discretization)
+	 * @return the image produced
 	 */
 	static public ImageModel poster(ImageModel srcImage, int level){
 		ImageModel cnvImage = srcImage.copy();
@@ -179,11 +177,11 @@ public class Enhancement {
 	}
 	
 	/**
-	 * Método para a inclus�o de ru�do em imagens
+	 * Method for adding noise to images
 	 *
-	 * @param srcImage - imagem original
-	 * @param level - n�vel de ruidez da imagem. valores entre 0 e 255
-	 * @return imagem ruidosa
+	 * @param srcImage Original image
+	 * @param level - Level of noise in the image. Values between 0 and 255
+	 * @return the produced image
 	 */
 	static public ImageModel noise(ImageModel srcImage, int level){
 		ImageModel cnvImage = srcImage.copy();
@@ -206,104 +204,53 @@ public class Enhancement {
 	}
 	
 	/**
-	 * Método para a inclus�o de vinheta negra em imagens,
-	 * baseada no comprimento da diagonal
+	 * Method for creating a black vignette in images based on the size of the image's diagonal.
 	 *
-	 * @param srcImage - imagem original
-	 * @return imagem com a nova vinheta
+	 * @param srcImage Original image
+	 * @return the imagem with the new vignette
 	 */
 	static public ImageModel vignette(ImageModel srcImage){
 		ImageModel cnvImage = srcImage.copy();
 		BufferedImage img = cnvImage.getBufferedImage();
 		WritableRaster raster = img.getRaster();
-		int i, j, k, x, y;
-		double dist, div;
+		int x, y;
+		double div;
 		
 		x = img.getWidth() / 2;
 		y = img.getHeight() / 2;
 		
 		div = Utils.getDistance(0, 0, img.getWidth(), img.getHeight()) / 1.5;
 
+		vigneteAux(raster, img, x, y, div);
+
+		return new ImageModel(img, "Vignette");
+	}
+
+
+	/**
+	 * Auxiliar function to the main vignette function above.
+	 */
+	private static void vigneteAux(WritableRaster raster, BufferedImage img, int x, int y, double div) {
+		int i, j, k;
+		double dist;
+
 		for(i = 0; i < img.getHeight(); i++) {
 			for(j = 0; j < img.getWidth(); j++) {
 				dist = Utils.getDistance(x, y, j, i);
-				
+
 				for(k = 0; k < 3; k++) {
 					raster.setSample(j, i, k, Utils.truncate(raster.getSample(j, i, k) - 255 * dist / div));
 				}
 			}
 		}
-		
-		return new ImageModel(img, "Vignette");
 	}
-	
-	/**
-	 * Método para a inclus�o de vinheta negra em imagens
-	 *
-	 * @param srcImage - imagem original
-	 * @param radius - tamanho do raio da vinheta, com esta centralizada. qualquer valor inteiro
-	 * @return imagem com a nova vinheta
-	 */
-	static public ImageModel vignette(ImageModel srcImage, int radius){
-		ImageModel cnvImage = srcImage.copy();
-		BufferedImage img = cnvImage.getBufferedImage();
-		WritableRaster raster = img.getRaster();
-		int i, j, k, x, y;
-		double dist;
-		
-		x = img.getWidth() / 2;
-		y = img.getHeight() / 2;
 
-		for(i = 0; i < img.getHeight(); i++) {
-			for(j = 0; j < img.getWidth(); j++) {
-				dist = Utils.getDistance(x, y, j, i);
-				
-				for(k = 0; k < 3; k++) {
-					raster.setSample(j, i, k, Utils.truncate(raster.getSample(j, i, k) - 255 * dist / radius));
-				}
-			}
-		}
-		
-		return new ImageModel(img, "Vignete");
-	}
-	
-	 /**
-	  * Método para a inclus�o de vinheta colorida em imagens
-	  *
-	  * @param srcImage - imagem original
-	  * @param radius - tamanho do raio da vinheta, com esta centralizada. qualquer valor inteiro
-	  * @param color - cor da vinheta
-	  * @return imagem com a nova vinheta
-	  */
-	static public ImageModel vignette(ImageModel srcImage, int radius, int[] color){
-		ImageModel cnvImage = srcImage.copy();
-		BufferedImage img = cnvImage.getBufferedImage();
-		WritableRaster raster = img.getRaster();
-		int i, j, k, x, y;
-		double dist, diag;
-		
-		x = img.getWidth() / 2;
-		y = img.getHeight() / 2;
-		diag = Utils.getDistance(0, 0, img.getWidth(), img.getHeight()) / 1.5;
-		
-		for(i = 0; i < img.getHeight(); i++) {
-			for(j = 0; j < img.getWidth(); j++) {
-				dist = Utils.getDistance(x, y, j, i);
-				
-				for(k = 0; k < 3; k++) {
-					raster.setSample(j, i, k, Utils.truncate(raster.getSample(j, i, k) - 255 * dist / radius) + color[k] * dist / diag);
-				}
-			}
-		}
-		
-		return new ImageModel(img, "Vignete");
-	}
-	
+
 	/**
-	 * Método para a modifica��o dos pixel baseado na invers�o de canais do sistema HSB
+	 * Method for the modification of a images pixels, based on the inversion of its RGB channels.
 	 *
-	 * @param srcImage - imagem original
-	 * @return imagem modificada
+	 * @param srcImage Original image
+	 * @return the modified image
 	 */
 	static public ImageModel radioactive(ImageModel srcImage){
 		ImageModel cnvImage = srcImage.copy();
@@ -331,11 +278,11 @@ public class Enhancement {
 	}
 	
 	/**
-	 * Método para a manipula��o do Hue (colora��o) dos pixels de uma imagem
+	 * Method for the manipulation of the hue levels in a image
 	 *
-	 * @param srcImage - imagem original
-	 * @param level - n�vel da modifica��o - valores entre -1.0 e 1.0
-	 * @return imagem com nova colora��o
+	 * @param srcImage Original image
+	 * @param level - level of modification. Values between -1.0 and 1.0
+	 * @return the image with its new hue values.
 	 */
 	static public ImageModel hue(ImageModel srcImage, double level){
 		ImageModel cnvImage = srcImage.copy();
@@ -372,11 +319,11 @@ public class Enhancement {
 	}
 	
 	/**
-	 * Método para a manipula��o da satura��o dos pixels de uma imagem
+	 * Method for the manipulation of the saturation of the pixels in a image
 	 *
-	 * @param srcImage - imagem original
-	 * @param level - n�vel da modifica��o - valores entre -1.0 e 1.0
-	 * @return imagem com nova satura��o
+	 * @param srcImage Original image
+	 * @param level - level of modification. Values between -1.0 and 1.0
+	 * @return the saturated image
 	 */
 	static public ImageModel saturate(ImageModel srcImage, double level){
 		ImageModel cnvImage = srcImage.copy();
@@ -413,11 +360,11 @@ public class Enhancement {
 	}
 	
 	/**
-	 * Método para a manipula��o da luminosidade dos pixels de uma imagem
+	 * Method for the manipulation of the luminosity of the pixels in a image
 	 *
-	 * @param srcImage - imagem original
-	 * @param level - n�vel da modifica��o - valores entre -1.0 e 1.0
-	 * @return imagem com nova luminosidade
+	 * @param srcImage Original image
+	 * @param level - level of modification. Values between -1.0 and 1.0
+	 * @return the edited image
 	 */
 	static public ImageModel bright(ImageModel srcImage, double level){
 		ImageModel cnvImage = srcImage.copy();
@@ -454,11 +401,11 @@ public class Enhancement {
 	}
 		
 	/**
-	 * Método que gera uma vers�o pixelada da imagem original
+	 * Method that creates a pixelated version of the original image
 	 *
-	 * @param srcImage - Imagem Original
-	 * @param size - tamanho de cada "pixel" gerado. Valores entre 0 e a dimens�o m�xima da imagem
-	 * @return a imagem pixelada
+	 * @param srcImage Original image
+	 * @param size - The size of each new "pixel" created. Values between 0 and the dimension of the image.
+	 * @return The pixelated image
 	 */
 	static public ImageModel pixelate(ImageModel srcImage, double size){
 		ImageModel cnvImage = srcImage.copy();

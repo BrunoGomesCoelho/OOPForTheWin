@@ -10,18 +10,18 @@ import static imageProcessing.utils.Utils.getDistance;
 
 
 /**
- * Classe para as operações de desenho atráves do mouse, comumente  conhecida como pincel (Brush)
+ * Class for drawing on the image using the mouse, typically know as "brush".
  *
  */
 public class Brush {
 	/**
 	 * 
-	 * @param srcImg - Imagem original
-	 * @param x - Coordenada do ponto
-	 * @param y - Coordenada do ponto
-	 * @param r - tamanho do raio do pincel circular
-	 * @param c - Cor do pincel
-	 * @return uma nova imagem com as modificaçõees feitas
+	 * @param srcImg - Original image
+	 * @param x - The point's x coordinate
+	 * @param y - The point's y coordinate
+	 * @param r - The size of the radius of the circular brush
+	 * @param c - The brush's color
+	 * @return a new image with the changes applied
 	 */
 	static public ImageModel paint(ImageModel srcImg, int x, int y, int r, Color c) {
 		ImageModel newImg = srcImg.copy(); 
@@ -47,12 +47,12 @@ public class Brush {
 	
 	/**
 	 * 
-	 * @param srcImg - Imagem original
-	 * @param x - Coordenada do ponto
-	 * @param y - Coordenada do ponto
-	 * @param size - tamanho da lateral do pincel quadrado
-	 * @param c - Cor do pincel
-	 * @return uma nova imagem com as modificaçõees feitas
+	 * @param srcImg - Original image
+	 * @param x - The point's x coordinate
+	 * @param y - The point's y coordinate
+	 * @param size - The size of the side of the brush's square
+	 * @param c - The brush's color
+	 * @return a new image with the changes applied
 	 */
 	
 	static public ImageModel paintSquare(ImageModel srcImg, int x, int y, int size, Color c) {
