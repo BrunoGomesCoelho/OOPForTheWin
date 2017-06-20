@@ -255,7 +255,6 @@ public class MainController implements Initializable{
         filterStage.setTitle("Select a filter");
         filterStage.setScene(new Scene(root, 800,  600));
         filterStage.showAndWait();
-        System.out.println("hmmmm");
         refresh();
     }
 
@@ -299,7 +298,8 @@ public class MainController implements Initializable{
 		if (!currentImage.hasImage()) // If we don't currently have a valid image, abort
 			return;
 
-		ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(currentImage.getImage(), null));
+		ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(
+				currentImage.getImage(), null));
 		String text = rotateText.getText();
 		double angle, rad;
 
@@ -314,7 +314,8 @@ public class MainController implements Initializable{
 		rad = (2*Math.PI * angle) / 360; // Converting the angle to radians
 
 		newModel = Manipulate.rotate(model, rad);
-		currentImage.setImage(SwingFXUtils.toFXImage(newModel.getBufferedImage(), null));
+		currentImage.setImage(SwingFXUtils.toFXImage(newModel.getBufferedImage(),
+				null));
 		refresh();
 	}
 
@@ -367,33 +368,40 @@ public class MainController implements Initializable{
 	}
 
 	private void colorSelector(MouseEvent event) {
-		ImageModel model = new ImageModel(SwingFXUtils.fromFXImage(currentImage.getImage(), null));
+		ImageModel model = new ImageModel(SwingFXUtils.fromFXImage(
+				currentImage.getImage(), null));
 		double[] imagePixels = resizePixel(imageView, event.getX(), event.getY());
 
-		javafx.scene.paint.Color color = convertColorToAwt(colorSelect(model, (int) imagePixels[0], (int) imagePixels[1]));
+		javafx.scene.paint.Color color = convertColorToAwt(colorSelect(model,
+				(int) imagePixels[0], (int) imagePixels[1]));
 		colorPicker.setValue(color);
 	}
 
 
 	private void brushSquare(MouseEvent event) {
 		// Inicializing images and models
-		ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(currentImage.getImage(), null));
+		ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(
+				currentImage.getImage(), null));
 
 		// Brush information
 		int brushSize = 10;
 		Color color = convertColorToScene(colorPicker.getValue());
 
-		double[] imagePixels = resizePixel(imageView, event.getX(), event.getY());
+		double[] imagePixels = resizePixel(imageView, event.getX(),
+				event.getY());
 
-		newModel = paintSquare(model, (int) imagePixels[0], (int) imagePixels[1], brushSize, color);
+		newModel = paintSquare(model, (int) imagePixels[0],
+				(int) imagePixels[1], brushSize, color);
 
-		currentImage.setImage(SwingFXUtils.toFXImage(newModel.getBufferedImage(), null));
+		currentImage.setImage(SwingFXUtils.toFXImage(
+				newModel.getBufferedImage(), null));
 		refresh();
 	}
 
 	private void brushCircle(MouseEvent event) {
     	// Inicializing images and models
-	    ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(currentImage.getImage(), null));
+	    ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(
+	    		currentImage.getImage(), null));
 
 	    // Brush information
 	    int brushSize = 10;
@@ -401,14 +409,17 @@ public class MainController implements Initializable{
 
 		double[] imagePixels = resizePixel(imageView, event.getX(), event.getY());
 
-	    newModel = paint(model, (int) imagePixels[0], (int) imagePixels[1], brushSize, color);
-	    currentImage.setImage(SwingFXUtils.toFXImage(newModel.getBufferedImage(), null));
+	    newModel = paint(model, (int) imagePixels[0], (int) imagePixels[1],
+				brushSize, color);
+	    currentImage.setImage(SwingFXUtils.toFXImage(newModel.getBufferedImage(),
+				null));
 	    refresh();
     }
 
 	private void bucket(MouseEvent event) {
 		// Inicializing images and models
-		ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(currentImage.getImage(), null));
+		ImageModel newModel, model = new ImageModel(SwingFXUtils.fromFXImage(
+				currentImage.getImage(), null));
 
 		// Bucket information
 		int level = 6;
@@ -416,8 +427,10 @@ public class MainController implements Initializable{
 
 		double[] imagePixels = resizePixel(imageView, event.getX(), event.getY());
 
-		newModel = Bucket.paint(model, (int) imagePixels[0], (int) imagePixels[1], color, level);
-		currentImage.setImage(SwingFXUtils.toFXImage(newModel.getBufferedImage(), null));
+		newModel = Bucket.paint(model, (int) imagePixels[0], (int) imagePixels[1],
+				color, level);
+		currentImage.setImage(SwingFXUtils.toFXImage(newModel.getBufferedImage(),
+				null));
 		refresh();
 	}
 
