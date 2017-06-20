@@ -16,16 +16,19 @@
          <stylesheets>
             <URL value="@AboutPage.css" />
             <URL value="@AboutPage.css" />
+            <URL value="@AboutPage.css" />
+            <URL value="@AboutPage.css" />
          </stylesheets></Label>
       <Label fx:id="copyright" layoutX="180.0" layoutY="263.0" prefHeight="19.0" prefWidth="241.0" text="Copyright (C)  2017  Photocyl">
          <stylesheets>
+            <URL value="@AboutPage.css" />
             <URL value="@AboutPage.css" />
             <URL value="@AboutPage.css" />
          </stylesheets>
          <font>
             <Font size="15.0" />
          </font></Label>
-      <Label fx:id="copyright_text" layoutX="39.0" layoutY="296.0" prefHeight="90.0" prefWidth="523.0" text="Label" textAlignment="CENTER" />
+      <Label fx:id="copyright_text" layoutX="39.0" layoutY="296.0" prefHeight="90.0" prefWidth="523.0" stylesheets="@AboutPage.css" text="Label" textAlignment="CENTER" />
    </children>
    <stylesheets>
       <URL value="@AboutPage.css" />
