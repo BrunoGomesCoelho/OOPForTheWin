@@ -1,32 +1,77 @@
-# OOPForTheWin
-Projeto final de POO
+# Photocyl
+> Simple image editing program.
 
-# TODO
-  - [X] Escrever um README decente 
-  - [X] Escolher tema
-  - Desenvolver projeto básico de aplicação
-  - Enviar proposta de projeto
+A small program for image processing implemented in Java 8. Contains basic features such as crop, resize, rotate, draw on the image, etc. Also includes 20+ instagram-like filters. Originally built as the final project of a "Object Oriented Programming" class.
 
-# Tasks
-  - Crop
-    - Seleção retangular
-    - Seleção direta (com o mouse)
-    - Seleção por isomorfismo (mesma cor, textura, etc)
-    
-  - Rotação
-  - Stretch e redimensionalização 
+## Installing / Getting started
+
+To run, Oracle's java 8 is required. With that, it's as simple as:
+
+```shell
+java photocyl.jar -jar
+```
+
+The programs graphical interface will open up and the image editing fun can start!
+
+## Developing
+
+To partake in the project, just clone and make something awesome with the source code
+
+```shell
+https://github.com/GCyrillo/Photocyl.git
+cd Photocyl
+```
+
+## Features
+
+Currently, the program has the following features:
+* Basic image editing such as crop, resize, rotate, color selection, etc.
+* A lot of cool filters, especially for posting pictures to social media.
+* The possibility to draw on the image.
+
+## Contributing
+
+If you'd like to contribute, please fork the repository and use a feature
+branch. Pull requests are warmly welcome.
+
+Please follow general Java coding practices, along with the creation of the javadoc as needed.
+
+## Licensing
+
+The code in this project is licensed under MIT license.
+
+
+# Links for the teacher (in portuguese)
+
+- Link to the original idea:
+
+     https://www.overleaf.com/9610901vpynnzdrykcs#/34927327/
+
+- Link to the implementation report:
+
+     https://www.overleaf.com/9308801srxcvkdjrfdd
+     
+- Link to the user manual:
+
+     https://www.overleaf.com/10052261rjptfvqhvjcv#/37012161/
+        
+        
+# Things not implemented at project due date (in portuguese):
+      
+  - Achar uma maneira de centralizar a imagem na tela   
+      
+  - Criar o Menu da direita (color picker)
   
-  - Filters
-    - Mundanças de canais HSL e RGB (dá para montar filtros tipo instagram com isso)
-    - Realce de Imagens 
-    - Convolução de matrizes: Blur, sharp
-    - Remoção de ruído - Fourier (?)
+  - Botão new para criar uma imagem nova com a cor e a dimensão que o usuário desejar
     
-  - Layers
-    - Prioridade de cada layer e sobreposição desses
+  - Criar uma classe de exceções para as exceções de run time
   
-  - Desenho
-    - Brush (desenhar com o mouse)
-    - Bucket
-    - Color selector (menu e por pixel na imagem)
-    - Formas geométricas e adesivos padrão
+  - Recorte
+  
+  - [ ] Extra functions
+    - [ ] Filtros pré-prontos (e.g. foto envelhecida)
+    - [ ] Prioridade de cada layer e sobreposição desses
+    - [ ] Remoção de ruído
+    - [ ] Formas geométricas e Adesivos padrão
+    - [ ] Abrir uma imagem remotamente
+    - [ ] Shortcuts

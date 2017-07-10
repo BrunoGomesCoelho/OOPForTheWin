@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="720.0" minWidth="1280.0" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Main.MainController">
+   <top>
+      <MenuBar stylesheets="@Main.css" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#newButton" text="New" />
+                  <MenuItem mnemonicParsing="false" onAction="#openButton" text="Open" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveButton" text="Save" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveAsButton" text="Save as" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem fx:id="close" mnemonicParsing="false" onAction="#closeAplication" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#refreshButton" text="Refresh" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Filters">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#selectFilterButton" text="Select Filter" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#aboutButton" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <StackPane prefHeight="150.0" prefWidth="200.0" stylesheets="@Main.css" BorderPane.alignment="CENTER">
+         <children>
+          <AnchorPane fx:id="leftMenu" minHeight="0.0" minWidth="0.0" prefHeight="691.0" prefWidth="158.0" stylesheets="@Main.css">
+               <children>
+                  <ButtonBar layoutX="-3.0" layoutY="49.0" />
+                  <Button fx:id="undoButton" layoutY="514.0" mnemonicParsing="false" onAction="#undoButton" prefHeight="25.0" prefWidth="53.0" stylesheets="@Main.css" text="Undo" />
+                  <Button fx:id="redoButton" layoutY="560.0" mnemonicParsing="false" onAction="#redoButton" prefHeight="25.0" prefWidth="53.0" stylesheets="@Main.css" text="Redo" />
+                  <Button fx:id="brushcirculo" layoutY="121.0" mnemonicParsing="false" onAction="#brushCircleButton" prefHeight="26.0" prefWidth="125.0" stylesheets="@Main.css" text="Brush Circulo" />
+                  <ColorPicker fx:id="colorPicker" layoutY="77.0" />
+                  <Button fx:id="brushsquare" layoutY="160.0" mnemonicParsing="false" onAction="#brushSquareButton" stylesheets="@Main.css" text="Brush Quadrado" />
+                  <TextField fx:id="rotateText" layoutX="-3.0" layoutY="284.0" prefHeight="26.0" prefWidth="111.0" promptText="Ângulo (graus)" />
+                  <Button fx:id="rotate" layoutX="120.0" layoutY="285.0" mnemonicParsing="false" onAction="#rotateButton" text="Rotate" />
+                  <Button fx:id="bucket" layoutX="1.0" layoutY="204.0" mnemonicParsing="false" onAction="#bucketButton" stylesheets="@Main.css" text="Bucket" />
+                  <Button fx:id="colorSelector" layoutY="36.0" mnemonicParsing="false" onAction="#colorSelectorButton" stylesheets="@Main.css" text="Selecionar cor" />
+                  <Button fx:id="resize" layoutY="370.0" mnemonicParsing="false" onAction="#resizeButton" prefHeight="26.0" prefWidth="125.0" stylesheets="@Main.css" text="Resize" />
+                  <TextField fx:id="largura" layoutX="46.0" layoutY="407.0" prefHeight="26.0" prefWidth="111.0" promptText="Largura" />
+                  <TextField fx:id="altura" layoutX="46.0" layoutY="442.0" prefHeight="26.0" prefWidth="111.0" promptText="Altura" />
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </left>
+   <center>
+    <AnchorPane fx:id="centerMenu" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" stylesheets="@Main.css" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imageView" fitHeight="375.0" fitWidth="528.0" layoutX="310.0" layoutY="144.0" onMouseClicked="#imageClicked" onMouseDragged="#imageClicked" pickOnBounds="true" preserveRatio="true" />
+            <Separator layoutX="-13.0" layoutY="-1.0" maxHeight="845.0" orientation="VERTICAL" prefHeight="711.0" prefWidth="20.0" stylesheets="@Main.css" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
