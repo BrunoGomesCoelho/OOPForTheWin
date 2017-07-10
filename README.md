@@ -19,7 +19,8 @@ To partake in the project, just clone and make something awesome with the source
 
 ```shell
 https://github.com/GCyrillo/Photocyl.git
-cd Photocyl```
+cd Photocyl
+```
 
 ## Features
 
