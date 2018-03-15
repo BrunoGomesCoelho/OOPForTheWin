@@ -55,23 +55,3 @@ The code in this project is licensed under MIT license.
 
      https://www.overleaf.com/10052261rjptfvqhvjcv#/37012161/
         
-        
-# Things not implemented at project due date (in portuguese):
-      
-  - Achar uma maneira de centralizar a imagem na tela   
-      
-  - Criar o Menu da direita (color picker)
-  
-  - Botão new para criar uma imagem nova com a cor e a dimensão que o usuário desejar
-    
-  - Criar uma classe de exceções para as exceções de run time
-  
-  - Recorte
-  
-  - [ ] Extra functions
-    - [ ] Filtros pré-prontos (e.g. foto envelhecida)
-    - [ ] Prioridade de cada layer e sobreposição desses
-    - [ ] Remoção de ruído
-    - [ ] Formas geométricas e Adesivos padrão
-    - [ ] Abrir uma imagem remotamente
-    - [ ] Shortcuts
